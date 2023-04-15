@@ -1,0 +1,9 @@
+{
+    "robloxLsp.hint.setType": true,
+    "robloxLsp.hint.returnType": true,
+    "robloxLsp.hint.enable": true,
+    "robloxLsp.typeChecking.mode": "Strict",
+    "robloxLsp.typeChecking.options": {
+        "infer-instance-from-unknown": true
+    }
+}
