@@ -55,7 +55,7 @@ function Janitor:Give(task: any)
 	return handleTask(task)
 end
 
-function Janitor:Cleanup(taskTable: table)
+function Janitor:Cleanup(taskTable: table?)
 	local tasks = taskTable or self._tasks
 
 	for index, task in pairs(tasks) do

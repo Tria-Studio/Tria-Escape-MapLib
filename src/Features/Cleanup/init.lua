@@ -41,9 +41,7 @@ local function cleanup()
 end
 
 if RunService:IsClient() then
-	Players.LocalPlayer.Character.Humanoid.Died:Connect(function()
-		cleanup()
-	end)
+	Players.LocalPlayer.Character.Humanoid.Died:Connect(cleanup)
 
 	PlayerStates.LocalStateChanged:Connect(function(newState)
 		if newState == PlayerStates.SURVIVED then
