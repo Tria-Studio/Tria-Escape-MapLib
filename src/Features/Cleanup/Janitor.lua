@@ -16,7 +16,7 @@ end
 function Janitor.new(janitorName: string?)
 	local self = setmetatable({}, Janitor)
 	self._tasks = {}
-	self.context = RunService:IsServer() == true and "Server" or "Client"
+	self.context = RunService:IsServer() and "Server" or "Client"
 	self.name = janitorName
 
 	local janitors = getJanitors()
