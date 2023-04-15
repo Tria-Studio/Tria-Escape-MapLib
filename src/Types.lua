@@ -21,10 +21,6 @@ export type MapLib = {
 		((MapLib, "PlayerUI") -> GUIFeature)
 }
 
-export type Feature<F> = {
-    context: ("server" | "client")?,
-} & F
-
 export type PlayersFeature = {
 	GetPlayers: () -> { Player },
 }

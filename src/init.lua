@@ -144,7 +144,7 @@ function MapLib:GetPlayers()
 	return PlayerStates:GetPlayersWithState(PlayerStates.GAME)
 end
 
-local features: {[string]: Feature} = {}
+local features = {}
 for i, v in next, script.Features do
 	features[v.Name] = require(v)
 end
