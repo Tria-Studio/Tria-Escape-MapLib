@@ -3,8 +3,11 @@
 -- If a copy of the MPL was not distributed with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 export type MapLib = {
-	map: Model,
 
+	__index: MapLib,
+	map: Model,
+	Map: Model,
+	_MapHandler: any,
 	new: (any, any) -> MapLib,
 	Alert: (MapLib, string, Color3?, number?) -> nil,
 	ChangeMusic: (MapLib, number, number?, number?) -> nil,
@@ -14,11 +17,10 @@ export type MapLib = {
 	Move: (MapLib, PVInstance, Vector3, number?) -> nil,
 	MoveRelative: (MapLib, PVInstance, Vector3, number?) -> nil,
 	GetPlayers: (MapLib) -> { Player },
-	GetFeature:
-        ((MapLib, "Players") -> PlayersFeature) &
-        ((MapLib, "Settings") -> SettingsFeature) &
-		((MapLib, "Skills") -> SkillsFeature) &
-		((MapLib, "PlayerUI") -> GUIFeature)
+	GetFeature: ((MapLib, "Players") -> PlayersFeature)
+		& ((MapLib, "Settings") -> SettingsFeature)
+		& ((MapLib, "Skills") -> SkillsFeature)
+		& ((MapLib, "PlayerUI") -> GUIFeature),
 }
 
 export type PlayersFeature = {
