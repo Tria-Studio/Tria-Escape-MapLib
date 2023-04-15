@@ -26,6 +26,18 @@ else
 	Sound = require(game.Players.LocalPlayer.PlayerScripts.client.Sound)
 end
 
+--- @class MapLib
+--- Description goes here
+
+--- @prop map Model
+--- @readonly
+--- @within MapLib
+
+--- @prop _MapHandler any
+--- @readonly
+--- @private
+--- @within MapLib
+
 local MapLib: Types.MapLib = {}
 MapLib.__index = MapLib
 
@@ -39,7 +51,8 @@ function MapLib.new(map, MapHandler)
 	return self
 end
 
-function MapLib:Alert(message: string, color: Color3?, length: number?)
+--- Description
+function MapLib:Alert(message: string, color: Color3?, length: number?): nil
 	if IS_SERVER then
 		ReplicatedStorage.Remotes.Misc.SendAlert:FireAllClients(message, color, length, true)
 	else
@@ -47,7 +60,8 @@ function MapLib:Alert(message: string, color: Color3?, length: number?)
 	end
 end
 
-function MapLib:ChangeMusic(musicId: number, volume: number?, startTick: number?)
+--- Description
+function MapLib:ChangeMusic(musicId: number, volume: number?, startTick: number?): nil
 	if IS_SERVER then
 		ReplicatedStorage.Remotes.Misc.ChangeMusic:FireAllClients(musicId, volume, (startTick or 0))
 	else
@@ -55,7 +69,10 @@ function MapLib:ChangeMusic(musicId: number, volume: number?, startTick: number?
 	end
 end
 
-function MapLib:GetButtonEvent(buttonId: number | string)
+
+--- Description
+--- @server
+function MapLib:GetButtonEvent(buttonId: number | string): RBXScriptSignal?
 	if IS_SERVER then
 		if tonumber(buttonId) then
 			-- Normal button
@@ -75,7 +92,9 @@ function MapLib:GetButtonEvent(buttonId: number | string)
 	end
 end
 
-function MapLib:Survive(player: Player)
+--- Description
+--- @server
+function MapLib:Survive(player: Player): nil
 	if IS_SERVER then
 		if not player then
 			return error("Player does not exist", 2)
@@ -87,7 +106,8 @@ function MapLib:Survive(player: Player)
 	end
 end
 
-function MapLib:SetLiquidType(liquid: BasePart, liquidType: string)
+--- Description
+function MapLib:SetLiquidType(liquid: BasePart, liquidType: string): nil
 	task.spawn(function()
 		local color = LIQUID_COLORS[liquidType]
 		if self.map and not color then
@@ -129,18 +149,24 @@ local function move(moveable: PVInstance, movement: Vector3, duration: number?, 
 	end)
 end
 
-function MapLib:Move(moveable: PVInstance, movement: Vector3, duration: number?)
+
+--- Description
+function MapLib:Move(moveable: PVInstance, movement: Vector3, duration: number?): nil
 	task.spawn(move, moveable, movement, duration)
 end
-function MapLib:MoveRelative(moveable: PVInstance, movement: Vector3, duration: number?)
+
+--- Description
+function MapLib:MoveRelative(moveable: PVInstance, movement: Vector3, duration: number?): nil
 	task.spawn(move, moveable, movement, duration, true)
 end
+
 MapLib.MovePart = MapLib.Move
 MapLib.MovePartLocal = MapLib.MoveRelative
 MapLib.MoveModel = MapLib.Move
 MapLib.MoveModelLocal = MapLib.MoveRelative
 
-function MapLib:GetPlayers()
+--- Description
+function MapLib:GetPlayers(): {Player}
 	return PlayerStates:GetPlayersWithState(PlayerStates.GAME)
 end
 
@@ -148,14 +174,19 @@ local features = {}
 for i, v in next, script.Features do
 	features[v.Name] = require(v)
 end
----@typecheck mode: nocheck - Some reason this typing does not work correctly
+
 function MapLib:GetFeature(name)
 	local feature = features[name]
 	if feature then
 		if feature.context == "client" and IS_SERVER or feature.context == "server" and not IS_SERVER then
 			error(("Feature '%s' can only be used on the '%s'"):format(name, feature.context), 2)
 		end
-		return feature.new and feature.new(MapLib) or feature
+		if features.new then
+			return feature.new(MapLib)
+		else
+			warn(("Using deprecated feature '%s'"):format(name))
+			return feature
+		end
 	else
 		error(("Cannot find feature '%s'"):format(name), 2)
 	end

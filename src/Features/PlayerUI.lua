@@ -9,32 +9,40 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local PlayerStates = require(ReplicatedStorage.shared.PlayerStates)
 
 --< Main >--
-local UIFeature = {}
-UIFeature.context = "client"
+local PlayerUI = {context = "client"}
+PlayerUI.__index = PlayerUI
 
-local uiCache = {}
+--- @class PlayerUI
+--- Description goes here
+--- @client
 
-local function cleanUp()
-	for _, v in pairs(uiCache) do
-		v:Destroy()
-	end
-	table.clear(uiCache)
+--- @prop cleanup {ScreenGUI}
+--- @readonly
+--- @private
+--- @within PlayerUI
+function PlayerUI.new()
+	local self = setmetatable({}, PlayerUI)
+
+	self.cleanup = {}
+
+	PlayerStates.LocalStateChanged:Connect(function(newState)
+		if newState == PlayerStates.SURVIVED or newState == PlayerStates.LOBBY then
+			for _, v in pairs(self.cleanup) do
+				v:Destroy()
+			end
+			table.clear(self.cleanup)
+		end
+	end)
+
+	return self
 end
 
-function UIFeature:LoadUI(uiInstance: ScreenGui)
-	if uiInstance:IsA("ScreenGui") then
-		local ui = uiInstance:Clone()
-		ui.Parent = Players.LocalPlayer.PlayerGui
-		table.insert(uiCache, ui)
+--- Description
+function PlayerUI:LoadUI(gui: ScreenGui): nil
+	assert(gui:IsA("ScreenGui"), "':LoadUI' must be passed a 'ScreenGUI'")
 
-		return ui
-	end
+	gui.Parent = Players.LocalPlayer.PlayerGui
+	table.insert(self.cleanup, gui)
 end
 
-PlayerStates.LocalStateChanged:Connect(function(newState)
-	if newState == PlayerStates.SURVIVED or newState == PlayerStates.LOBBY then
-		cleanUp()
-	end
-end)
-
-return UIFeature
+return PlayerUI

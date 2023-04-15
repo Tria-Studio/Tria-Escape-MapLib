@@ -15,12 +15,12 @@ if RunService:IsServer() then
 end
 
 --< Main >--
-local CleanupFeature = {}
-CleanupFeature.Janitors = {}
+local Cleanup = {}
+Cleanup.Janitors = {}
 
-CleanupFeature.Janitor = require(script.Janitor)
+Cleanup.Janitor = require(script.Janitor)
 
-function CleanupFeature:GetJanitor(janitorName: string?)
+function Cleanup:GetJanitor(janitorName: string?)
 	if self.Janitors[janitorName] then
 		return self.Janitors[janitorName]
 	else
@@ -28,12 +28,12 @@ function CleanupFeature:GetJanitor(janitorName: string?)
 	end
 end
 
-function CleanupFeature:GetJanitors()
+function Cleanup:GetJanitors()
 	return self.Janitors
 end
 
 local function cleanup()
-	for _, v in pairs(CleanupFeature:GetJanitors()) do
+	for _, v in pairs(Cleanup:GetJanitors()) do
 		if v.ClassName == "Janitor" then
 			v:Destroy()
 		end
@@ -54,4 +54,4 @@ else
 	Round.RoundEnding:Connect(cleanup)
 end
 
-return CleanupFeature
+return Cleanup

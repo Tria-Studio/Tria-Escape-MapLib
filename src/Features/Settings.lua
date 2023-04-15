@@ -6,17 +6,27 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local RunService = game:GetService("RunService")
 
-local Settings
+local SettingsModule
 if RunService:IsClient() then
-	Settings = require(ReplicatedStorage.shared.Settings)
+	SettingsModule = require(ReplicatedStorage.shared.Settings)
 end
 
 --< Main >--
-local SettingsFeature = {}
-SettingsFeature.context = "client"
+local Settings = {context = "client"}
+Settings.__index = Settings
 
-function SettingsFeature:GetSetting(settingName: string)
-	local settingsTable = Settings:GetSettings()
+--- @class Settings
+--- Description goes here
+--- @client
+function Settings.new()
+	local self = setmetatable({}, Settings)
+
+	return self
+end
+
+--- Description
+function Settings:GetSetting(settingName: string): any
+	local settingsTable = SettingsModule:GetSettings()
 
 	local setting
 	for i = 1, #settingsTable do
@@ -34,4 +44,4 @@ function SettingsFeature:GetSetting(settingName: string)
 	end
 end
 
-return SettingsFeature
+return Settings
