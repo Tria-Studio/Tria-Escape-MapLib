@@ -17,7 +17,7 @@ export type MapLib = {
 	GetFeature:
         ((MapLib, "Players") -> PlayersFeature) &
         ((MapLib, "Settings") -> SettingsFeature) &
-		((MapLib, "Skills") -> SkillsFeature) & 
+		((MapLib, "Skills") -> SkillsFeature) &
 		((MapLib, "PlayerUI") -> GUIFeature)
 }
 
