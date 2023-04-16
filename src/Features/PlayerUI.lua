@@ -9,7 +9,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local PlayerStates = require(ReplicatedStorage.shared.PlayerStates)
 
 --< Main >--
-local PlayerUI = {context = "client"}
+local PlayerUI = { context = "client" }
 PlayerUI.__index = PlayerUI
 
 --- @class PlayerUI
@@ -38,11 +38,12 @@ function PlayerUI.new()
 end
 
 --- Description
-function PlayerUI:LoadUI(gui: ScreenGui): nil
+function PlayerUI:LoadUI(gui: ScreenGui): ScreenGui
 	assert(gui:IsA("ScreenGui"), "':LoadUI' must be passed a 'ScreenGUI'")
 
 	gui.Parent = Players.LocalPlayer.PlayerGui
 	table.insert(self.cleanup, gui)
+	return gui
 end
 
 return PlayerUI

@@ -16,7 +16,7 @@ end
 function Janitor.new(janitorName: string?)
 	local self = setmetatable({}, Janitor)
 	self._tasks = {}
-	self.context = RunService:IsServer() == true and "Server" or "Client"
+	self.context = RunService:IsServer() and "Server" or "Client"
 	self.name = janitorName
 
 	local janitors = getJanitors()
@@ -55,7 +55,7 @@ function Janitor:Give(task: any)
 	return handleTask(task)
 end
 
-function Janitor:Cleanup(taskTable: table)
+function Janitor:Cleanup(taskTable: table?)
 	local tasks = taskTable or self._tasks
 
 	for index, task in pairs(tasks) do
