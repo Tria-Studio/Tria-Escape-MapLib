@@ -170,18 +170,14 @@ function MapLib:GetPlayers(): {Player}
 	return PlayerStates:GetPlayersWithState(PlayerStates.GAME)
 end
 
-local features = {}
-for i, v in next, script.Features do
-	features[v.Name] = require(v)
-end
-
 function MapLib:GetFeature(name)
-	local feature = features[name]
+	local m = script.Features:FindFirstChild(name)
+	local feature = m and require(m)
 	if feature then
 		if feature.context == "client" and IS_SERVER or feature.context == "server" and not IS_SERVER then
 			error(("Feature '%s' can only be used on the '%s'"):format(name, feature.context), 2)
 		end
-		if features.new then
+		if feature.new then
 			return feature.new(MapLib)
 		else
 			warn(("Using deprecated feature '%s'"):format(name))
