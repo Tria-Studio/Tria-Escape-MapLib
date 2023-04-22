@@ -27,7 +27,7 @@ else
 end
 
 --- @class MapLib
---- Description goes here
+--- This is the documentation of MapLib methods, also includes deprecated ones which you can use atyour own risk.
 
 --- @prop map Model
 --- @readonly
@@ -51,7 +51,8 @@ function MapLib.new(map, MapHandler)
 	return self
 end
 
---- This is how the maplib is constructed.
+--- This is how the MapLib is constructed.
+
 function MapLib:Alert(message: string, color: Color3?, length: number?): nil
 	if IS_SERVER then
 		ReplicatedStorage.Remotes.Misc.SendAlert:FireAllClients(message, color, length, true)
@@ -60,7 +61,8 @@ function MapLib:Alert(message: string, color: Color3?, length: number?): nil
 	end
 end
 
---- This is the Alert function.
+--- This method can be used to send a message to everyone. The message can be customized by color and duration.
+
 function MapLib:ChangeMusic(musicId: number, volume: number?, startTick: number?): nil
 	if IS_SERVER then
 		ReplicatedStorage.Remotes.Misc.ChangeMusic:FireAllClients(musicId, volume, (startTick or 0))
@@ -69,8 +71,8 @@ function MapLib:ChangeMusic(musicId: number, volume: number?, startTick: number?
 	end
 end
 
+--- This method can be used to change the current music playing in maps, this also replicates to spectators.
 
---- Description
 --- @server
 function MapLib:GetButtonEvent(buttonId: number | string): RBXScriptSignal?
 	if IS_SERVER then
@@ -92,7 +94,8 @@ function MapLib:GetButtonEvent(buttonId: number | string): RBXScriptSignal?
 	end
 end
 
---- Description
+--- This method can be used to run functions once the specific button has been pressed.
+
 --- @server
 function MapLib:Survive(player: Player): nil
 	if IS_SERVER then
@@ -106,7 +109,8 @@ function MapLib:Survive(player: Player): nil
 	end
 end
 
---- Description
+--- This method can be used to make the player survive the match without touching ExitRegion.
+
 function MapLib:SetLiquidType(liquid: BasePart, liquidType: string): nil
 	task.spawn(function()
 		local color = LIQUID_COLORS[liquidType]
@@ -120,6 +124,8 @@ function MapLib:SetLiquidType(liquid: BasePart, liquidType: string): nil
 		SettingsHandler:SetValue(liquid, "Type", liquidType)
 	end)
 end
+
+--- This method can be used to change the state of a liquid. There are 3 states you can choose from excluding custom states, these are "water", "acid" and "lava".
 
 local function move(moveable: PVInstance, movement: Vector3, duration: number?, relative: boolean?)
 	if duration == 0 or duration == nil then
@@ -149,26 +155,33 @@ local function move(moveable: PVInstance, movement: Vector3, duration: number?, 
 	end)
 end
 
+--- This is how the :Move() method is constructed.
 
---- Description
 function MapLib:Move(moveable: PVInstance, movement: Vector3, duration: number?): nil
 	task.spawn(move, moveable, movement, duration)
 end
 
---- Description
+--- Used to move PVInstances (BaseParts, Models, ...), replicates to all clients (visible to all players).
+
 function MapLib:MoveRelative(moveable: PVInstance, movement: Vector3, duration: number?): nil
 	task.spawn(move, moveable, movement, duration, true)
 end
+
+--- Used to move PVInstances, does not replicate to all clients (only visible to the player that the script is running for).
 
 MapLib.MovePart = MapLib.Move
 MapLib.MovePartLocal = MapLib.MoveRelative
 MapLib.MoveModel = MapLib.Move
 MapLib.MoveModelLocal = MapLib.MoveRelative
 
---- Description
+--- MapLib:MovePart() and MapLib:MoveModel() is merged into Maplib:Move(), but you can still use these functions.
+--- MapLib:MovePartLocal() and MapLib:MoveModelLocal() is merged into Maplib:MoveRelative(), but you can still use these functions.
+
 function MapLib:GetPlayers(): {Player}
 	return PlayerStates:GetPlayersWithState(PlayerStates.GAME)
 end
+
+--- This method returns a Tuple containing players currently in a map.
 
 function MapLib:GetFeature(name)
 	local m = script.Features:FindFirstChild(name)
@@ -187,5 +200,7 @@ function MapLib:GetFeature(name)
 		error(("Cannot find feature '%s'"):format(name), 2)
 	end
 end
+
+--- This method is used to get any features listed in the features list.
 
 return MapLib
