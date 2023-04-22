@@ -6,7 +6,7 @@
 local Skills = {}
 
 --- @class Skills
---- Description goes here
+--- HI PEOPLES ITS ME ETHAN
 function Skills.new(MapLib)
 	local self = setmetatable({}, Skills)
 	self.map = MapLib.map
