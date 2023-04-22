@@ -51,7 +51,7 @@ function MapLib.new(map, MapHandler)
 	return self
 end
 
---- Description
+--- This is how the maplib is constructed.
 function MapLib:Alert(message: string, color: Color3?, length: number?): nil
 	if IS_SERVER then
 		ReplicatedStorage.Remotes.Misc.SendAlert:FireAllClients(message, color, length, true)
@@ -60,7 +60,7 @@ function MapLib:Alert(message: string, color: Color3?, length: number?): nil
 	end
 end
 
---- Description
+--- This is the Alert function.
 function MapLib:ChangeMusic(musicId: number, volume: number?, startTick: number?): nil
 	if IS_SERVER then
 		ReplicatedStorage.Remotes.Misc.ChangeMusic:FireAllClients(musicId, volume, (startTick or 0))
