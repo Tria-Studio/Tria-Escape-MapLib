@@ -13,7 +13,7 @@ local PlayerUI = { context = "client" }
 PlayerUI.__index = PlayerUI
 
 --- @class PlayerUI
---- Description goes here
+--- This is the documentation of PlayerUI-related methods.
 --- @client
 
 --- @prop cleanup {ScreenGUI}
@@ -37,7 +37,7 @@ function PlayerUI.new()
 	return self
 end
 
---- Description
+--- This method is used to load a ScreenGUI instance to the PlayerGUI folder.
 function PlayerUI:LoadUI(gui: ScreenGui): ScreenGui
 	assert(gui:IsA("ScreenGui"), "':LoadUI' must be passed a 'ScreenGUI'")
 
