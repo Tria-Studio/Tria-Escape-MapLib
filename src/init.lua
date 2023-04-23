@@ -27,7 +27,7 @@ else
 end
 
 --- @class MapLib
---- Description goes here
+--- The Map Library for map making inside TRIA.OS
 
 --- @prop map Model
 --- @readonly
@@ -51,8 +51,22 @@ function MapLib.new(map, MapHandler)
 	return self
 end
 
---- Description
-function MapLib:Alert(message: string, color: Color3?, length: number?): nil
+--[=[
+	@since 0.2
+	```lua
+	MapLib:Alert("This is an Alert!", Color3.fromRGB(255, 255, 255), 10)
+	```
+
+	:::tip
+	The `message` argument can be passed as the name of a color and it will use that color from the theme currently being used!
+
+	```lua
+	MapLib:Alert("This is an Alert which is Red", "red", 10)
+	````
+	:::
+]=]
+
+function MapLib:Alert(message: string, color: Color3|string, length: number): nil
 	if IS_SERVER then
 		ReplicatedStorage.Remotes.Misc.SendAlert:FireAllClients(message, color, length, true)
 	else
@@ -68,7 +82,6 @@ function MapLib:ChangeMusic(musicId: number, volume: number?, startTick: number?
 		Sound:ChangeMusic(musicId, volume, startTick)
 	end
 end
-
 
 --- Description
 --- @server
@@ -149,7 +162,6 @@ local function move(moveable: PVInstance, movement: Vector3, duration: number?, 
 	end)
 end
 
-
 --- Description
 function MapLib:Move(moveable: PVInstance, movement: Vector3, duration: number?): nil
 	task.spawn(move, moveable, movement, duration)
@@ -166,7 +178,7 @@ MapLib.MoveModel = MapLib.Move
 MapLib.MoveModelLocal = MapLib.MoveRelative
 
 --- Description
-function MapLib:GetPlayers(): {Player}
+function MapLib:GetPlayers(): { Player }
 	return PlayerStates:GetPlayersWithState(PlayerStates.GAME)
 end
 
