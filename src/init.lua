@@ -51,7 +51,14 @@ function MapLib.new(map, MapHandler)
 	return self
 end
 
---- This method can be used to send a message to everyone. The message can be customized by color and duration.
+--[=[
+	```lua
+	This method can be used to send a message to everyone. The message can be customized by color and duration.
+	
+	Example:
+
+	MapLib:Alert("Hello world!", Color3.new(255, 255, 255), 3) -- Creates a message with the given message string (in this case "Hello world!") with the Color3 value which in this case is white and the message will last for 3 seconds
+]=]
 function MapLib:Alert(message: string, color: Color3?, length: number?): nil
 	if IS_SERVER then
 		ReplicatedStorage.Remotes.Misc.SendAlert:FireAllClients(message, color, length, true)
@@ -60,7 +67,14 @@ function MapLib:Alert(message: string, color: Color3?, length: number?): nil
 	end
 end
 
---- This method can be used to change the current music playing in maps, this also replicates to spectators.
+--[=[
+	```lua
+	This method can be used to change the current music playing in maps, this also replicates to spectators.
+
+	Example:
+
+	MapLib:ChangeMusic(12245541717, 1, 5) -- Changes the currently playing music to Tokyo Music Walker - My Itinerary at normal volume and starts at 0:05
+]=]
 function MapLib:ChangeMusic(musicId: number, volume: number?, startTick: number?): nil
 	if IS_SERVER then
 		ReplicatedStorage.Remotes.Misc.ChangeMusic:FireAllClients(musicId, volume, (startTick or 0))
@@ -70,7 +84,17 @@ function MapLib:ChangeMusic(musicId: number, volume: number?, startTick: number?
 end
 
 --- @server
---- This method can be used to run functions once the specific button has been pressed.
+--[=[
+	```lua
+	This method can be used to run functions once the specific button has been pressed.
+	
+	Example:
+	MapLib:GetButtonEvent(5):Connect(function(player)
+		MapLib:Alert("Button 5 was pressed!", Color3.fromRGB(255, 255, 255), 4)
+	end)
+	-- When the 5th button is pressed, send the message "Button 5 was pressed!" which has the color white and lasts for 4 seconds to everyone
+	-- The "player" value here is the player that pressed the button
+]=]
 function MapLib:GetButtonEvent(buttonId: number | string): RBXScriptSignal?
 	if IS_SERVER then
 		if tonumber(buttonId) then
@@ -92,7 +116,17 @@ function MapLib:GetButtonEvent(buttonId: number | string): RBXScriptSignal?
 end
 
 --- @server
---- This method can be used to make the player survive the match without touching ExitRegion.
+--[=[
+	```lua
+	This method can be used to make the player survive the match without touching ExitRegion.
+
+	Example:
+	local maplib = game.GetMapLib:Invoke()()
+	local player = game.Players:GetPlayerFromCharacter(other.Parent)
+	if (player ~= nil) then 
+		maplib:Survive(player)
+	end
+]=]
 function MapLib:Survive(player: Player): nil
 	if IS_SERVER then
 		if not player then
@@ -105,7 +139,17 @@ function MapLib:Survive(player: Player): nil
 	end
 end
 
---- This method can be used to change the state of a liquid. There are 3 states you can choose from excluding custom states, these are "water", "acid" and "lava".
+
+--[=[
+	```lua
+	This method can be used to change the state of a liquid. There are 3 default types you can choose, these are "water", "acid" and "lava".
+	You can made your own liquid type in your map's Settings.Liquids folder.
+	
+	Example:
+
+	MapLib:SetLiquidType(map.LiquidWater, "lava")
+	-- Changes the liquidType of map.LiquidWater (the liquid) to lava
+]=]
 function MapLib:SetLiquidType(liquid: BasePart, liquidType: string): nil
 	task.spawn(function()
 		local color = LIQUID_COLORS[liquidType]
@@ -149,7 +193,13 @@ local function move(moveable: PVInstance, movement: Vector3, duration: number?, 
 	end)
 end
 
---- Used to move PVInstances (BaseParts, Models, ...), replicates to all clients (visible to all players).
+--[=[
+	```lua
+	-- Used to move PVInstances (BaseParts, Models, ...), replicates to all clients (visible to all players).
+
+	Example: MapLib:Move(map.MovingPart, Vector3.new(12, 0, 0), 3)
+	
+]=]
 function MapLib:Move(moveable: PVInstance, movement: Vector3, duration: number?): nil
 	task.spawn(move, moveable, movement, duration)
 end
