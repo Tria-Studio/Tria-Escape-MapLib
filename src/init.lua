@@ -195,16 +195,26 @@ end
 
 --[=[
 	```lua
-	-- Used to move PVInstances (BaseParts, Models, ...), replicates to all clients (visible to all players).
+	Used to move PVInstances (BaseParts, Models, ...), replicates to all clients (visible to all players).
 
-	Example: MapLib:Move(map.MovingPart, Vector3.new(12, 0, 0), 3)
-	
+	Example:
+	MapLib:Move(map.MovingPart1, Vector3.new(12, 0, 0), 3)
+	-- Moves the instance given (map.MovingPart1) with the increment along the X axis of +12 studs and finishes moving after 3 seconds
 ]=]
 function MapLib:Move(moveable: PVInstance, movement: Vector3, duration: number?): nil
 	task.spawn(move, moveable, movement, duration)
 end
 
---- Used to move PVInstances, does not replicate to all clients (only visible to the player that the script is running for).
+--[=[
+	```lua
+	Used to move PVInstances, does not replicate to all clients (only visible to the player that the script is running for).
+
+	Example:
+	local maplib = game.GetMapLib:Invoke()()
+	local map = maplib.map
+	MapLib:Move(map.MovingPart2, Vector3.new(-12, 0, 0), 5)
+	-- Moves the instance given (map.MovingPart2) with the increment along the X axis of -12 studs and finishes moving after 5 seconds
+]=]
 function MapLib:MoveRelative(moveable: PVInstance, movement: Vector3, duration: number?): nil
 	task.spawn(move, moveable, movement, duration, true)
 end
