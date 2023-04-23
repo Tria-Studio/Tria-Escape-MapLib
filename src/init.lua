@@ -51,6 +51,7 @@ function MapLib.new(map, MapHandler)
 	return self
 end
 
+--- @since 0.2
 --[=[
 	```lua
 	This method can be used to send a message to everyone. The message can be customized by color and duration.
@@ -59,7 +60,7 @@ end
 
 	MapLib:Alert("Hello world!", Color3.new(255, 255, 255), 3) -- Creates a message with the given message string (in this case "Hello world!") with the Color3 value which in this case is white and the message will last for 3 seconds
 	```
-	
+
 	:::tip
 	You can pass the color argument as string and it'll still work, just make sure to use the correct name!
 	```lua

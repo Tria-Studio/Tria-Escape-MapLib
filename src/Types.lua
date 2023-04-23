@@ -35,8 +35,4 @@ export type rockytanker = {
 	Write: (string) -> any,
 }
 
-export type Varantier = {
-	Draw: () -> any,
-}
-
 return nil
