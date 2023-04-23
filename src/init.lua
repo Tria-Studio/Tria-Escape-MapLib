@@ -55,7 +55,6 @@ function MapLib.new(map, MapHandler)
 	return self
 end
 
-<<<<<<< HEAD
 --- @since 0.2
 --[=[
 	```lua
@@ -67,30 +66,12 @@ end
 	```
 
 	:::tip
-	You can pass the color argument as string and it'll still work, just make sure to use the correct name!
+	You can pass the color argument as string and it'll still work, just make sure to use the correct color name!
 	```lua
 	MapLib:Alert("Hello world!", "red", 3)
 	:::
 ]=]
 function MapLib:Alert(message: string, color: Color3?, length: number?): nil
-=======
---[=[
-	@since 0.2
-	```lua
-	MapLib:Alert("This is an Alert!", Color3.fromRGB(255, 255, 255), 10)
-	```
-
-	:::tip
-	The `message` argument can be passed as the name of a color and it will use that color from the theme currently being used!
-
-	```lua
-	MapLib:Alert("This is an Alert which is Red", "red", 10)
-	````
-	:::
-]=]
-
-function MapLib:Alert(message: string, color: Color3|string, length: number): nil
->>>>>>> 15ebaf37b864455ab1951947d2b68fed1e47c61b
 	if IS_SERVER then
 		ReplicatedStorage.Remotes.Misc.SendAlert:FireAllClients(message, color, length, true)
 	else
@@ -98,7 +79,6 @@ function MapLib:Alert(message: string, color: Color3|string, length: number): ni
 	end
 end
 
-<<<<<<< HEAD
 --[=[
 	```lua
 	This method can be used to change the current music playing in maps, this also replicates to spectators.
@@ -107,11 +87,7 @@ end
 
 	MapLib:ChangeMusic(12245541717, 1, 5) -- Changes the currently playing music to Tokyo Music Walker - My Itinerary at normal volume and starts at 0:05
 ]=]
-function MapLib:ChangeMusic(musicId: number, volume: number?, startTick: number?): nil
-=======
---- Description
-function MapLib:ChangeMusic(musicId: number, volume: number, startTick: number): nil
->>>>>>> 15ebaf37b864455ab1951947d2b68fed1e47c61b
+function MapLib:ChangeMusic(musicId: number, volume: number, startTick: number?): nil
 	if IS_SERVER then
 		ReplicatedStorage.Remotes.Misc.ChangeMusic:FireAllClients(musicId, volume, (startTick or 0))
 	else
@@ -119,10 +95,7 @@ function MapLib:ChangeMusic(musicId: number, volume: number, startTick: number):
 	end
 end
 
-<<<<<<< HEAD
-=======
 --- Description
->>>>>>> 15ebaf37b864455ab1951947d2b68fed1e47c61b
 --- @server
 --[=[
 	```lua
@@ -233,7 +206,6 @@ local function move(moveable: PVInstance, movement: Vector3, duration: number?, 
 	end)
 end
 
-<<<<<<< HEAD
 --[=[
 	```lua
 	Used to move PVInstances (BaseParts, Models, ...), replicates to all clients (visible to all players).
@@ -242,9 +214,6 @@ end
 	MapLib:Move(map.MovingPart1, Vector3.new(12, 0, 0), 3)
 	-- Moves the instance given (map.MovingPart1) with the increment along the X axis of +12 studs and finishes moving after 3 seconds
 ]=]
-=======
---- Description
->>>>>>> 15ebaf37b864455ab1951947d2b68fed1e47c61b
 function MapLib:Move(moveable: PVInstance, movement: Vector3, duration: number?): nil
 	task.spawn(move, moveable, movement, duration)
 end
@@ -271,14 +240,9 @@ MapLib.MovePartLocal = MapLib.MoveRelative
 MapLib.MoveModel = MapLib.Move
 MapLib.MoveModelLocal = MapLib.MoveRelative
 
-<<<<<<< HEAD
 
 --- This method returns a Tuple containing players currently in a map.
 function MapLib:GetPlayers(): {Player}
-=======
---- Description
-function MapLib:GetPlayers(): { Player }
->>>>>>> 15ebaf37b864455ab1951947d2b68fed1e47c61b
 	return PlayerStates:GetPlayersWithState(PlayerStates.GAME)
 end
 
