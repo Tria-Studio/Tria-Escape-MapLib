@@ -75,7 +75,7 @@ function MapLib:Alert(message: string, color: Color3|string, length: number): ni
 end
 
 --- Description
-function MapLib:ChangeMusic(musicId: number, volume: number?, startTick: number?): nil
+function MapLib:ChangeMusic(musicId: number, volume: number, startTick: number): nil
 	if IS_SERVER then
 		ReplicatedStorage.Remotes.Misc.ChangeMusic:FireAllClients(musicId, volume, (startTick or 0))
 	else
