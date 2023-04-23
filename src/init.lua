@@ -58,6 +58,13 @@ end
 	Example:
 
 	MapLib:Alert("Hello world!", Color3.new(255, 255, 255), 3) -- Creates a message with the given message string (in this case "Hello world!") with the Color3 value which in this case is white and the message will last for 3 seconds
+	```
+	
+	:::tip
+	You can pass the color argument as string and it'll still work, just make sure to use the correct name!
+	```lua
+	MapLib:Alert("Hello world!", "red", 3)
+	:::
 ]=]
 function MapLib:Alert(message: string, color: Color3?, length: number?): nil
 	if IS_SERVER then
