@@ -27,11 +27,7 @@ else
 end
 
 --- @class MapLib
-<<<<<<< HEAD
 --- This is the documentation of MapLib methods.
-=======
---- The Map Library for map making inside TRIA.OS
->>>>>>> 15ebaf37b864455ab1951947d2b68fed1e47c61b
 
 --- @prop map Model
 --- @readonly
