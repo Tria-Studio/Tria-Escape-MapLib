@@ -3,5 +3,5 @@
 
 This is the documentation on MapLib methods and other scripting-related issues.
 
-[MapLib methods](/api/init.lua)
+[MapLib methods](maplib-open-source/api/init.lua)
 </div>
