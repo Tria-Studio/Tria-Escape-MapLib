@@ -29,14 +29,22 @@ end
 --- @class MapLib
 --- This is the documentation of MapLib methods.
 
+--- @since 0.5
 --- @prop map Model
 --- @readonly
 --- @within MapLib
 --- This is the map model reference property of the MapLib, usable for code that go in LocalMapScript (the script will be parented to the PlayerGUI in a round which will need a reference to the map model if you want to tamper with the map's objects)
 
+--- @since 0.5
 --- @prop MapEnded RBXScriptSignal
 --- @readonly
 --- @within MapLib
+
+--- @since 0.5
+--- @prop isTriaOS boolean
+--- @readonly
+--- @within MapLib
+--- Boolean value that is always true, used to detect if the map is running in Tria.OS.
 
 --- @prop _MapHandler any
 --- @readonly
@@ -157,6 +165,7 @@ end
 
 --[=[
 	@server
+	@since 0.2.4
 	This method can be used to change the state of a liquid. There are 3 default types you can choose, these are "water", "acid" and "lava".
 	You can made your own liquid type in your map's Settings.Liquids folder.
 
@@ -249,8 +258,8 @@ MapLib.MoveModelLocal = MapLib.MoveRelative
 
 
 --[=[
+	@since 0.9
 	This method returns a tuple/table containing players currently in a map.
-
 ]=]
 function MapLib:GetPlayers(): {Player}
 	return PlayerStates:GetPlayersWithState(PlayerStates.GAME)
