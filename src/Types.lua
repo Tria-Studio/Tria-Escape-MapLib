@@ -31,8 +31,4 @@ export type SettingsFeature = {
 	GetSetting: (string) -> any?,
 }
 
-export type rockytanker = {
-	Write: (string) -> any,
-}
-
 return nil
