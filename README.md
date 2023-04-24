@@ -2,4 +2,4 @@
 
 This is the documentation on MapLib methods and other scripting-related issues.
 
-[MapLib methods](/src/init.lua)
+[MapLib methods](/api/init.lua)

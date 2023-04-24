@@ -34,6 +34,10 @@ end
 --- @within MapLib
 --- This is the map model reference property of the MapLib, usable for code that go in LocalMapScript (the script will be parented to the PlayerGUI in a round which will need a reference to the map model if you want to tamper with the map's objects)
 
+--- @prop MapEnded RBXScriptSignal
+--- @readonly
+--- @within MapLib
+
 --- @prop _MapHandler any
 --- @readonly
 --- @private
@@ -125,6 +129,7 @@ end
 
 --[=[
 	@server
+	@since 0.8
 	This method can be used to make the player survive the match without touching ExitRegion.
 
 	`Example:`
@@ -158,7 +163,7 @@ end
 	MapLib:SetLiquidType(map.LiquidWater, "lava")
 	-- Changes the liquidType of map.LiquidWater (the liquid) to lava
 ]=]
-function MapLib:SetLiquidType(liquid: BasePart, liquidType: [string]): nil
+function MapLib:SetLiquidType(liquid: BasePart, liquidType: string): nil
 	task.spawn(function()
 		local color = LIQUID_COLORS[liquidType]
 		if self.map and not color then
