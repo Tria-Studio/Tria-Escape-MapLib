@@ -1,2 +1,11 @@
 title = "Tria Escape MapLib" 
 GitRepoUrl = "https://github.com/Tria-Studio/Tria-Escape-MapLib"
+
+[home]
+enabled = true
+includeReadme = true
+
+[[navbar.items]]
+href = "https://discord.gg/tria"
+label = "TRIA.os Community Discord Server"
+position = "right"
