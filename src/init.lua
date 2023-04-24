@@ -58,7 +58,7 @@ end
 
 --[=[
 	@server
-	@since 0.2
+	@since 0.2.4
 	This method can be used to send a message to everyone. The message can be customized by color and duration.
 
 	`Example:`
@@ -81,6 +81,7 @@ end
 
 --[=[
 	@server
+	@since 0.4
 	This method can be used to change the current music playing in maps, this also replicates to spectators.
 
 	`Example:`
@@ -97,6 +98,7 @@ end
 
 --[=[
 	@server
+	@since 0.2.4
 	This method can be used to run functions once the specific button has been pressed.
 
 	`Example:`
@@ -208,6 +210,7 @@ end
 
 --[=[
 	@server
+	@since 0.9
 	Used to move PVInstances (BaseParts, Models, ...), replicates to all clients (visible to all players).
 
 	`Example:`
@@ -221,6 +224,7 @@ end
 
 --[=[
 	@client
+	@since 0.9
 	Used to move PVInstances, does not replicate to all clients (only visible to the player that the script is running for).
 
 	`Example:`
@@ -252,6 +256,7 @@ function MapLib:GetPlayers(): {Player}
 	return PlayerStates:GetPlayersWithState(PlayerStates.GAME)
 end
 
+--- @since 0.5.6
 --- This method is used to get any features listed in the features list.
 --- @param name string
 function MapLib:GetFeature(name)
