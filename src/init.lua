@@ -158,7 +158,7 @@ end
 	MapLib:SetLiquidType(map.LiquidWater, "lava")
 	-- Changes the liquidType of map.LiquidWater (the liquid) to lava
 ]=]
-function MapLib:SetLiquidType(liquid: BasePart, liquidType: string): nil
+function MapLib:SetLiquidType(liquid: BasePart, liquidType: [string]): nil
 	task.spawn(function()
 		local color = LIQUID_COLORS[liquidType]
 		if self.map and not color then
