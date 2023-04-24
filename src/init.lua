@@ -270,8 +270,8 @@ end
 function MapLib:MoveRelative(moveable: PVInstance, movement: Vector3, duration: number): nil
 	task.spawn(move, moveable, movement, duration, true)
 end
-
---- @class Move
+--- @function Move
+--- @within MapLib
 --- MapLib:MovePart() and MapLib:MoveModel() is merged into Maplib:Move(), but you can still use these functions.
 --- MapLib:MovePartLocal() and MapLib:MoveModelLocal() is merged into Maplib:MoveRelative(), but you can still use these functions.
 MapLib.MovePart = MapLib.Move
