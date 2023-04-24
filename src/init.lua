@@ -170,12 +170,18 @@ end
 	@server
 	@since 0.2.4
 	This method can be used to change the state of a liquid. There are 3 default types you can choose, these are "water", "acid" and "lava".
-	You can made your own liquid type in your map's Settings.Liquids folder.
 
 	`Example:`
 	```lua
 	MapLib:SetLiquidType(map.LiquidWater, "lava")
 	-- Changes the liquidType of map.LiquidWater (the liquid) to lava
+	```
+	:::note
+	You can made your own liquid type in your map's Settings.Liquids folder; for example a custom liquid type named "bromine" will have the usage:
+	```lua
+	MapLib:SetLiquidType(map.LiquidWater, "bromine")
+	```
+	:::
 ]=]
 function MapLib:SetLiquidType(liquid: BasePart, liquidType: string): nil
 	task.spawn(function()
