@@ -32,6 +32,7 @@ end
 --- @prop map Model
 --- @readonly
 --- @within MapLib
+--- This is the map model reference property of the MapLib, usable for code that go in LocalMapScript (the script will be parented to the PlayerGUI in a round which will need a reference to the map model if you want to tamper with the map's objects)
 
 --- @prop _MapHandler any
 --- @readonly
@@ -51,16 +52,15 @@ function MapLib.new(map, MapHandler)
 	return self
 end
 
---- @since 0.2
 --[=[
-	```lua
+	@server
+	@since 0.2
 	This method can be used to send a message to everyone. The message can be customized by color and duration.
-	
-	Example:
 
+	`Example:`
+	```lua
 	MapLib:Alert("Hello world!", Color3.new(255, 255, 255), 3) -- Creates a message with the given message string (in this case "Hello world!") with the Color3 value which in this case is white and the message will last for 3 seconds
 	```
-
 	:::tip
 	You can pass the color argument as string and it'll still work, just make sure to use the correct color name!
 	```lua
@@ -76,11 +76,11 @@ function MapLib:Alert(message: string, color: Color3?, length: number?): nil
 end
 
 --[=[
-	```lua
+	@server
 	This method can be used to change the current music playing in maps, this also replicates to spectators.
 
-	Example:
-
+	`Example:`
+	```lua
 	MapLib:ChangeMusic(12245541717, 1, 5) -- Changes the currently playing music to Tokyo Music Walker - My Itinerary at normal volume and starts at 0:05
 ]=]
 function MapLib:ChangeMusic(musicId: number, volume: number, startTick: number?): nil
@@ -91,13 +91,12 @@ function MapLib:ChangeMusic(musicId: number, volume: number, startTick: number?)
 	end
 end
 
---- Description
---- @server
 --[=[
-	```lua
+	@server
 	This method can be used to run functions once the specific button has been pressed.
-	
-	Example:
+
+	`Example:`
+	```lua
 	MapLib:GetButtonEvent(5):Connect(function(player)
 		MapLib:Alert("Button 5 was pressed!", Color3.fromRGB(255, 255, 255), 4)
 	end)
@@ -124,12 +123,12 @@ function MapLib:GetButtonEvent(buttonId: number | string): RBXScriptSignal?
 	end
 end
 
---- @server
 --[=[
-	```lua
+	@server
 	This method can be used to make the player survive the match without touching ExitRegion.
 
-	Example:
+	`Example:`
+	```lua
 	local maplib = game.GetMapLib:Invoke()()
 	local player = game.Players:GetPlayerFromCharacter(other.Parent)
 	if (player ~= nil) then 
@@ -150,12 +149,11 @@ end
 
 
 --[=[
-	```lua
 	This method can be used to change the state of a liquid. There are 3 default types you can choose, these are "water", "acid" and "lava".
 	You can made your own liquid type in your map's Settings.Liquids folder.
-	
-	Example:
 
+	`Example:`
+	```lua
 	MapLib:SetLiquidType(map.LiquidWater, "lava")
 	-- Changes the liquidType of map.LiquidWater (the liquid) to lava
 ]=]
@@ -203,28 +201,31 @@ local function move(moveable: PVInstance, movement: Vector3, duration: number?, 
 end
 
 --[=[
-	```lua
+	@server
 	Used to move PVInstances (BaseParts, Models, ...), replicates to all clients (visible to all players).
 
-	Example:
+	`Example:`
+	```lua
 	MapLib:Move(map.MovingPart1, Vector3.new(12, 0, 0), 3)
 	-- Moves the instance given (map.MovingPart1) with the increment along the X axis of +12 studs and finishes moving after 3 seconds
 ]=]
-function MapLib:Move(moveable: PVInstance, movement: Vector3, duration: number?): nil
+function MapLib:Move(moveable: PVInstance, movement: Vector3, duration: number): nil
 	task.spawn(move, moveable, movement, duration)
 end
 
 --[=[
-	```lua
+	@client
 	Used to move PVInstances, does not replicate to all clients (only visible to the player that the script is running for).
 
-	Example:
+	`Example:`
+	```lua
+	
 	local maplib = game.GetMapLib:Invoke()()
 	local map = maplib.map
 	MapLib:Move(map.MovingPart2, Vector3.new(-12, 0, 0), 5)
 	-- Moves the instance given (map.MovingPart2) with the increment along the X axis of -12 studs and finishes moving after 5 seconds
 ]=]
-function MapLib:MoveRelative(moveable: PVInstance, movement: Vector3, duration: number?): nil
+function MapLib:MoveRelative(moveable: PVInstance, movement: Vector3, duration: number): nil
 	task.spawn(move, moveable, movement, duration, true)
 end
 
@@ -237,7 +238,10 @@ MapLib.MoveModel = MapLib.Move
 MapLib.MoveModelLocal = MapLib.MoveRelative
 
 
---- This method returns a Tuple containing players currently in a map.
+--[=[
+	This method returns a tuple/table containing players currently in a map.
+
+]=]
 function MapLib:GetPlayers(): {Player}
 	return PlayerStates:GetPlayersWithState(PlayerStates.GAME)
 end
