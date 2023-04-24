@@ -71,7 +71,10 @@ end
 
 	`Example:`
 	```lua
-	MapLib:Alert("Hello world!", Color3.new(255, 255, 255), 3) -- Creates a message with the given message string (in this case "Hello world!") with the Color3 value which in this case is white and the message will last for 3 seconds
+	MapLib:Alert("Hello world!", Color3.new(255, 255, 255), 3)
+	--[[
+	Creates a message with the given message string (in this case "Hello world!") with the Color3 value which in this case is white and the message will last for 3 seconds
+	]]--
 	```
 	:::tip
 	You can pass the color argument as string and it'll still work, just make sure to use the correct color name!
@@ -94,7 +97,10 @@ end
 
 	`Example:`
 	```lua
-	MapLib:ChangeMusic(12245541717, 1, 5) -- Changes the currently playing music to Tokyo Music Walker - My Itinerary at normal volume and starts at 0:05
+	MapLib:ChangeMusic(12245541717, 1, 5)
+	--[[
+	Changes the currently playing music to Tokyo Music Walker - My Itinerary at normal volume and starts at 0:05
+	]]--
 ]=]
 function MapLib:ChangeMusic(musicId: number, volume: number, startTick: number?): nil
 	if IS_SERVER then
