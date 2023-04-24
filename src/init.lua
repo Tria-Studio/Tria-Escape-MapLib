@@ -115,7 +115,10 @@ end
 		MapLib:Alert("Button 5 was pressed!", Color3.fromRGB(255, 255, 255), 4)
 	end)
 	-- When the 5th button is pressed, send the message "Button 5 was pressed!" which has the color white and lasts for 4 seconds to everyone
-	-- The "player" value here is the player that pressed the button
+	```
+	:::note
+	The "player" value here is the player that pressed the button
+	:::
 ]=]
 function MapLib:GetButtonEvent(buttonId: number | string): RBXScriptSignal?
 	if IS_SERVER then
