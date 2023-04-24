@@ -149,6 +149,7 @@ end
 
 
 --[=[
+	@server
 	This method can be used to change the state of a liquid. There are 3 default types you can choose, these are "water", "acid" and "lava".
 	You can made your own liquid type in your map's Settings.Liquids folder.
 
