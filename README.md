@@ -1,5 +1,5 @@
 <div align="center">
-# TRIA.os Scripting Documentation
+<strong>TRIA.os Scripting Documentation</strong>
 
 This is the documentation on MapLib methods and other scripting-related issues.
 
