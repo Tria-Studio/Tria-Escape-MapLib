@@ -16,7 +16,7 @@ local Settings = {context = "client"}
 Settings.__index = Settings
 
 --- @class Settings
---- This is the documentation about a map's Settings.
+--- This is the documentation about a map's Settings and related methods.
 
 --- @client
 function Settings.new()
@@ -25,7 +25,6 @@ function Settings.new()
 	return self
 end
 
---- This method is used to return a map's setting.
 function Settings:GetSetting(settingName: string): any
 	local settingsTable = SettingsModule:GetSettings()
 
