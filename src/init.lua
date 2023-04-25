@@ -145,11 +145,13 @@ end
 	This method can be used to make the player survive the match without touching ExitRegion.
 	`Example:`
 	```lua
+	script.Parent.Touched:Connect(function(other)
 	local maplib = game.GetMapLib:Invoke()()
 	local player = game.Players:GetPlayerFromCharacter(other.Parent)
 	if (player ~= nil) then 
 		maplib:Survive(player)
 	end
+	end)
 ]=]
 function MapLib:Survive(player: Player): nil
 	if IS_SERVER then
