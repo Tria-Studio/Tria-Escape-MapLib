@@ -65,9 +65,7 @@ end
 	`Example:`
 	```lua
 	MapLib:Alert("Hello world!", Color3.new(255, 255, 255), 3)
-	--[[
-	Creates a message with the given message string (in this case "Hello world!") with the Color3 value which in this case is white and the message will last for 3 seconds
-	--]]
+	-- Creates a message with the given message string (in this case "Hello world!") with the Color3 value which in this case is white and the message will last for 3 seconds
 	```
 	:::tip
 	You can pass the color argument as string and it'll still work, just make sure to use the correct color name!
@@ -90,9 +88,7 @@ end
 	`Example:`
 	```lua
 	MapLib:ChangeMusic(12245541717, 1, 5)
-	--[[
-	Changes the currently playing music to Tokyo Music Walker - My Itinerary at normal volume and starts at 0:05
-	--]]
+	-- Changes the currently playing music to Tokyo Music Walker - My Itinerary at normal volume and starts at 0:05
 ]=]
 function MapLib:ChangeMusic(musicId: number, volume: number, startTick: number): nil
 	if IS_SERVER then
@@ -111,9 +107,7 @@ end
 	MapLib:GetButtonEvent(5):Connect(function(player)
 		MapLib:Alert("Button 5 was pressed!", Color3.fromRGB(255, 255, 255), 4)
 	end)
-	--[[
-	When the 5th button is pressed, send the message "Button 5 was pressed!" which has the color white and lasts for 4 seconds to everyone
-	--]]
+	-- When the 5th button is pressed, send the message "Button 5 was pressed!" which has the color white and lasts for 4 seconds to everyone
 	```
 	:::note
 	The "player" value here is the player that pressed the button
@@ -173,9 +167,7 @@ end
 	`Example:`
 	```lua
 	MapLib:SetLiquidType(map.LiquidWater, "lava")
-	--[[
-	Changes the liquidType of map.LiquidWater (the liquid) to lava
-	--]]
+	-- Changes the liquidType of map.LiquidWater (the liquid) to lava
 	```
 	:::note
 	You can made your own liquid type in your map's `Settings.Liquids` folder; for example a custom liquid type named "bromine" will have the usage:
@@ -234,9 +226,7 @@ end
 	`Example:`
 	```lua
 	MapLib:Move(map.MovingPart1, Vector3.new(12, 0, 0), 3)
-	--[[
-	Moves the instance given (map.MovingPart1) with the increment along the X axis of +12 studs and finishes moving after 3 seconds
-	--]]
+	-- Moves the instance given (map.MovingPart1) with the increment along the X axis of +12 studs and finishes moving after 3 seconds
 	```
 	:::note
 	`MapLib:MovePart()` and `MapLib:MoveModel()` have been merged into `MapLib:Move()` for easier usage, the methods are kept for compatibility. they are used in relatively the same way except `MapLib:MovePart()` is used for moving `BasePart`s while `MapLib:MoveModel()` is used to move `model`s.
@@ -259,9 +249,7 @@ end
 	local maplib = game.GetMapLib:Invoke()()
 	local map = maplib.map
 	MapLib:Move(map.MovingPart2, Vector3.new(-12, 0, 0), 5)
-	--[[
-	Moves the instance given (map.MovingPart2) with the increment along the X axis of -12 studs and finishes moving after 5 seconds
-	--]]
+	-- Moves the instance given (map.MovingPart2) with the increment along the X axis of -12 studs and finishes moving after 5 seconds
 	```
 	:::note
 	`MapLib:MovePartLocal()` and `MapLib:MoveModelLocal()` have been merged into `MapLib:MoveRelative()` for easier usage, the methods are kept for compatibility. They are used in relatively the same way except `MapLib:MovePart()` is used for moving `BasePart`s while `MapLib:MoveModel()` is used to move `model`s.
@@ -296,9 +284,7 @@ end
 	`Example:`
 	```lua
 	MapLib:AllowSliding(true)
-	--[[
-	Enables or disables sliding
-	--]]
+	-- Enables or disables sliding
 	```
 ]=]
 function MapLib:GetFeature(name)
