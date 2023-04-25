@@ -33,7 +33,6 @@ function Janitor.isJanitor(value: table?)
 	return type(value) == "table" and value.ClassName == "Janitor"
 end
 
---- This function is used to create a new Janitor instance and assign to it an object.
 function Janitor:Give(task: any)
 	local function handleTask(subtask: any)
 		assert(typeof(task) ~= "boolean", "Task cannot be a boolean")
@@ -58,7 +57,7 @@ function Janitor:Give(task: any)
 	return handleTask(task)
 end
 
---- This function is used to cleanup an object assigned to a currently running Janitor instance.
+
 function Janitor:Cleanup(taskTable: table?)
 	local tasks = taskTable or self._tasks
 
@@ -91,7 +90,6 @@ function Janitor:Cleanup(taskTable: table?)
 	end
 end
 
---- This function is used to destroy (basically delete) any Janitor instances currently running.
 function Janitor:Destroy()
 	self:Cleanup()
 
