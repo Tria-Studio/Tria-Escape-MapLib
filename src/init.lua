@@ -274,6 +274,7 @@ end
 	--[[
 	Moves the instance given (map.MovingPart2) with the increment along the X axis of -12 studs and finishes moving after 5 seconds
 	]]--
+	```
 	:::note
 	`MapLib:MovePartLocal()` and `MapLib:MoveModelLocal()` have been merged into `MapLib:MoveRelative()` for compatibility, they are used in relatively the same way except `MapLib:MovePart()` is used for moving `BasePart`s while `MapLib:MoveModel()` is used to move `model`s.
 	```lua
