@@ -75,7 +75,7 @@ end
 	MapLib:Alert("Hello world!", "red", 3)
 	:::
 ]=]
-function MapLib:Alert(message: string, color: Color3?, length: number?): nil
+function MapLib:Alert(message: string, color: Color3 | string, length: number?): nil
 	if IS_SERVER then
 		ReplicatedStorage.Remotes.Misc.SendAlert:FireAllClients(message, color, length, true)
 	else
@@ -94,7 +94,7 @@ end
 	Changes the currently playing music to Tokyo Music Walker - My Itinerary at normal volume and starts at 0:05
 	]]--
 ]=]
-function MapLib:ChangeMusic(musicId: number, volume: number, startTick: number?): nil
+function MapLib:ChangeMusic(musicId: number, volume: number, startTick: number): nil
 	if IS_SERVER then
 		ReplicatedStorage.Remotes.Misc.ChangeMusic:FireAllClients(musicId, volume, (startTick or 0))
 	else
@@ -197,7 +197,7 @@ function MapLib:SetLiquidType(liquid: BasePart, liquidType: string): nil
 end
 
 
-local function move(moveable: PVInstance, movement: Vector3, duration: number?, relative: boolean?)
+local function move(moveable: PVInstance, movement: Vector3, duration: number, relative: boolean?)
 	if duration == 0 or duration == nil then
 		return moveable:PivotTo(
 			relative and moveable:GetPivot() * CFrame.new(movement) or moveable:GetPivot() + movement
@@ -254,7 +254,6 @@ end
 	Used to move PVInstances, does not replicate to all clients (only visible to the player that the script is running for).
 	`Example:`
 	```lua
-	
 	local maplib = game.GetMapLib:Invoke()()
 	local map = maplib.map
 	MapLib:Move(map.MovingPart2, Vector3.new(-12, 0, 0), 5)
@@ -288,9 +287,18 @@ function MapLib:GetPlayers(): {Player}
 	return PlayerStates:GetPlayersWithState(PlayerStates.GAME)
 end
 
---- @since 0.5.6
---- This method is used to get any features listed in the features list.
---- @param name string
+--[=[
+	@since 0.5.6
+	@param name string
+	This method is used to get any features listed in the features list.
+	`Example:`
+	```lua
+	MapLib:AllowSliding(true)
+	--[[
+	Enables or disables sliding
+	]]--
+	```
+]=]
 function MapLib:GetFeature(name)
 	local m = script.Features:FindFirstChild(name)
 	local feature = m and require(m)
