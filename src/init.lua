@@ -33,7 +33,7 @@ end
 --- @prop map Model
 --- @readonly
 --- @within MapLib
---- This is the map model reference property of the MapLib, usable for code that go in LocalMapScript (the script will be parented to the PlayerGUI in a round which will need a reference to the map model if you want to tamper with the map's objects)
+--- This is the map model reference property of the MapLib.
 
 --- @since 0.5
 --- @prop MapEnded RBXScriptSignal
@@ -45,7 +45,6 @@ end
 --- @private
 --- @within MapLib
 
---ethan take over
 local MapLib: Types.MapLib = {}
 MapLib.__index = MapLib
 
@@ -60,13 +59,13 @@ function MapLib.new(map, MapHandler)
 end
 
 --[=[
-	@server
 	@since 0.2.4
-	This method can be used to send a message to everyone. The message can be customized by color and duration.
-	`Example:`
+	This method can be used to send a alerts, these alerts can be customized by color and duration.
+	
+	**Example:**
 	```lua
 	MapLib:Alert("Hello world!", Color3.new(255, 255, 255), 3)
-	-- Creates a message with the given message string (in this case "Hello world!") with the Color3 value which in this case is white and the message will last for 3 seconds
+	--Creates an alert with the given message with the Color3 value which in this case is white and the message will last for 3 seconds.
 	```
 	:::tip
 	You can pass the color argument as string and it'll still work, just make sure to use the correct color name!
@@ -83,13 +82,13 @@ function MapLib:Alert(message: string, color: Color3 | string, length: number?):
 end
 
 --[=[
-	@server
 	@since 0.4
-	This method can be used to change the current music playing in maps, this also replicates to spectators.
-	`Example:`
+	This method can be used to change the current music playing in a map, this also replicates to spectators.
+	
+	**Example:**
 	```lua
 	MapLib:ChangeMusic(12245541717, 1, 5)
-	-- Changes the currently playing music to Tokyo Music Walker - My Itinerary at normal volume and starts at 0:05
+	-- Changes the currently playing music at volume 1 and starts at 5 seconds in
 ]=]
 function MapLib:ChangeMusic(musicId: number, volume: number, startTick: number): nil
 	if IS_SERVER then
@@ -102,16 +101,17 @@ end
 --[=[
 	@server
 	@since 0.2.4
-	This method can be used to run functions once the specific button has been pressed.
-	`Example:`
+	This method can be used to run functions once a specific button has been pressed.
+	
+	**Example:**
 	```lua
-	MapLib:GetButtonEvent(5):Connect(function(player)
+	MapLib:GetButtonEvent(5):Connect(function(player: Player?)
 		MapLib:Alert("Button 5 was pressed!", Color3.fromRGB(255, 255, 255), 4)
 	end)
-	-- When the 5th button is pressed, send the message "Button 5 was pressed!" which has the color white and lasts for 4 seconds to everyone
+	-- When the 5th button is pressed an alert is sent saying "Button 5 was pressed!" which has the color white and lasts for 4 seconds.
 	```
 	:::note
-	The "player" value here is the player that pressed the button
+	The **`player`** value here is the player that pressed the button.
 	:::
 ]=]
 function MapLib:GetButtonEvent(buttonId: number | string): RBXScriptSignal?
@@ -137,15 +137,16 @@ end
 --[=[
 	@server
 	@since 0.8
-	This method can be used to make the player survive the match without touching ExitRegion.
-	`Example:`
+	This method can be used to make a player survive the round without touching the ExitRegion.
+	
+	**Example:**
 	```lua
 	script.Parent.Touched:Connect(function(other)
-	local maplib = game.GetMapLib:Invoke()()
-	local player = game.Players:GetPlayerFromCharacter(other.Parent)
-	if (player ~= nil) then 
-		maplib:Survive(player)
-	end
+		local MapLib = game.GetMapLib:Invoke()()
+		local player = game.Players:GetPlayerFromCharacter(other.Parent)
+		if player then 
+			maplib:Survive(player)
+		end
 	end)
 ]=]
 function MapLib:Survive(player: Player): nil
@@ -162,16 +163,16 @@ end
 
 
 --[=[
-	@server
 	@since 0.2.4
-	This method can be used to change the state of a liquid. There are 3 default types you can choose, these are "water", "acid" and "lava".
-	`Example:`
+	This method can be used to change the state of a liquid. There are 3 default types you can choose, these are **`water`**, **`acid`** and **`lava`**.
+	
+	**Example:**
 	```lua
-	MapLib:SetLiquidType(map.LiquidWater, "lava")
-	-- Changes the liquidType of map.LiquidWater (the liquid) to lava
+	MapLib:SetLiquidType(map.Liquid1, "lava")
+	-- Changes the liquidType of map.Liquid1 to lava.
 	```
-	:::note
-	You can made your own liquid type in your map's `Settings.Liquids` folder; for example a custom liquid type named "bromine" will have the usage:
+	:::tip
+	You can make your own liquid type in your map's `Settings.Liquids` folder. For example a custom liquid type named "bromine" will have the usage:
 	```lua
 	MapLib:SetLiquidType(map.LiquidWater, "bromine")
 	```
@@ -190,7 +191,6 @@ function MapLib:SetLiquidType(liquid: BasePart, liquidType: string): nil
 		SettingsHandler:SetValue(liquid, "Type", liquidType)
 	end)
 end
-
 
 local function move(moveable: PVInstance, movement: Vector3, duration: number, relative: boolean?)
 	if duration == 0 or duration == nil then
@@ -221,13 +221,13 @@ local function move(moveable: PVInstance, movement: Vector3, duration: number, r
 end
 
 --[=[
-	@server
 	@since 0.9
-	Used to move PVInstances (BaseParts, Models, ...), replicates to all clients (visible to all players).
-	`Example:`
+	Used to move PVInstances (BaseParts, Models).
+	
+	**Example:**
 	```lua
 	MapLib:Move(map.MovingPart1, Vector3.new(12, 0, 0), 3)
-	-- Moves the instance given (map.MovingPart1) with the increment along the X axis of +12 studs and finishes moving after 3 seconds
+	-- Moves map.MovingPart1) with the increment along the X axis of +12 studs and finishes moving after 3 seconds
 	```
 	:::note
 	`MapLib:MovePart()` and `MapLib:MoveModel()` have been merged into `MapLib:Move()` for easier usage, the methods are kept for compatibility. they are used in relatively the same way except `MapLib:MovePart()` is used for moving `BasePart`s while `MapLib:MoveModel()` is used to move `model`s.
@@ -242,10 +242,9 @@ function MapLib:Move(moveable: PVInstance, movement: Vector3, duration: number):
 end
 
 --[=[
-	@client
 	@since 0.9
-	Used to move PVInstances, does not replicate to all clients (only visible to the player that the script is running for).
-	`Example:`
+	Used to move PVInstances.
+	**Example:**
 	```lua
 	local maplib = game.GetMapLib:Invoke()()
 	local map = maplib.map
@@ -253,7 +252,7 @@ end
 	-- Moves the instance given (map.MovingPart2) with the increment along the X axis of -12 studs and finishes moving after 5 seconds
 	```
 	:::note
-	`MapLib:MovePartLocal()` and `MapLib:MoveModelLocal()` have been merged into `MapLib:MoveRelative()` for easier usage, the methods are kept for compatibility. They are used in relatively the same way except `MapLib:MovePart()` is used for moving `BasePart`s while `MapLib:MoveModel()` is used to move `model`s.
+	`MapLib:MovePartLocal()` and `MapLib:MoveModelLocal()` have been merged into `MapLib:MoveRelative()` for easier usage, the methods are kept for compatibility. They are used in relatively the same way except `MapLib:MovePart()` is used for moving `BasePart`s while `MapLib:MoveModel()` is used to move `models`.
 	```lua
 	MapLib:MovePartLocal(moveable: BasePart, movement: Vector3, duration: number)
 	MapLib:MoveModelLocal(moveable: Model, movement: Vector3, duration: number)
@@ -272,7 +271,7 @@ MapLib.MoveModelLocal = MapLib.MoveRelative
 
 --[=[
 	@since 0.9
-	This method returns a tuple/table containing players currently in a map.
+	This method returns a table containing players currently in a map.
 ]=]
 function MapLib:GetPlayers(): {Player}
 	return PlayerStates:GetPlayersWithState(PlayerStates.GAME)
@@ -282,7 +281,7 @@ end
 	@since 0.5.6
 	@param name string
 	This method is used to get any features listed in the features list.
-	`Example:`
+	**Example:**
 	```lua
 	MapLib:AllowSliding(true)
 	-- Enables or disables sliding
