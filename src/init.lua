@@ -247,6 +247,14 @@ end
 	--[[
 	Moves the instance given (map.MovingPart1) with the increment along the X axis of +12 studs and finishes moving after 3 seconds
 	]]--
+	```
+	:::note
+	`MapLib:MovePart()` and `MapLib:MoveModel()` have been merged into `MapLib:Move()` for compatibility, they are used in relatively the same way except `MapLib:MovePart()` is used for moving `BasePart`s while `MapLib:MoveModel()` is used to move `model`s.
+	```lua
+	MapLib:MovePart(moveable: BasePart, movement: Vector3, duration: number)
+	MapLib:MoveModel(moveable: Model, movement: Vector3, duration: number)
+	```
+	:::
 ]=]
 function MapLib:Move(moveable: PVInstance, movement: Vector3, duration: number): nil
 	task.spawn(move, moveable, movement, duration)
@@ -266,14 +274,18 @@ end
 	--[[
 	Moves the instance given (map.MovingPart2) with the increment along the X axis of -12 studs and finishes moving after 5 seconds
 	]]--
+	:::note
+	`MapLib:MovePartLocal()` and `MapLib:MoveModelLocal()` have been merged into `MapLib:MoveRelative()` for compatibility, they are used in relatively the same way except `MapLib:MovePart()` is used for moving `BasePart`s while `MapLib:MoveModel()` is used to move `model`s.
+	```lua
+	MapLib:MovePartLocal(moveable: BasePart, movement: Vector3, duration: number)
+	MapLib:MoveModelLocal(moveable: Model, movement: Vector3, duration: number)
+	```
+	:::
 ]=]
 function MapLib:MoveRelative(moveable: PVInstance, movement: Vector3, duration: number): nil
 	task.spawn(move, moveable, movement, duration, true)
 end
---- @function Move
---- @within MapLib
---- MapLib:MovePart() and MapLib:MoveModel() is merged into Maplib:Move(), but you can still use these functions.
---- MapLib:MovePartLocal() and MapLib:MoveModelLocal() is merged into Maplib:MoveRelative(), but you can still use these functions.
+
 MapLib.MovePart = MapLib.Move
 MapLib.MovePartLocal = MapLib.MoveRelative
 MapLib.MoveModel = MapLib.Move
