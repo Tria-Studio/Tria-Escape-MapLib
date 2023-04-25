@@ -15,8 +15,7 @@ function Skills.new(MapLib)
 	return Skills
 end
 
---- Description
-function Skills:ToggleSlidin(value: boolean): nil
+function Skills:ToggleSliding(value: boolean): nil
 	local skills = self.map:FindFirstChild("Settings") and self.map.Settings:FindFirstChild("Skills")
 	if skills then
 		skills:SetAttribute("AllowSliding", value)
