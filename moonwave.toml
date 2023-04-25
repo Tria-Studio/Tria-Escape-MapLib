@@ -9,3 +9,8 @@ includeReadme = true
 href = "https://discord.gg/tria"
 label = "TRIA.os Community Discord Server"
 position = "right"
+
+[[navbar.items]]
+href = "https://www.roblox.com/games/6311279644/"
+label = "Game"
+position = "right"
