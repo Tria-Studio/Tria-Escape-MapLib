@@ -40,12 +40,6 @@ end
 --- @readonly
 --- @within MapLib
 
---- @since 0.5
---- @prop isTriaOS boolean
---- @readonly
---- @within MapLib
---- Boolean value that is always true, used to detect if the map is running in Tria.OS.
-
 --- @prop _MapHandler any
 --- @readonly
 --- @private
