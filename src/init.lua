@@ -249,7 +249,7 @@ end
 	]]--
 	```
 	:::note
-	`MapLib:MovePart()` and `MapLib:MoveModel()` have been merged into `MapLib:Move()` for compatibility, they are used in relatively the same way except `MapLib:MovePart()` is used for moving `BasePart`s while `MapLib:MoveModel()` is used to move `model`s.
+	`MapLib:MovePart()` and `MapLib:MoveModel()` have been merged into `MapLib:Move()` for easier usage, the methods are kept for compatibility. they are used in relatively the same way except `MapLib:MovePart()` is used for moving `BasePart`s while `MapLib:MoveModel()` is used to move `model`s.
 	```lua
 	MapLib:MovePart(moveable: BasePart, movement: Vector3, duration: number)
 	MapLib:MoveModel(moveable: Model, movement: Vector3, duration: number)
@@ -276,7 +276,7 @@ end
 	]]--
 	```
 	:::note
-	`MapLib:MovePartLocal()` and `MapLib:MoveModelLocal()` have been merged into `MapLib:MoveRelative()` for compatibility, they are used in relatively the same way except `MapLib:MovePart()` is used for moving `BasePart`s while `MapLib:MoveModel()` is used to move `model`s.
+	`MapLib:MovePartLocal()` and `MapLib:MoveModelLocal()` have been merged into `MapLib:MoveRelative()` for easier usage, the methods are kept for compatibility. They are used in relatively the same way except `MapLib:MovePart()` is used for moving `BasePart`s while `MapLib:MoveModel()` is used to move `model`s.
 	```lua
 	MapLib:MovePartLocal(moveable: BasePart, movement: Vector3, duration: number)
 	MapLib:MoveModelLocal(moveable: Model, movement: Vector3, duration: number)
