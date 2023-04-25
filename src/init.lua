@@ -148,63 +148,33 @@ function MapLib:GetButtonEvent(buttonId: number | string): RBXScriptSignal?
 	end
 end
 
---[=[
-	@server
-	@since 0.8
-	This method can be used to make the player survive the match without touching ExitRegion.
-
-	`Example:`
-	```lua
-	local maplib = game.GetMapLib:Invoke()()
-	local player = game.Players:GetPlayerFromCharacter(other.Parent)
-	if (player ~= nil) then 
-		maplib:Survive(player)
-	end
-]=]
-function MapLib:Survive(player: Player): nil
-	if IS_SERVER then
-		if not player then
-			return error("Player does not exist", 2)
+--- @since 0.5.6
+--- This method is used to get any features listed in the features list.
+--- @param name string
+function MapLib:GetFeature(name)
+	local m = script.Features:FindFirstChild(name)
+	local feature = m and require(m)
+	if feature then
+		if feature.context == "client" and IS_SERVER or feature.context == "server" and not IS_SERVER then
+			error(("Feature '%s' can only be used on the '%s'"):format(name, feature.context), 2)
 		end
-		PlayerStates:SetPlayerState(player, PlayerStates.SURVIVED)
-		ReplicatedStorage.Remotes.Misc.SendAlert:FireClient(player, "Survived", "green", 2.5)
+		if feature.new then
+			return feature.new(MapLib)
+		else
+			warn(("Using deprecated feature '%s'"):format(name))
+			return feature
+		end
 	else
-		error(CONTEXT_ERROR:format("MapLib:SurvivePlayer", "client"), 2)
+		error(("Cannot find feature '%s'"):format(name), 2)
 	end
 end
 
-
 --[=[
-	@server
-	@since 0.2.4
-	This method can be used to change the state of a liquid. There are 3 default types you can choose, these are "water", "acid" and "lava".
-
-	`Example:`
-	```lua
-	MapLib:SetLiquidType(map.LiquidWater, "lava")
-	--[[
-	Changes the liquidType of map.LiquidWater (the liquid) to lava
-	]]--
-	```
-	:::note
-	You can made your own liquid type in your map's `Settings.Liquids` folder; for example a custom liquid type named "bromine" will have the usage:
-	```lua
-	MapLib:SetLiquidType(map.LiquidWater, "bromine")
-	```
-	:::
+	@since 0.9
+	This method returns a tuple/table containing players currently in a map.
 ]=]
-function MapLib:SetLiquidType(liquid: BasePart, liquidType: string): nil
-	task.spawn(function()
-		local color = LIQUID_COLORS[liquidType]
-		if self.map and not color then
-			local custom = self.map.Settings.Liquids:FindFirstChild(liquidType)
-			color = custom and SettingsHandler:GetValue(custom, "Color") or Color3.new()
-		end
-
-		TweenService:Create(liquid, TweenInfo.new(1), { Color = color }):Play()
-		task.wait(1)
-		SettingsHandler:SetValue(liquid, "Type", liquidType)
-	end)
+function MapLib:GetPlayers(): {Player}
+	return PlayerStates:GetPlayersWithState(PlayerStates.GAME)
 end
 
 
@@ -292,33 +262,61 @@ MapLib.MovePartLocal = MapLib.MoveRelative
 MapLib.MoveModel = MapLib.Move
 MapLib.MoveModelLocal = MapLib.MoveRelative
 
-
 --[=[
-	@since 0.9
-	This method returns a tuple/table containing players currently in a map.
+	@server
+	@since 0.2.4
+	This method can be used to change the state of a liquid. There are 3 default types you can choose, these are "water", "acid" and "lava".
+
+	`Example:`
+	```lua
+	MapLib:SetLiquidType(map.LiquidWater, "lava")
+	--[[
+	Changes the liquidType of map.LiquidWater (the liquid) to lava
+	]]--
+	```
+	:::note
+	You can made your own liquid type in your map's `Settings.Liquids` folder; for example a custom liquid type named "bromine" will have the usage:
+	```lua
+	MapLib:SetLiquidType(map.LiquidWater, "bromine")
+	```
+	:::
 ]=]
-function MapLib:GetPlayers(): {Player}
-	return PlayerStates:GetPlayersWithState(PlayerStates.GAME)
+function MapLib:SetLiquidType(liquid: BasePart, liquidType: string): nil
+	task.spawn(function()
+		local color = LIQUID_COLORS[liquidType]
+		if self.map and not color then
+			local custom = self.map.Settings.Liquids:FindFirstChild(liquidType)
+			color = custom and SettingsHandler:GetValue(custom, "Color") or Color3.new()
+		end
+
+		TweenService:Create(liquid, TweenInfo.new(1), { Color = color }):Play()
+		task.wait(1)
+		SettingsHandler:SetValue(liquid, "Type", liquidType)
+	end)
 end
 
---- @since 0.5.6
---- This method is used to get any features listed in the features list.
---- @param name string
-function MapLib:GetFeature(name)
-	local m = script.Features:FindFirstChild(name)
-	local feature = m and require(m)
-	if feature then
-		if feature.context == "client" and IS_SERVER or feature.context == "server" and not IS_SERVER then
-			error(("Feature '%s' can only be used on the '%s'"):format(name, feature.context), 2)
+--[=[
+	@server
+	@since 0.8
+	This method can be used to make the player survive the match without touching ExitRegion.
+
+	`Example:`
+	```lua
+	local maplib = game.GetMapLib:Invoke()()
+	local player = game.Players:GetPlayerFromCharacter(other.Parent)
+	if (player ~= nil) then 
+		maplib:Survive(player)
+	end
+]=]
+function MapLib:Survive(player: Player): nil
+	if IS_SERVER then
+		if not player then
+			return error("Player does not exist", 2)
 		end
-		if feature.new then
-			return feature.new(MapLib)
-		else
-			warn(("Using deprecated feature '%s'"):format(name))
-			return feature
-		end
+		PlayerStates:SetPlayerState(player, PlayerStates.SURVIVED)
+		ReplicatedStorage.Remotes.Misc.SendAlert:FireClient(player, "Survived", "green", 2.5)
 	else
-		error(("Cannot find feature '%s'"):format(name), 2)
+		error(CONTEXT_ERROR:format("MapLib:SurvivePlayer", "client"), 2)
 	end
 end
 
