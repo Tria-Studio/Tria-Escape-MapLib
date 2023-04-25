@@ -187,7 +187,7 @@ end
 	]]--
 	```
 	:::note
-	You can made your own liquid type in your map's Settings.Liquids folder; for example a custom liquid type named "bromine" will have the usage:
+	You can made your own liquid type in your map's `Settings.Liquids` folder; for example a custom liquid type named "bromine" will have the usage:
 	```lua
 	MapLib:SetLiquidType(map.LiquidWater, "bromine")
 	```
