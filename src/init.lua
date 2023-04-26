@@ -59,8 +59,9 @@ function MapLib.new(map, MapHandler)
 end
 
 --[=[
+	@return nil
 	@since 0.2.4
-	This method can be used to send a alerts, these alerts can be customized by color and duration.
+	This method can be used to send an alert, these alerts can be customized by color and duration.
 	
 	**Example:**
 	```lua
