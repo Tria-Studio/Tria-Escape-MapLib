@@ -5,6 +5,9 @@ GitRepoUrl = "https://github.com/Tria-Studio/Tria-Escape-MapLib"
 enabled = true
 includeReadme = true
 
+[docusaurus]
+favicon = "/assets/TRIAos-Logo.ico"
+
 [[classOrder]] 
 classes = ["MapLib", "Skills", "PlayerUI", "Settings"]
 
