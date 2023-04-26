@@ -6,7 +6,7 @@ enabled = true
 includeReadme = true
 
 [docusaurus]
-favicon = "/assets/TRIAos-Logo.ico"
+favicon = "/img/TRIAos-Logo.ico"
 
 [[classOrder]] 
 classes = ["MapLib", "Skills", "PlayerUI", "Settings"]
