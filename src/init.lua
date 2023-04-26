@@ -39,6 +39,7 @@ end
 --- @prop MapEnded RBXScriptSignal
 --- @readonly
 --- @within MapLib
+--- This `RBXScriptSignal` will be fired after a map ends.
 
 --- @prop _MapHandler any
 --- @readonly
