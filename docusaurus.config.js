@@ -1,3 +1,3 @@
 module.exports = {
-    favicon: '/tria os logo.png',
+    favicon: '/assets/TRIAos-Logo.ico',
   };
