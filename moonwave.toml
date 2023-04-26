@@ -8,12 +8,8 @@ favicon = "/tria os logo.png"
 enabled = true
 includeReadme = true
 
-classOrder = [
-    "MapLib",
-    "Skills",
-    "PlayerUI",
-    "Settings"
-]
+[[classOrder]] 
+classes = ["MapLib", "Skills", "PlayerUI", "Settings"]
 
 [[navbar.items]]
 href = "https://discord.gg/tria"
