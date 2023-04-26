@@ -1,9 +1,6 @@
 title = "TRIA.os MapLib Documentation" 
 GitRepoUrl = "https://github.com/Tria-Studio/Tria-Escape-MapLib"
 
-[docusaurus]
-favicon = "/tria os logo.png"
-
 [home]
 enabled = true
 includeReadme = true
