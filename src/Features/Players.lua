@@ -29,6 +29,7 @@ end
 	@within Players
 	This method is used to return players in the radius of the given position.
 ]=]
+
 function Players:GetPlayersInRadius(position: Vector3, radius: number): { Player }
 	local ret = {}
 
