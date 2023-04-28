@@ -29,18 +29,27 @@ end
 --- @class MapLib
 --- This is the documentation of MapLib methods.
 
---- @since 0.5
---- @prop map Model
---- @readonly
---- @within MapLib
---- This is the map model reference property of the MapLib.
+--[=[
+	@since 0.5
+	@readonly
+	@within MapLib
+	@prop map Model
+	This is the map model reference property of the MapLib.
+]=]
 
---- @since 0.5
---- @prop MapEnded RBXScriptSignal
---- @readonly
---- @within MapLib
---- This `RBXScriptSignal` is fired when a map ends.
-
+--[=[
+	@since 0.5
+	@within MapLib
+	@readonly
+	@prop MapEnded RBXScriptSignal
+	This `RBXScriptSignal` is fired when a map ends.
+	**Example:**
+	```lua
+	MapLib.MapEnded:Connect(function(MapEnd)
+		MapLib:Alert("The round has ended", Color3.new(0, 255, 0), 2.5)
+	end) 
+	-- Upon round ending, creates an alert with the message "The round has ended" with the color green and lasts for 2.5 seconds
+]=]
 --- @prop _MapHandler any
 --- @readonly
 --- @private
@@ -66,7 +75,7 @@ end
 	**Example:**
 	```lua
 	MapLib:Alert("Hello world!", Color3.new(255, 255, 255), 3)
-	--Creates an alert with the given message with the Color3 value which in this case is white and the message will last for 3 seconds.
+	-- Creates an alert with the given message with the Color3 value which in this case is white and the message will last for 3 seconds.
 	```
 	:::tip
 	You can pass the color argument as string and it'll still work, just make sure to use the correct color name!
