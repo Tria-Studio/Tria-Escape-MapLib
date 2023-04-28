@@ -40,16 +40,18 @@ end
 --[=[
 	@since 0.5
 	@within MapLib
-	@readonly
 	@prop MapEnded RBXScriptSignal
 	This `RBXScriptSignal` is fired when a map ends.
+	
 	**Example:**
 	```lua
-	MapLib.MapEnded:Connect(function(MapEnd)
+	MapLib.MapEnded:Connect(function()
 		MapLib:Alert("The round has ended", Color3.new(0, 255, 0), 2.5)
 	end) 
 	-- Upon round ending, creates an alert with the message "The round has ended" with the color green and lasts for 2.5 seconds
+	```
 ]=]
+
 --- @prop _MapHandler any
 --- @readonly
 --- @private
