@@ -39,7 +39,7 @@ end
 --- @prop MapEnded RBXScriptSignal
 --- @readonly
 --- @within MapLib
---- This `RBXScriptSignal` is fired when a map ends. 
+--- This `RBXScriptSignal` is fired when a map ends.
 
 --- @prop _MapHandler any
 --- @readonly
@@ -63,7 +63,6 @@ end
 	@return nil
 	@since 0.2.4
 	This method can be used to send an alert, these alerts can be customized by color and duration.
-	
 	**Example:**
 	```lua
 	MapLib:Alert("Hello world!", Color3.new(255, 255, 255), 3)
@@ -114,6 +113,17 @@ end
 	```
 	:::note
 	The **`player`** value here is the player that pressed the button.
+	:::
+	:::tip
+	Path buttons work the same as normal buttons, you just need to give a valid button ID (e.g. 6A)
+	
+	**Example:**
+	```lua
+	MapLib:GetButtonEvent(6A):Connect(function(player: Player?)
+		MapLib:Alert("Button 6A was pressed!", Color3.fromRGB(255, 0, 0), 5)
+	end)
+	-- When the 6th button 
+	```
 	:::
 ]=]
 function MapLib:GetButtonEvent(buttonId: number | string): RBXScriptSignal?
