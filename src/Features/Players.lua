@@ -26,7 +26,7 @@ end
 
 --[=[
 	@unreleased
-	0.11 feature
+	This function is used to return players that are in the specified radius.
 ]=]
 function Players:GetPlayersInRadius(position: Vector3, radius: number): { Player }
 	local ret = {}
