@@ -11,6 +11,9 @@ local PlayerStates = require(ReplicatedStorage.shared.PlayerStates)
 local Players = {}
 Players.__index = Players
 
+--- @class Players
+--- This is the documentation about Players-related methods.
+
 function Players.new()
 	local self = setmetatable({}, Players)
 	return self
@@ -21,8 +24,11 @@ function Players:GetPlayers()
 	return PlayerStates:GetPlayersWithState(PlayerStates.GAME)
 end
 
---- Description
---0.11 Feature
+--[=[
+	@unreleased
+	@within Players
+	This method is used to return players in the radius of the given position.
+]=]
 function Players:GetPlayersInRadius(position: Vector3, radius: number): { Player }
 	local ret = {}
 
