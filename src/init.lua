@@ -47,8 +47,7 @@ end
 	```lua
 	MapLib.MapEnded:Connect(function()
 		MapLib:Alert("The round has ended", Color3.new(0, 255, 0), 2.5)
-	end) 
-	-- Upon round ending, creates an alert with the message "The round has ended" with the color green and lasts for 2.5 seconds
+	end)
 	```
 ]=]
 
