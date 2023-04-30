@@ -1,12 +1,18 @@
 title = "TRIA.os MapLib Documentation" 
 GitRepoUrl = "https://github.com/Tria-Studio/Tria-Escape-MapLib"
 
+gitSourceBranch = "master"
+changelog = true
+
 [home]
 enabled = true
 includeReadme = true
 
 [docusaurus]
-favicon = "/img/TRIAos-Logo.ico"
+title = "TRIA.os Scripting Documentation"
+url = "https://coderheck.github.io"
+baseUrl = "/maplib-open-source"
+favicon = "/TRIAos-Logo.ico"
 
 [[classOrder]] 
 classes = ["MapLib", "Skills", "PlayerUI", "Settings"]
