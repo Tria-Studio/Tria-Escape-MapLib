@@ -1,6 +1,6 @@
 <html>
 <head>
-
+<link rel="icon" type="image/x-icon" href="https://coderheck.github.io/favicon.ico"></link>
 </head>
 <body>
 <div align="center">
