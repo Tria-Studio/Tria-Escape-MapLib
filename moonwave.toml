@@ -9,7 +9,6 @@ enabled = true
 includeReadme = true
 
 [docusaurus]
-title = "TRIA.os Scripting Documentation"
 favicon = "https://coderheck.github.io/favicon.ico"
 
 [[classOrder]] 
