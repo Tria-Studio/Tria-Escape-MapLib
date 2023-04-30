@@ -11,7 +11,7 @@ includeReadme = true
 [docusaurus]
 title = "TRIA.os Scripting Documentation"
 url = "https://coderheck.github.io"
-baseUrl = "/maplib-open-source"
+baseUrl = "/"
 favicon = "/TRIAos-Logo.ico"
 
 [[classOrder]] 
