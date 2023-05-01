@@ -9,7 +9,7 @@ enabled = true
 includeReadme = true
 
 [docusaurus]
-favicon = "https://coderheck.github.io/assets/favicon.ico"
+favicon = "https://coderheck.github.io/assets/TRIAosLogoGradient.png"
 
 [[classOrder]] 
 classes = ["MapLib", "Skills", "PlayerUI", "Settings"]
