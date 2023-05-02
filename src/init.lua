@@ -132,7 +132,6 @@ end
 	MapLib:GetButtonEvent("6A"):Connect(function(player: Player?)
 		MapLib:Alert("Button 6A was pressed!", Color3.fromRGB(255, 0, 0), 5)
 	end)
-	-- When the 6th button 
 	```
 	:::
 ]=]
