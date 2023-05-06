@@ -37,6 +37,7 @@ function PlayerUI.new()
 	return self
 end
 
+--- This function is used to load a `ScreenGui` instance.
 function PlayerUI:LoadUI(gui: ScreenGui): ScreenGui
 	assert(gui:IsA("ScreenGui"), "':LoadUI' must be passed a 'ScreenGUI'")
 

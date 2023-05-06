@@ -19,7 +19,7 @@ function Players.new()
 	return self
 end
 
---- Description
+--- Used to return all players in the current match.
 function Players:GetPlayers()
 	return PlayerStates:GetPlayersWithState(PlayerStates.GAME)
 end
