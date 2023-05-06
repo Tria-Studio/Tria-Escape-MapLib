@@ -73,6 +73,7 @@ end
 	@return nil
 	@since 0.2.4
 	This method can be used to send an alert, these alerts can be customized by color and duration.
+
 	**Example:**
 	```lua
 	MapLib:Alert("Hello world!", Color3.new(255, 255, 255), 3)
@@ -265,6 +266,7 @@ end
 --[=[
 	@since 0.9
 	Used to move PVInstances.
+
 	**Example:**
 	```lua
 	local maplib = game.GetMapLib:Invoke()()
@@ -302,9 +304,10 @@ end
 	@since 0.5.6
 	@param name string
 	This method is used to get any features listed in the features list.
+	
 	**Example:**
 	```lua
-	MapLib:AllowSliding(true)
+	MapLib:GetFeature("Players"):GetPlayers()
 	-- Enables or disables sliding
 	```
 ]=]
