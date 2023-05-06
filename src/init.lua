@@ -304,11 +304,11 @@ end
 	@since 0.5.6
 	@param name string
 	This method is used to get any features listed in the features list.
-	
+
 	**Example:**
 	```lua
 	MapLib:GetFeature("Players"):GetPlayers()
-	-- Enables or disables sliding
+	-- Returns players in a match
 	```
 ]=]
 function MapLib:GetFeature(name)
