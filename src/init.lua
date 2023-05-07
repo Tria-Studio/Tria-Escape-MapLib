@@ -244,7 +244,7 @@ end
 
 --[=[
 	@since 0.9
-	Used to move PVInstances (BaseParts, Models).
+	Used to move `PVInstances`.
 	
 	**Example:**
 	```lua
@@ -265,7 +265,7 @@ end
 
 --[=[
 	@since 0.9
-	Used to move PVInstances.
+	Used to move `PVInstances`.
 
 	**Example:**
 	```lua
