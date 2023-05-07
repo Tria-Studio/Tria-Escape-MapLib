@@ -11,7 +11,7 @@ includeReadme = true
 [docusaurus]
 favicon = "https://coderheck.github.io/assets/TRIAosLogoGradient.png"
 
-[[classOrder]] 
+[[classOrder]]
 classes = ["MapLib", "Skills", "PlayerUI", "Settings"]
 
 [[navbar.items]]
