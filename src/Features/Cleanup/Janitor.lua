@@ -13,10 +13,9 @@ local function getJanitors()
 	return require(script.Parent).Janitors
 end
 
---[=[
-    @class Janitor
-    Another class.
-]=]
+--- @class Janitor
+--- Another class.
+
 
 --[=[
 	@within Janitor
@@ -28,7 +27,6 @@ end
 	@return name: string?
 	@return index: number | string
 ]=]
-
 function Janitor.new(janitorName: string?)
 	local self = setmetatable({}, Janitor)
 	self._tasks = {}
@@ -42,12 +40,14 @@ function Janitor.new(janitorName: string?)
 
 	return self
 end
+
 --[=[
     @since 0.11
 ]=]
 function Janitor.isJanitor(value: table?): boolean
 	return type(value) == "table" and value.ClassName == "Janitor"
 end
+
 --[=[
 	@within Janitor
 	@since 0.11
@@ -78,6 +78,7 @@ function Janitor:Give(task: any)
 	end
 	return handleTask(task)
 end
+
 --[=[
 	@within Janitor
 	@since 0.11
@@ -116,6 +117,7 @@ function Janitor:Cleanup(taskTable: table?)
 		index, task = next(tasks)
 	end
 end
+
 --[=[
 	@within Janitor
 	@since 0.11
