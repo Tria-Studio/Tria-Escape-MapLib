@@ -41,7 +41,7 @@ Cleanup.Janitor = require(script.Janitor)
 --[=[
 	@since 0.2.4
 	@return Janitor
-	This method returns a Janitor class.
+	This method returns the specified Janitor class.
 ]=]
 function Cleanup:GetJanitor(janitorName: string?)
 	if self.Janitors[janitorName] then
