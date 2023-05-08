@@ -265,7 +265,6 @@ end
 	MapLib:MoveRelative(map.MovingPart2, Vector3.new(12, 0, 0), 5)
 	--- Moves map.MovingPart2 relative to its rotation.
 	```
-
 ]=]
 function MapLib:MoveRelative(moveable: PVInstance, movement: Vector3, duration: number): nil
 	task.spawn(move, moveable, movement, duration, true)
@@ -276,12 +275,11 @@ MapLib.MovePartLocal = MapLib.MoveRelative
 MapLib.MoveModel = MapLib.Move
 MapLib.MoveModelLocal = MapLib.MoveRelative
 
-
 --[=[
 	@since 0.9
 	This method returns a table containing players currently in a map.
 ]=]
-function MapLib:GetPlayers(): {Player}
+function MapLib:GetPlayers(): { Player }
 	return PlayerStates:GetPlayersWithState(PlayerStates.GAME)
 end
 

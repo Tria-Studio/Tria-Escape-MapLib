@@ -14,8 +14,15 @@ export type MapLib = {
 	GetButtonEvent: (MapLib, number | string) -> RBXScriptSignal,
 	Survive: (MapLib, Player) -> nil,
 	SetLiquidType: (MapLib, BasePart, string) -> nil,
+	
 	Move: (MapLib, PVInstance, Vector3, number?) -> nil,
+	MoveModel: (MapLib, PVInstance, Vector3, number?) -> nil,
+	MovePart:(MapLib, PVInstance, Vector3, number?) -> nil,
 	MoveRelative: (MapLib, PVInstance, Vector3, number?) -> nil,
+	MoveModelLocal: (MapLib, PVInstance, Vector3, number?) -> nil,
+	MovePartLocal: (MapLib, PVInstance, Vector3, number?) -> nil,
+	
+	
 	GetPlayers: (MapLib) -> { Player },
 	GetFeature: ((MapLib, "Players") -> PlayersFeature)
 		& ((MapLib, "Settings") -> SettingsFeature)
