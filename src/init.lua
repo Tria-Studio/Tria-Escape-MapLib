@@ -27,7 +27,7 @@ else
 end
 
 --- @class MapLib
---- This is the documentation for MapLib methods.
+--- This page contains all the common and beginner scripting methods with appropriate examples when necessary.
 
 --[=[
 	@since 0.5
