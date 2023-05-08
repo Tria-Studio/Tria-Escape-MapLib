@@ -17,8 +17,17 @@ end
 --[=[
 	@class Cleanup
 	This is the MapLib Feature. It can be accessed by `MapLib:GetFeature("Cleanup")`.
-
+	
 	Description of what this holds
+]=]
+
+--[=[
+	@within Cleanup
+	@since 0.11
+	@function Janitor.new
+	@param name string?
+	@return Janitor
+
 ]=]
 
 --< Main >--

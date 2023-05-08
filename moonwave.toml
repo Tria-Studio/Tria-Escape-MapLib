@@ -13,13 +13,15 @@ favicon = "https://coderheck.github.io/assets/TRIAosLogoGradient.png"
 
 [[classOrder]]
 section = "MapLib"
-collapsed = false
 classes = ["MapLib"]
 
 [[classOrder]]
 section = "Features"
-collapsed = true
 classes = ["Skills", "PlayerUI", "Settings", "Players", "Cleanup"]
+
+[[classOrder]]
+section = "Miscellaneous"
+classes = ["Janitor"]
 
 [[navbar.items]]
 href = "https://discord.gg/tria"
