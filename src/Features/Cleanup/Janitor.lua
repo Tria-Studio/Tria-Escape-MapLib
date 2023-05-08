@@ -19,20 +19,15 @@ end
 ]=]
 
 --[=[
-	@within Cleanup
+	@within Janitor
 	@since 0.11
-	@function Janitor.new
+	@function new
 	@param name string?
 	@return _tasks: {[string]: any}
 	@return context: string
 	@return name: string?
 	@return index: number | string
-	@return .isJanitor (value: Janitor?) -> boolean
-	@return :Give<T>(task: <T>) -> (<T>) -> <T> 
-	@return :Cleanup (taskTable: any) -> {}
-	@return :Destroy () -> nil
 ]=]
-
 
 function Janitor.new(janitorName: string?)
 	local self = setmetatable({}, Janitor)
@@ -47,11 +42,19 @@ function Janitor.new(janitorName: string?)
 
 	return self
 end
-
-function Janitor.isJanitor(value: table?)
+--[=[
+    @since 0.11
+]=]
+function Janitor.isJanitor(value: table?): boolean
 	return type(value) == "table" and value.ClassName == "Janitor"
 end
-
+--[=[
+	@within Janitor
+	@since 0.11
+	@method Give
+	@param task <T>
+	@return (<T>) -> <T>
+]=]
 function Janitor:Give(task: any)
 	local function handleTask(subtask: any)
 		assert(typeof(task) ~= "boolean", "Task cannot be a boolean")
@@ -75,8 +78,13 @@ function Janitor:Give(task: any)
 	end
 	return handleTask(task)
 end
-
-
+--[=[
+	@within Janitor
+	@since 0.11
+	@method Cleanup
+	@param taskTable: table?
+	@return nil
+]=]
 function Janitor:Cleanup(taskTable: table?)
 	local tasks = taskTable or self._tasks
 
@@ -108,7 +116,12 @@ function Janitor:Cleanup(taskTable: table?)
 		index, task = next(tasks)
 	end
 end
-
+--[=[
+	@within Janitor
+	@since 0.11
+	@method Destroy
+	@return nil
+]=]
 function Janitor:Destroy()
 	self:Cleanup()
 
