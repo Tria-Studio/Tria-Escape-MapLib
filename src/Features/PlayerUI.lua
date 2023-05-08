@@ -39,14 +39,21 @@ end
 	@since 0.11
 	@client
 	@param gui ScreenGui
-	This method is used to load a `ScreenGui` from the map into the players PlayerGUI.
-
+	This function is used to load a `ScreenGui` from the map into the players PlayerGUI.
+	
 	**Example:**
 	```lua
+	-- Loads an UI for everyone in the round
+	local PlayersFeature = Maplib:GetFeature("Players")
 	local PlayerUI = MapLib:GetFeature("PlayerUI")
+
 	local ui = map:WaitForChild("MyGUI")
 
-	PlayerUI:LoadUI(ui)
+	for _,player in pairs(PlayersFeature:GetPlayers()) do
+		if player and player.Character then
+			PlayerUI:LoadUI("ui")
+		end
+	end
 	```
 ]=]
 function PlayerUI:LoadUI(gui: ScreenGui)
