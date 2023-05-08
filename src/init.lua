@@ -80,7 +80,7 @@ end
 	-- Creates an alert with the given message with the color white and the duration of 3 seconds.
 	```
 	:::tip
-	You can pass the color argument as string and it'll still work, just make sure to use the correct color name!
+	You can pass the color argument as string and it'll still work, just make sure to use a common color name!
 	```lua
 	MapLib:Alert("Hello world!", "red", 3)
 	:::
