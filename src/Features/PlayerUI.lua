@@ -43,7 +43,6 @@ end
 
 	**Example:**
 	```lua
-
 	local PlayerUI = MapLib:GetFeature("PlayerUI")
 	local ui = map:WaitForChild("MyGUI")
 
