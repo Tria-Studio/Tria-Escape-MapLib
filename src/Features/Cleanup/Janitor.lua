@@ -13,8 +13,17 @@ local function getJanitors()
 	return require(script.Parent).Janitors
 end
 
---- @class Janitor
---- Another class.
+--[=[
+    @class Janitor
+    @tag Advanced
+    This is an external class which can be referenced with MapLib:GetFeature("Cleanup").Janitor
+
+    Janitor is destructor based class designed to assist with clearing up connections events and references.
+    :::warning
+        WARNING! This is an advanced feature.
+        This page assumes you are familiar, comfortable and can write Luau code.
+    :::
+]=]
 
 
 --[=[
