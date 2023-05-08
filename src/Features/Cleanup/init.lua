@@ -26,7 +26,6 @@ end
 	@function Janitor.new
 	@param name string?
 	@return Janitor
-
 ]=]
 
 --< Main >--
