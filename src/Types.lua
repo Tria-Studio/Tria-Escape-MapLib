@@ -37,4 +37,12 @@ export type SettingsFeature = {
 	GetSetting: (string) -> any?,
 }
 
+export type SkillsFeature = {
+	AllowSliding: (boolean) -> nil,
+}
+
+export type GUIFeature = {
+	LoadUI: (ScreenGui) -> nil,
+}
+
 return nil
