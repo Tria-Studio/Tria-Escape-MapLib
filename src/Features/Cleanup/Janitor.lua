@@ -9,16 +9,12 @@ local Janitor = {}
 Janitor.__index = Janitor
 Janitor.ClassName = "Janitor"
 
-local function getJanitors()
-	return require(script.Parent).Janitors
-end
-
 --[=[
     @class Janitor
     @tag Advanced Feature
     This is an external class which can be referenced with `MapLib:GetFeature("Cleanup").Janitor`
 
-    Janitor is destructor based class designed to assist with clearing up connections events and references.
+    Janitor is destructor based class designed to assist with clearing up connections and events.
     :::warning
         WARNING! This is an advanced feature.
         This page assumes you are familiar, comfortable and can write Luau code.
@@ -38,6 +34,11 @@ end
 
 	Constructs a new Janitor class and is cached for later use. Janitor provides an option in case you want to name your Janitor for easier reference later.
 ]=]
+
+local function getJanitors()
+	return require(script.Parent).Janitors
+end
+
 function Janitor.new(janitorName: string?)
 	local self = setmetatable({}, Janitor)
 	self._tasks = {}
@@ -68,8 +69,8 @@ end
 	@within Janitor
 	@since 0.11
 	@method Give
-	@param task <T>
-	@return (<T>) -> <T>
+	@param task: any
+	@return nil
 
 	**Example:**
 	```lua
@@ -85,20 +86,46 @@ end
 	task.wait(5)
 	janitor:Cleanup() -- Destroys the part 
 	```
-	
-	```lua
-	local janitor = MapLib:GetFeature("Cleanup").Janitor.new() -- Constructs new Janitor
 
-	janitor:Give(RunService.Heartbeat:Connect(function() 
-		print("Running")
-	end))
-
-	task.wait(5)
-	janitor:Cleanup() -- Destroys the connection 
-	```
 	This method is used to give Janitor tasks to cleanup, these tasks can be anything, some examples include, functions, threads, coroutines or anything with a .Destroy function.
 	:::tip
 	Janitor allows for tables to be given in as an argument. If Janitor detects a table it will loop through the table and add anything it finds will be added to the tasks table.
+
+	```lua
+	local janitor = MapLib:GetFeature("Cleanup").Janitor.new() -- Constructs new Janitor
+
+	local connection1 = RunService.Heartbeat:Connect(function() 
+		print("Running")
+	end)
+
+	local connection2 = RunService.Heartbeat:Connect(function() 
+		print("Running")
+	end)
+
+	janitor:Give({connection1, connection2})
+
+	task.wait(5)
+	janitor:Cleanup() -- Destroys both connections
+	```
+	:::
+	:::caution
+	Janitor does not have the ability to completly clear references if they are defined to a variable.
+	To initate proper garbage collection using Janitor we recommend setting the variable to `reference = janitor:Give(task)` which will set the reference to nil.
+
+	```lua
+	local janitor = MapLib:GetFeature("Cleanup").Janitor.new() -- Constructs new Janitor
+
+	local part = Instance.new("Part")
+	part.Anchored = true
+	part.Size = Vector3.new(1, 1, 1)
+	part.Parent = workspace
+
+	part = janitor:Give(part)
+	--Since :Give returns nil we can lose the reference and initate proper garbage collection.
+
+	task.wait(5)
+	janitor:Cleanup() -- Destroys the part and initates garbage collection
+	```
 	:::
 ]=]
 
@@ -137,6 +164,8 @@ end
 ]=]
 function Janitor:Cleanup(taskTable: table?)
 	local tasks = taskTable or self._tasks
+
+	--Influenced by Quenty's destructer implementation
 
 	for index, task in pairs(tasks) do
 		if typeof(task) == "RBXScriptConnection" then
