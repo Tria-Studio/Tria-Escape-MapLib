@@ -214,7 +214,8 @@ function MapLib:SetLiquidType(liquid: BasePart, liquidType: string): nil
 	end)
 end
 
-local function move(moveable: PVInstance, movement: Vector3, duration: number?, relative: boolean?): nil
+---@diagnostic disable-next-line: undefined-type
+local function move(moveable: PVInstance, movement: Vector3, duration: number?, relative: boolean?): nil | null
 	if duration == 0 or duration == nil then
 		return moveable:PivotTo(
 			relative and moveable:GetPivot() * CFrame.new(movement) or moveable:GetPivot() + movement
