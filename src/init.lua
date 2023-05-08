@@ -289,7 +289,7 @@ end
 	@param name string
 	This method is used to get any features listed in the features list.
 ]=]
-function MapLib:GetFeature(name): any
+function MapLib:GetFeature(name: string): any
 	local m = script.Features:FindFirstChild(name)
 	local feature = m and require(m)
 	if feature then
