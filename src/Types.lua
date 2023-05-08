@@ -27,11 +27,6 @@ export type MapLib = {
 		& ((MapLib, "Settings") -> SettingsFeature)
 		& ((MapLib, "Skills") -> SkillsFeature)
 		& ((MapLib, "PlayerUI") -> GUIFeature),
-
-
-
-
-
 }
 
 export type PlayersFeature = {
@@ -45,7 +40,6 @@ export type SettingsFeature = {
 export type SkillsFeature = {
 	AllowSliding: (boolean) -> nil,
 }
-
 export type GUIFeature = {
 	LoadUI: (ScreenGui) -> nil,
 }
