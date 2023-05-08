@@ -14,8 +14,16 @@ if RunService:IsServer() then
 	Round = require(ServerScriptService.server.Services.RoundService.Round)
 end
 
----	@class Cleanup
----	This is the MapLib Feature. It can be accessed by `MapLib:GetFeature("Cleanup")`.
+--[=[
+	@class Cleanup
+
+	This is the MapLib Feature. It can be accessed by `MapLib:GetFeature("Cleanup")`.
+
+	Description of what this holds
+	:::tip
+		hi
+	:::
+]=]
 
 --[=[
 	@within Cleanup

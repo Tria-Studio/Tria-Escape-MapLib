@@ -16,7 +16,7 @@ end
 --[=[
     @class Janitor
     @tag Advanced
-    This is an external class which can be referenced with MapLib:GetFeature("Cleanup").Janitor
+    This is an external class which can be referenced with `MapLib:GetFeature("Cleanup").Janitor`
 
     Janitor is destructor based class designed to assist with clearing up connections events and references.
     :::warning
@@ -24,17 +24,19 @@ end
         This page assumes you are familiar, comfortable and can write Luau code.
     :::
 ]=]
-
-
 --[=[
 	@within Janitor
 	@since 0.11
+
 	@function new
 	@param name string?
 	@return _tasks: {[string]: any}
 	@return context: string
 	@return name: string?
 	@return index: number | string
+	@return __index: Janitor
+
+	Constructs a new Janitor class and is cached for later use. Janitor provides an option in case you want to name your Janitor for easier reference later.
 ]=]
 function Janitor.new(janitorName: string?)
 	local self = setmetatable({}, Janitor)
@@ -45,14 +47,19 @@ function Janitor.new(janitorName: string?)
 	local janitors = getJanitors()
 
 	self.index = janitorName or #janitors + 1
-	janitors[self.index ] = self
+	janitors[self.index] = self
 
 	return self
 end
 
 --[=[
-    @since 0.11
+	@within Janitor
+	@since 0.11
+	@function isJanitor
+	@return boolean
+	Returns true if the given class is a Janitor, if not it returns false.
 ]=]
+
 function Janitor.isJanitor(value: table?): boolean
 	return type(value) == "table" and value.ClassName == "Janitor"
 end
@@ -63,7 +70,13 @@ end
 	@method Give
 	@param task <T>
 	@return (<T>) -> <T>
+
+	This method is used to give Janitor tasks to cleanup, these tasks can be anything, some examples include, functions, threads, coroutines or anything with a .Destroy function.
+	:::tip
+	Janitor allows for tables to be given in as an argument. If Janitor detects a table it will loop through the table and add anything it finds will be added to the tasks table.
+	:::
 ]=]
+
 function Janitor:Give(task: any)
 	local function handleTask(subtask: any)
 		assert(typeof(task) ~= "boolean", "Task cannot be a boolean")
@@ -94,6 +107,8 @@ end
 	@method Cleanup
 	@param taskTable: table?
 	@return nil
+
+	Calls for the Janitor to cleanup up all the tasks it was given.
 ]=]
 function Janitor:Cleanup(taskTable: table?)
 	local tasks = taskTable or self._tasks
