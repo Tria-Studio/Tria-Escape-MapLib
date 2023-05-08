@@ -27,7 +27,7 @@ else
 end
 
 --- @class MapLib
---- This is the documentation of MapLib methods.
+--- This is the documentation for MapLib methods.
 
 --[=[
 	@since 0.5
@@ -290,7 +290,7 @@ end
 	@param name string
 	This method is used to get any features listed in the features list.
 ]=]
-function MapLib:GetFeature(name): {}
+function MapLib:GetFeature(name)
 	local m = script.Features:FindFirstChild(name)
 	local feature = m and require(m)
 	if feature then
