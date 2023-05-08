@@ -47,7 +47,7 @@ end
 	local PlayerUI = MapLib:GetFeature("PlayerUI")
 	local ui = map:WaitForChild("MyGUI")
 
-	PlayerUi:LoadUI(ui)
+	PlayerUI:LoadUI(ui)
 	```
 ]=]
 function PlayerUI:LoadUI(gui: ScreenGui)
