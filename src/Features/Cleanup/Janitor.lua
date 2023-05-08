@@ -147,6 +147,8 @@ end
 	@since 0.11
 	@method Destroy
 	@return nil
+
+	Completely destroys Janitor and all references to it. If the Janitor has tasks then those tasks are cleaned up.
 ]=]
 function Janitor:Destroy()
 	self:Cleanup()
