@@ -27,6 +27,11 @@ export type MapLib = {
 		& ((MapLib, "Settings") -> SettingsFeature)
 		& ((MapLib, "Skills") -> SkillsFeature)
 		& ((MapLib, "PlayerUI") -> GUIFeature),
+
+
+
+
+
 }
 
 export type PlayersFeature = {
