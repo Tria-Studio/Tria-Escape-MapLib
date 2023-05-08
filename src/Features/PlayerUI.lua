@@ -33,7 +33,25 @@ function PlayerUI.new()
 	return self
 end
 
---- This function is used to load a `ScreenGui` from the map into the players PlayerGUI.
+--[=[
+	@since 0.11
+	This function is used to load a `ScreenGui` from the map into the players PlayerGUI.
+	
+	**Example:**
+	```lua
+	-- Loads an UI for everyone in the round
+	local PlayersFeature = Maplib:GetFeature("Players")
+	local PlayerUI = MapLib:GetFeature("PlayerUI")
+
+	local ui = map:WaitForChild("MyGUI")
+
+	for _,player in pairs(PlayersFeature:GetPlayers()) do
+		if player and player.Character then
+			PlayerUI:LoadUI("ui")
+		end
+	end
+	```
+]=]
 function PlayerUI:LoadUI(gui: ScreenGui)
 	assert(gui:IsA("ScreenGui"), "':LoadUI' must be passed a 'ScreenGUI'")
 	gui:Clone().Parent = Players.LocalPlayer.PlayerGui
