@@ -13,7 +13,7 @@ local PlayerUI = { context = "client" }
 PlayerUI.__index = PlayerUI
 
 --- @class PlayerUI
---- This is the MapLib Feature. It can be accessed by `MapLib:GetFeature("PlayerUI")`.
+--- This is a MapLib Feature. It can be accessed by `MapLib:GetFeature("PlayerUI")`.
 --- @client
 
 function PlayerUI.new()

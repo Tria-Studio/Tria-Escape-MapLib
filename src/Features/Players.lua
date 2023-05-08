@@ -12,7 +12,7 @@ local Players = {}
 Players.__index = Players
 
 --- @class Players
---- This is the MapLib Feature. It can be accessed by `MapLib:GetFeature("Players")`.
+--- This is a MapLib Feature. It can be accessed by `MapLib:GetFeature("Players")`.
 function Players.new()
 	local self = setmetatable({}, Players)
 	return self

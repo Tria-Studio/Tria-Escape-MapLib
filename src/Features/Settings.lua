@@ -16,7 +16,7 @@ local Settings = { context = "client" }
 Settings.__index = Settings
 
 --- @class Settings
---- This is the MapLib Feature. It can be accessed by `MapLib:GetFeature("Settings")`.
+--- This is a MapLib Feature. It can be accessed by `MapLib:GetFeature("Settings")`.
 
 function Settings.new()
 	local self = setmetatable({}, Settings)
