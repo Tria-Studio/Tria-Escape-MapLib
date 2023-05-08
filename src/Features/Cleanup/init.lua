@@ -14,12 +14,26 @@ if RunService:IsServer() then
 	Round = require(ServerScriptService.server.Services.RoundService.Round)
 end
 
+--[=[
+	@class Cleanup
+	This is the MapLib Feature. It can be accessed by `MapLib:GetFeature("Cleanup")`.
+
+	Description of what this holds
+]=]
+
 --< Main >--
 local Cleanup = {}
+
 Cleanup.Janitors = {}
+
 
 Cleanup.Janitor = require(script.Janitor)
 
+--[=[
+	@since 0.2.4
+	@return Janitor
+	This method returns a Janitor class.
+]=]
 function Cleanup:GetJanitor(janitorName: string?)
 	if self.Janitors[janitorName] then
 		return self.Janitors[janitorName]
@@ -28,6 +42,11 @@ function Cleanup:GetJanitor(janitorName: string?)
 	end
 end
 
+--[=[
+	@since 0.2.4
+	This method returns all the active Janitor classes.
+	@return {Janitor}
+]=]
 function Cleanup:GetJanitors()
 	return self.Janitors
 end

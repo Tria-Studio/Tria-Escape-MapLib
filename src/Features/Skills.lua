@@ -6,7 +6,7 @@
 local Skills = {}
 
 --- @class Skills
---- This is the documentation of Skills-related methods.
+--- This is the MapLib Feature. It can be accessed by `MapLib:GetFeature("Skills")`.
 
 function Skills.new(MapLib)
 	local self = setmetatable({}, Skills)

@@ -12,13 +12,12 @@ if RunService:IsClient() then
 end
 
 --< Main >--
-local Settings = {context = "client"}
+local Settings = { context = "client" }
 Settings.__index = Settings
 
 --- @class Settings
---- This is the documentation about a map's Settings and related methods.
+--- This is the MapLib Feature. It can be accessed by `MapLib:GetFeature("Settings")`.
 
---- @client
 function Settings.new()
 	local self = setmetatable({}, Settings)
 

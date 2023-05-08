@@ -13,13 +13,9 @@ local PlayerUI = { context = "client" }
 PlayerUI.__index = PlayerUI
 
 --- @class PlayerUI
---- This is the documentation of PlayerUI-related methods.
+--- This is the MapLib Feature. It can be accessed by `MapLib:GetFeature("PlayerUI")`.
 --- @client
 
---- @prop cleanup {ScreenGUI}
---- @readonly
---- @private
---- @within PlayerUI
 function PlayerUI.new()
 	local self = setmetatable({}, PlayerUI)
 
@@ -37,13 +33,12 @@ function PlayerUI.new()
 	return self
 end
 
---- This function is used to load a `ScreenGui` instance.
-function PlayerUI:LoadUI(gui: ScreenGui): ScreenGui
+--- This function is used to load a `ScreenGui` from the map into the players PlayerGUI.
+function PlayerUI:LoadUI(gui: ScreenGui)
 	assert(gui:IsA("ScreenGui"), "':LoadUI' must be passed a 'ScreenGUI'")
+	gui:Clone().Parent = Players.LocalPlayer.PlayerGui
 
-	gui.Parent = Players.LocalPlayer.PlayerGui
 	table.insert(self.cleanup, gui)
-	return gui
 end
 
 return PlayerUI

@@ -12,7 +12,14 @@ includeReadme = true
 favicon = "https://coderheck.github.io/assets/TRIAosLogoGradient.png"
 
 [[classOrder]]
-classes = ["MapLib", "Skills", "PlayerUI", "Settings"]
+section = "MapLib"
+collapsed = false
+classes = ["MapLib"]
+
+[[classOrder]]
+section = "Features"
+collapsed = true
+classes = ["Skills", "PlayerUI", "Settings", "Players", "Cleanup"]
 
 [[navbar.items]]
 href = "https://discord.gg/tria"

@@ -13,6 +13,27 @@ local function getJanitors()
 	return require(script.Parent).Janitors
 end
 
+--[=[
+    @class Janitor
+    Another class.
+]=]
+
+--[=[
+	@within Cleanup
+	@since 0.11
+	@function Janitor.new
+	@param name string?
+	@return _tasks: {[string]: any}
+	@return context: string
+	@return name: string?
+	@return index: number | string
+	@return .isJanitor (value: Janitor?) -> boolean
+	@return :Give<T>(task: <T>) -> (<T>) -> <T> 
+	@return :Cleanup (taskTable: any) -> {}
+	@return :Destroy () -> nil
+]=]
+
+
 function Janitor.new(janitorName: string?)
 	local self = setmetatable({}, Janitor)
 	self._tasks = {}
