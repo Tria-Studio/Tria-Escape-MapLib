@@ -36,9 +36,9 @@ Cleanup.Janitors = {}
 Cleanup.Janitor = require(script.Janitor)
 
 --[=[
-	@since 0.2.4
+	@since 0.11
 	@return Janitor
-	This method returns the specified Janitor class.
+	This method returns a Janitor class with the given name
 ]=]
 function Cleanup:GetJanitor(janitorName: string?)
 	if self.Janitors[janitorName] then
@@ -49,7 +49,7 @@ function Cleanup:GetJanitor(janitorName: string?)
 end
 
 --[=[
-	@since 0.2.4
+	@since 0.11
 	This method returns all the active Janitor classes.
 	@return {Janitor}
 ]=]

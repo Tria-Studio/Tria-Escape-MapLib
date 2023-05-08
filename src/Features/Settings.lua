@@ -20,12 +20,11 @@ Settings.__index = Settings
 
 function Settings.new()
 	local self = setmetatable({}, Settings)
-
 	return self
 end
 
 --- This function is used to get a map setting's value.
-function Settings:GetSetting(settingName: string): any
+function Settings:GetSetting(settingName: string): any?
 	local settingsTable = SettingsModule:GetSettings()
 
 	local setting

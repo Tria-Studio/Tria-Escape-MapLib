@@ -34,7 +34,11 @@ function PlayerUI.new()
 end
 
 --[=[
+	@within PlayerUI
+	@method LoadUI
 	@since 0.11
+	@client
+	@param gui ScreenGui
 	This function is used to load a `ScreenGui` from the map into the players PlayerGUI.
 	
 	**Example:**
@@ -60,3 +64,4 @@ function PlayerUI:LoadUI(gui: ScreenGui)
 end
 
 return PlayerUI
+
