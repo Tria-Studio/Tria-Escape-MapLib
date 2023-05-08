@@ -95,7 +95,7 @@ end
 
 --[=[
 	@since 0.4
-	This method can be used to change the current music playing in a map, this also replicates to spectators.
+	This method can be used to change the current music playing in a map, this also replicates to people spectating.
 
 	**Example:**
 	```lua
