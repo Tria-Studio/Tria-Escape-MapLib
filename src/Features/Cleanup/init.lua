@@ -18,11 +18,6 @@ end
 	@class Cleanup
 
 	This is a MapLib Feature. It can be accessed by `MapLib:GetFeature("Cleanup")`.
-
-	Description of what this holds
-	:::tip
-		hi
-	:::
 ]=]
 
 --[=[
