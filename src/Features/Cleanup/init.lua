@@ -38,8 +38,6 @@ end
 local Cleanup = {}
 
 Cleanup.Janitors = {}
-
-
 Cleanup.Janitor = require(script.Janitor)
 
 --[=[

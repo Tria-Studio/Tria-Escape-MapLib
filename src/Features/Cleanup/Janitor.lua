@@ -15,7 +15,7 @@ end
 
 --[=[
     @class Janitor
-    @tag Advanced
+    @tag Advanced Feature
     This is an external class which can be referenced with `MapLib:GetFeature("Cleanup").Janitor`
 
     Janitor is destructor based class designed to assist with clearing up connections events and references.
@@ -71,6 +71,31 @@ end
 	@param task <T>
 	@return (<T>) -> <T>
 
+	**Example:**
+	```lua
+	local janitor = MapLib:GetFeature("Cleanup").Janitor.new() -- Constructs new Janitor
+
+	local part = Instance.new("Part")
+	part.Anchored = true
+	part.Size = Vector3.new(1, 1, 1)
+	part.Parent = workspace
+
+	janitor:Give(part)
+
+	task.wait(5)
+	janitor:Cleanup() -- Destroys the part 
+	```
+	
+	```lua
+	local janitor = MapLib:GetFeature("Cleanup").Janitor.new() -- Constructs new Janitor
+
+	janitor:Give(RunService.Heartbeat:Connect(function() 
+		print("Running")
+	end))
+
+	task.wait(5)
+	janitor:Cleanup() -- Destroys the connection 
+	```
 	This method is used to give Janitor tasks to cleanup, these tasks can be anything, some examples include, functions, threads, coroutines or anything with a .Destroy function.
 	:::tip
 	Janitor allows for tables to be given in as an argument. If Janitor detects a table it will loop through the table and add anything it finds will be added to the tasks table.
@@ -148,7 +173,7 @@ end
 	@method Destroy
 	@return nil
 
-	Completely destroys Janitor and all references to it. If the Janitor has tasks then those tasks are cleaned up.
+	Completely destroys Janitor and all references to it. If the Janitor has tasks then those tasks are cleaned up
 ]=]
 function Janitor:Destroy()
 	self:Cleanup()
