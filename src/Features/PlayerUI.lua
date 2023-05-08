@@ -39,7 +39,7 @@ end
 	@since 0.11
 	@client
 	@param gui ScreenGui
-	This function is used to load a `ScreenGui` from the map into the players PlayerGUI.
+	This method is used to load a `ScreenGui` from the map into the players PlayerGUI.
 
 	**Example:**
 	```lua
