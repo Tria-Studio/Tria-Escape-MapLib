@@ -157,7 +157,6 @@ end
 	@within Janitor
 	@since 0.11
 	@method Cleanup
-	@param taskTable: table?
 	@return nil
 
 	Calls for the Janitor to cleanup up all the tasks it was given.
