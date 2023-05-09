@@ -69,7 +69,7 @@ end
 	@within Janitor
 	@since 0.11
 	@method Give
-	@param task: any
+	@param task any
 	@return nil
 
 	**Example:**
