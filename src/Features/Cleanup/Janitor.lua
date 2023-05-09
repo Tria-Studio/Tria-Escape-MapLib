@@ -68,8 +68,8 @@ end
 --[=[
 	@within Janitor
 	@since 0.11
-	@param task: any
 	@method Give
+	@param task: any
 	@return nil
 
 	**Example:**
@@ -129,7 +129,7 @@ end
 	:::
 ]=]
 
-function Janitor:Give(task)
+function Janitor:Give(task: any)
 	local function handleTask(subtask: any)
 		assert(typeof(task) ~= "boolean", "Task cannot be a boolean")
 
