@@ -160,7 +160,7 @@ end
 
 	Calls for the Janitor to cleanup up all the tasks it was given.
 ]=]
-function Janitor:Cleanup()
+function Janitor:Cleanup(taskTable: table?)
 	local tasks = taskTable or self._tasks
 
 	--Influenced by Quenty's destructer implementation
