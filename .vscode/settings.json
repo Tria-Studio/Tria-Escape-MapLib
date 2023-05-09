@@ -5,5 +5,8 @@
     "robloxLsp.typeChecking.mode": "Strict",
     "robloxLsp.typeChecking.options": {
         "infer-instance-from-unknown": true
-    }
+    },
+    "robloxLsp.diagnostics.disable": [
+        "duplicate-doc-class"
+    ]
 }

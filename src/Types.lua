@@ -3,7 +3,6 @@
 -- If a copy of the MPL was not distributed with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 export type MapLib = {
-
 	__index: MapLib,
 	map: Model,
 	Map: Model,
@@ -23,25 +22,7 @@ export type MapLib = {
 	MovePartLocal: (MapLib, PVInstance, Vector3, number?) -> nil,
 
 	GetPlayers: (MapLib) -> { Player },
-	GetFeature: ((MapLib, "Players") -> PlayersFeature)
-		& ((MapLib, "Settings") -> SettingsFeature)
-		& ((MapLib, "Skills") -> SkillsFeature)
-		& ((MapLib, "PlayerUI") -> GUIFeature),
-}
-
-export type PlayersFeature = {
-	GetPlayers: () -> { Player },
-}
-
-export type SettingsFeature = {
-	GetSetting: (string) -> any?,
-}
-
-export type SkillsFeature = {
-	AllowSliding: (boolean) -> nil,
-}
-export type GUIFeature = {
-	LoadUI: (ScreenGui) -> nil,
+	GetFeature: ((MapLib, string) -> { [string]: any }),
 }
 
 return nil
