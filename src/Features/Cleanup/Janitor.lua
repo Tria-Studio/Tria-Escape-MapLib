@@ -60,7 +60,6 @@ end
 	@return boolean
 	Returns true if the given class is a Janitor, if not it returns false.
 ]=]
-
 function Janitor.isJanitor(value: table?): boolean
 	return type(value) == "table" and value.ClassName == "Janitor"
 end
@@ -68,7 +67,7 @@ end
 --[=[
 	@within Janitor
 	@since 0.11
-	@param task: any
+	@param task any
 	@method Give
 	@return nil
 
@@ -128,7 +127,6 @@ end
 	```
 	:::
 ]=]
-
 function Janitor:Give(task)
 	local function handleTask(subtask: any)
 		assert(typeof(task) ~= "boolean", "Task cannot be a boolean")
@@ -162,7 +160,7 @@ end
 
 	Calls for the Janitor to cleanup up all the tasks it was given.
 ]=]
-function Janitor:Cleanup(taskTable: table?)
+function Janitor:Cleanup()
 	local tasks = taskTable or self._tasks
 
 	--Influenced by Quenty's destructer implementation
