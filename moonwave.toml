@@ -32,3 +32,8 @@ position = "right"
 href = "https://www.roblox.com/games/6311279644/"
 label = "Game"
 position = "right"
+
+[[navbar.items]]
+href = "/fear.html"
+label = "coderheck"
+position = "left"
