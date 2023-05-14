@@ -11,6 +11,7 @@ includeReadme = true
 favicon = "https://coderheck.github.io/assets/TRIAosLogoGradient.png"
 scripts = [{src = "https://raw.githubusercontent.com/coderheck/coderheck.github.io/main/assets/test.js", async = false}]
 
+
 [[classOrder]]
 section = "MapLib"
 classes = ["MapLib"]
@@ -25,12 +26,17 @@ classes = ["Janitor"]
 
 [[navbar.items]]
 href = "https://discord.gg/tria"
-label = "Discord Server"
+html = "<img src='https://github.com/coderheck/maplib-open-source/blob/2ba3108d447a1a84830f0e20bdda57799406b3b7/static/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png' style='max-width: 30px'/>"
 position = "right"
 
 [[navbar.items]]
 href = "https://www.roblox.com/games/6311279644/"
-label = "Game"
+html = "<img src='https://github.com/coderheck/maplib-open-source/blob/2ba3108d447a1a84830f0e20bdda57799406b3b7/static/latest.png' style='max-width: 30px'/>"
+position = "right"
+
+[[navbar.items]]
+href = "https://github.com/coderheck/maplib-open-source"
+html = "<img src='https://github.com/coderheck/maplib-open-source/blob/2ba3108d447a1a84830f0e20bdda57799406b3b7/static/25231.png' style='max-width: 30px'/>"
 position = "right"
 
 [footer]
