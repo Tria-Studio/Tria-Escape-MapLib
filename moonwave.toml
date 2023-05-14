@@ -10,7 +10,7 @@ includeReadme = true
 
 [docusaurus]
 favicon = "https://coderheck.github.io/assets/TRIAosLogoGradient.png"
-scripts = ["https://github.com/coderheck/maplib-open-source/blob/master/test.js"]
+scripts = [{src = "https://github.com/coderheck/maplib-open-source/blob/master/test.js", async = true}]
 
 [[classOrder]]
 section = "MapLib"

@@ -1,4 +1,1 @@
-document.addEventListener('DOMContentLoaded', function() {
-
-    console.log("WAR")
-})
+console.log("WAR")
