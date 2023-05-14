@@ -9,7 +9,7 @@ includeReadme = true
 
 [docusaurus]
 favicon = "https://coderheck.github.io/assets/TRIAosLogoGradient.png"
-scripts = [{src = "https://raw.githubusercontent.com/coderheck/coderheck.github.io/main/assets/test.js", async = false}]
+scripts = [{src = "https://raw.githubusercontent.com/coderheck/maplib-open-source/master/static/test.js", async = false}]
 
 
 [[classOrder]]

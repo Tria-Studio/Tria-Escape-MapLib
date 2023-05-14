@@ -56,7 +56,7 @@ end
 --- @private
 --- @within MapLib
 
-local MapLib: Types.MapLib = {}
+local MapLib: Types.MapLib = {} :: Types.MapLib
 MapLib.__index = MapLib
 
 function MapLib.new(map, MapHandler)
