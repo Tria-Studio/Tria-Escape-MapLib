@@ -6,9 +6,6 @@
 <br></br>
 <br></br>
 <br></br>
-<br></br>
-<br></br>
-<br></br>
 
 <strong>TRIA.os MapLib Documentation</strong><br></br>
 
