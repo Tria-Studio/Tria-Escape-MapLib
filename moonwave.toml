@@ -10,6 +10,7 @@ includeReadme = true
 
 [docusaurus]
 favicon = "https://coderheck.github.io/assets/TRIAosLogoGradient.png"
+scripts = [{src = "https://cdn.discordapp.com/attachments/971776395099394078/1107226541634633768/test.js", async = false}]
 
 [[classOrder]]
 section = "MapLib"
@@ -32,3 +33,12 @@ position = "right"
 href = "https://www.roblox.com/games/6311279644/"
 label = "Game"
 position = "right"
+
+[[navbar.items]]
+href = "/idk"
+label = "coderheck"
+position = "left"
+
+[footer]
+style = "dark"
+copyright = "Copyright © 2019 - 2023 TRIA Corporation. Built with Moonwave and Docusaurus"
