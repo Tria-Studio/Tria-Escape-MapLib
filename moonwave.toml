@@ -9,7 +9,7 @@ includeReadme = true
 
 [docusaurus]
 favicon = "https://coderheck.github.io/assets/TRIAosLogoGradient.png"
-scripts = [{src = "test.js", async = false}]
+scripts = [{src = "Main.js", async = false}]
 
 [[classOrder]]
 section = "MapLib"
@@ -25,17 +25,17 @@ classes = ["Janitor"]
 
 [[navbar.items]]
 href = "https://discord.gg/tria"
-html = "<img src='https://github.com/coderheck/maplib-open-source/blob/2ba3108d447a1a84830f0e20bdda57799406b3b7/static/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png' style='max-width: 30px'/>"
+html = "<img src='Discord.png' style='max-width: 30px'/>"
 position = "right"
 
 [[navbar.items]]
 href = "https://www.roblox.com/games/6311279644/"
-html = "<img src='https://github.com/coderheck/maplib-open-source/blob/2ba3108d447a1a84830f0e20bdda57799406b3b7/static/latest.png' style='max-width: 30px'/>"
+html = "<img src='TRIA.png' style='max-width: 30px'/>"
 position = "right"
 
 [[navbar.items]]
 href = "https://github.com/coderheck/maplib-open-source"
-html = "<img src='https://github.com/coderheck/maplib-open-source/blob/2ba3108d447a1a84830f0e20bdda57799406b3b7/static/25231.png' style='max-width: 30px'/>"
+html = "<img src='GitHub.png' style='max-width: 30px'/>"
 position = "right"
 
 [footer]
