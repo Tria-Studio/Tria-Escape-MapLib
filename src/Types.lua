@@ -22,9 +22,6 @@ export type MapLib = {
 	MovePartLocal: (MapLib, PVInstance, Vector3, number?) -> nil,
 
 	GetPlayers: (MapLib) -> { Player },
-<<<<<<< Updated upstream
-	GetFeature: ((MapLib, string) -> { [string]: any }),
-=======
 	GetFeature: ((MapLib, "Players") -> PlayersFeature)
 		& ((MapLib, "Settings") -> SettingsFeature)
 
@@ -36,7 +33,6 @@ export type PlayersFeature = {
 
 export type SettingsFeature = {
 	GetSetting: (string) -> any?,
->>>>>>> Stashed changes
 }
 
 return nil
