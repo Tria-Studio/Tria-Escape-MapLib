@@ -12,7 +12,7 @@ local PlayerStates = require(ReplicatedStorage.shared.PlayerStates)
 local PlayerUI = { context = "client" }
 PlayerUI.__index = PlayerUI
 
---- @class PlayerUI
+--- @class Teleport
 --- This is a MapLib Feature. It can be accessed by `MapLib:GetFeature("PlayerUI")`.
 --- @client
 
@@ -40,7 +40,7 @@ end
 	@client
 	@param gui ScreenGui
 	This function is used to load a `ScreenGui` from the map into the players PlayerGUI.
-
+	
 	**Example:**
 	```lua
 	-- Loads an UI for everyone in the round
