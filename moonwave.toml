@@ -34,11 +34,6 @@ href = "https://www.roblox.com/games/6311279644/"
 label = "Game"
 position = "right"
 
-[[navbar.items]]
-href = "/idk"
-label = "coderheck"
-position = "left"
-
 [footer]
 style = "dark"
 copyright = "Copyright © 2019 - 2023 TRIA Corporation. Built with Moonwave and Docusaurus"
