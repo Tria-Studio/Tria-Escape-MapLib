@@ -22,7 +22,7 @@ export type MapLib = {
 	MovePartLocal: (MapLib, PVInstance, Vector3, number?) -> nil,
 
 	GetPlayers: (MapLib) -> { Player },
-	GetFeature: ((MapLib, "Players") -> any)
+	GetFeature: ((MapLib, string) -> any)
 
 }
 

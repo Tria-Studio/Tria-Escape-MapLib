@@ -56,11 +56,11 @@ end
 --- @private
 --- @within MapLib
 
-local MapLib = {}
+local MapLib: Types.MapLib = {} :: Types.MapLib
 MapLib.__index = MapLib
 
 function MapLib.new(map, MapHandler)
-	local self = setmetatable({}, MapLib)
+	local self: Types.MapLib = setmetatable({}, MapLib)
 
 	self.map = map
 	self.Map = map
