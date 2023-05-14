@@ -10,7 +10,7 @@ By default we assume you have some knowledge of general scripting in ROBLOX Stud
 ## Booleans
 
 Boolean is an easy-to-understand data type which one has two values: `true` or `false`. Think of it like a light switch, there are only two states a light bulb can be which is on or off.<br></br>
-In [conditional statements](https://create.roblox.com/docs/scripting/luau/control-structures#if-statements), if a boolean isn't `false` or `nil`, Luau (the scripting language used for Studio) will evaluates the boolean as `true`.<br></br>
+In [conditional statements](https://create.roblox.com/docs/scripting/luau/control-structures#if-statements), if a boolean isn't `false` or `nil`, Luau (the scripting language used for Studio) will assume the boolean as `true`.<br></br>
 
 ## Strings
 
