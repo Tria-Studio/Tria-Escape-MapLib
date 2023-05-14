@@ -1,8 +1,3 @@
----
-sidebar_position: 1
----
-
-# EffectScript
 # EffectScript
 
 EffectScript is a localscript inside of the Tria.OS Map Making Kit, it should be used as an alternative to the LocalMapScript if you want your code to be replicated to other spectators.

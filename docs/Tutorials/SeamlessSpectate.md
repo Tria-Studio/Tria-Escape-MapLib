@@ -1,8 +1,5 @@
----
-sidebar_position: 1
----
-
 # Seamless Spectate
+
 # Making spectating seamless
 When you make a map you might notice that certain things may cause spectating to act strangely, this can be caused by various things that are documented below.
 
