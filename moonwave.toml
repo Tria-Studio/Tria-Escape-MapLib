@@ -11,7 +11,6 @@ includeReadme = true
 favicon = "https://coderheck.github.io/assets/TRIAosLogoGradient.png"
 scripts = [{src = "https://raw.githubusercontent.com/coderheck/maplib-open-source/master/static/test.js", async = false}]
 
-
 [[classOrder]]
 section = "MapLib"
 classes = ["MapLib"]
