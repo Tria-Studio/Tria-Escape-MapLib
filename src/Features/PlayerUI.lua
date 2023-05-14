@@ -40,7 +40,7 @@ end
 	@client
 	@param gui ScreenGui
 	This function is used to load a `ScreenGui` from the map into the players PlayerGUI.
-	
+
 	**Example:**
 	```lua
 	-- Loads an UI for everyone in the round
