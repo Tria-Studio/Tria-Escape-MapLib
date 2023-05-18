@@ -1,6 +1,6 @@
 [package]
-name = "glowingumbreon/tria-escape-maplib"
-version = "0.1.2"
+name = "ethan76167/tria-escape-maplib"
+version = "0.1.5"
 registry = "https://github.com/UpliftGames/wally-index"
 realm = "shared"
 
