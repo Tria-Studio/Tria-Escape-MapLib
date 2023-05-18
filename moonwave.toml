@@ -1,6 +1,5 @@
 title = "TRIA.os MapLib Documentation" 
 GitRepoUrl = "https://github.com/Tria-Studio/Tria-Escape-MapLib"
-
 gitSourceBranch = "master"
 
 [home]
@@ -34,7 +33,7 @@ html = "<img src='https://drive.google.com/uc?export=view&id=1olt2psI85yp4KJKj13
 position = "right"
 
 [[navbar.items]]
-href = "https://github.com/coderheck/maplib-open-source"
+href = "https://github.com/Tria-Studio/Tria-Escape-MapLib"
 html = "<img src='https://drive.google.com/uc?export=view&id=1i9ezAZf4VKKyX-lE4tm6PwDLxk53Otql' style='max-width: 30px'/>"
 position = "right"
 
