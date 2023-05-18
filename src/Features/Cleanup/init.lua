@@ -32,7 +32,7 @@ end
 local Cleanup = {}
 
 Cleanup.Janitors = {}
-Cleanup.Janitor = require(script.Janitor)
+Cleanup.Janitor = require(script.Janitor) :: any
 
 --[=[
 	@since 0.11

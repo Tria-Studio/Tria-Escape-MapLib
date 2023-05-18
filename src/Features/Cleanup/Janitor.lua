@@ -36,7 +36,7 @@ Janitor.ClassName = "Janitor"
 ]=]
 
 local function getJanitors()
-	return require(script.Parent).Janitors
+	return require(script.Parent).Janitors :: any
 end
 
 function Janitor.new(janitorName: string?)
@@ -160,7 +160,7 @@ end
 
 	Calls for the Janitor to cleanup up all the tasks it was given.
 ]=]
-function Janitor:Cleanup(taskTable: table?)
+function Janitor:Cleanup(taskTable: {any}?)
 	local tasks = taskTable or self._tasks
 
 	--Influenced by Quenty's destructer implementation

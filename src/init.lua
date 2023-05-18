@@ -1,3 +1,5 @@
+--!strict
+
 -- Copyright (C) 2023 Tria
 -- This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
 -- If a copy of the MPL was not distributed with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
@@ -12,6 +14,7 @@ local Types = require(script.Types)
 
 local CONTEXT_ERROR = "'%s' Cannot be called from the %s" -- Error which shows up when a function is ran on the wrong context
 local IS_SERVER = RunService:IsServer()
+
 local LIQUID_COLORS = {
 	water = Color3.fromRGB(33, 84, 185),
 	acid = Color3.fromRGB(0, 255, 0),
@@ -22,8 +25,8 @@ local Alert, Sound, Signal
 if IS_SERVER then
 	Signal = require(ReplicatedStorage.Packages.Signal)
 else
-	Alert = require(game.Players.LocalPlayer.PlayerScripts.client.Alert)
-	Sound = require(game.Players.LocalPlayer.PlayerScripts.client.Sound)
+	Alert = require(game.Players.LocalPlayer.PlayerScripts.client.Alert) :: any
+	Sound = require(game.Players.LocalPlayer.PlayerScripts.client.Sound) :: any
 end
 
 --- @class MapLib
@@ -60,7 +63,7 @@ local MapLib: Types.MapLib = {} :: Types.MapLib
 MapLib.__index = MapLib
 
 function MapLib.new(map, MapHandler)
-	local self: Types.MapLib = setmetatable({}, MapLib)
+	local self: Types.MapLib = setmetatable({}, MapLib) :: any
 
 	self.map = map
 	self.Map = map
@@ -85,7 +88,7 @@ end
 	MapLib:Alert("Hello world!", "red", 3)
 	:::
 ]=]
-function MapLib:Alert(message: string, color: Color3 | string, length: number?): nil
+function MapLib:Alert(message: string, color: Color3 | string, length: number?): ()
 	if IS_SERVER then
 		ReplicatedStorage.Remotes.Misc.SendAlert:FireAllClients(message, color, length, true)
 	else
@@ -102,7 +105,7 @@ end
 	MapLib:ChangeMusic(12245541717, 1, 5)
 	-- Changes the currently playing music to volume 1 and starts at 5 seconds in.
 ]=]
-function MapLib:ChangeMusic(musicId: number, volume: number, startTick: number): nil
+function MapLib:ChangeMusic(musicId: number, volume: number?, startTick: number?): ()
 	if IS_SERVER then
 		ReplicatedStorage.Remotes.Misc.ChangeMusic:FireAllClients(musicId, volume, (startTick or 0))
 	else
@@ -135,7 +138,7 @@ end
 	```
 	:::
 ]=]
-function MapLib:GetButtonEvent(buttonId: number | string): RBXScriptSignal?
+function MapLib:GetButtonEvent(buttonId: number | string): any
 	if IS_SERVER then
 		if tonumber(buttonId) then
 			-- Normal button
@@ -172,7 +175,7 @@ end
 		end
 	end)
 ]=]
-function MapLib:Survive(player: Player): nil
+function MapLib:Survive(player: Player): ()
 	if IS_SERVER then
 		if not player then
 			return error("Player does not exist", 2)
@@ -200,7 +203,7 @@ end
 	```
 	:::
 ]=]
-function MapLib:SetLiquidType(liquid: BasePart, liquidType: string): nil
+function MapLib:SetLiquidType(liquid: BasePart, liquidType: string): ()
 	task.spawn(function()
 		local color = LIQUID_COLORS[liquidType]
 		if self.map and not color then
@@ -214,7 +217,7 @@ function MapLib:SetLiquidType(liquid: BasePart, liquidType: string): nil
 	end)
 end
 
-local function move(moveable: PVInstance, movement: Vector3, duration: number?, relative: boolean?): nil
+local function move(moveable: PVInstance, movement: Vector3, duration: number?, relative: boolean?): ()
 	if duration == 0 or duration == nil then
 		moveable:PivotTo(relative and moveable:GetPivot() * CFrame.new(movement) or moveable:GetPivot() + movement)
 		return nil
@@ -251,7 +254,7 @@ end
 	-- Moves map.MovingPart1 along the X axis 12 studs and finishes moving after 3 seconds
 	```
 ]=]
-function MapLib:Move(moveable: PVInstance, movement: Vector3, duration: number): nil
+function MapLib:Move(moveable: PVInstance, movement: Vector3, duration: number?): ()
 	task.spawn(move, moveable, movement, duration)
 end
 
@@ -265,7 +268,7 @@ end
 	--- Moves map.MovingPart2 relative to its rotation.
 	```
 ]=]
-function MapLib:MoveRelative(moveable: PVInstance, movement: Vector3, duration: number): nil
+function MapLib:MoveRelative(moveable: PVInstance, movement: Vector3, duration: number?): ()
 	task.spawn(move, moveable, movement, duration, true)
 end
 
@@ -289,7 +292,7 @@ end
 ]=]
 function MapLib:GetFeature(name: string): any
 	local m = script.Features:FindFirstChild(name)
-	local feature = m and require(m)
+	local feature = m and require(m) :: any
 	if feature then
 		if feature.context == "client" and IS_SERVER or feature.context == "server" and not IS_SERVER then
 			error(("Feature '%s' can only be used on the '%s'"):format(name, feature.context), 2)
