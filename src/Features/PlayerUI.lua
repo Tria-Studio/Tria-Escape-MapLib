@@ -38,7 +38,7 @@ end
 	@method LoadUI
 	@since 0.11
 	@client
-	@param gui ScreenGui
+	--@param gui ScreenGui
 	This function is used to load a `ScreenGui` from the map into the players PlayerGUI.
 
 	**Example:**
@@ -56,6 +56,7 @@ end
 	end
 	```
 ]=]
+
 function PlayerUI:LoadUI(gui: ScreenGui)
 	assert(gui:IsA("ScreenGui"), "':LoadUI' must be passed a 'ScreenGUI'")
 	gui:Clone().Parent = Players.LocalPlayer.PlayerGui
