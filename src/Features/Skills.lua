@@ -18,7 +18,7 @@ function Skills.new(MapLib)
 end
 
 --- This function is used to toggle the sliding function on or off.
-function Skills:ToggleSliding(value: boolean): nil
+function Skills:ToggleSliding(value: boolean): ()
 	local skills = self.map:FindFirstChild("Settings") and self.map.Settings:FindFirstChild("Skills")
 	if skills then
 		skills:SetAttribute("AllowSliding", value)
