@@ -25,17 +25,17 @@ classes = ["Janitor"]
 
 [[navbar.items]]
 href = "https://discord.gg/tria"
-html = "<img src='Discord.png' style='max-width: 30px'/>"
+html = "<img src='https://drive.google.com/uc?export=view&id=1xMbDqto9ABFT3TvyyW1Dtuy2IwlrX1w3' style='max-width: 30px'/>"
 position = "right"
 
 [[navbar.items]]
 href = "https://www.roblox.com/games/6311279644/"
-html = "<img src='TRIA.png' style='max-width: 30px'/>"
+html = "<img src='https://drive.google.com/uc?export=view&id=1olt2psI85yp4KJKj13g-3ED7Yv4Tknt9' style='max-width: 30px'/>"
 position = "right"
 
 [[navbar.items]]
 href = "https://github.com/coderheck/maplib-open-source"
-html = "<img src='GitHub.png' style='max-width: 30px'/>"
+html = "<img src='https://drive.google.com/uc?export=view&id=1i9ezAZf4VKKyX-lE4tm6PwDLxk53Otql' style='max-width: 30px'/>"
 position = "right"
 
 [footer]
