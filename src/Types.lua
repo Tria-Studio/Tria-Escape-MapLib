@@ -26,5 +26,4 @@ export type MapLib = {
 
 }
 
-
 return nil

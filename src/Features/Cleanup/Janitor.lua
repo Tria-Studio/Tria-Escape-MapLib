@@ -1,3 +1,5 @@
+--!strict
+
 -- Copyright (C) 2023 Tria
 -- This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
 -- If a copy of the MPL was not distributed with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
@@ -60,7 +62,7 @@ end
 	@return boolean
 	Returns true if the given class is a Janitor, if not it returns false.
 ]=]
-function Janitor.isJanitor(value: table?): boolean
+function Janitor.isJanitor(value: any): boolean
 	return type(value) == "table" and value.ClassName == "Janitor"
 end
 

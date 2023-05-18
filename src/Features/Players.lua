@@ -1,3 +1,5 @@
+--!strict
+
 -- Copyright (C) 2023 Tria
 -- This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
 -- If a copy of the MPL was not distributed with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
@@ -34,7 +36,7 @@ function Players:GetPlayersInRadius(position: Vector3, radius: number): { Player
 
 	for _, plr in pairs(self:GetPlayers()) do
 		if plr and plr.Character then
-			local rootPart = plr.Character:FindFirstChild("HumanoidRootPart")
+			local rootPart = plr.Character:FindFirstChild("HumanoidRootPart") :: Instance
 			if rootPart and ((rootPart.Position - position).Magnitude <= radius) then
 				table.insert(ret, plr)
 			end
