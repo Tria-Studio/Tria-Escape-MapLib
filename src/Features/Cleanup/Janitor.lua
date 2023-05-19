@@ -186,7 +186,6 @@ function Janitor:Cleanup(taskTable: {any}?)
 		elseif typeof(task) == "RBXScriptConnection" then
 			task:Disconnect()
 		elseif task.Destroy then
-			print(task)
 			task:Destroy()
 			--cancel any promises given
 		elseif getmetatable(task).prototype ~= nil then
