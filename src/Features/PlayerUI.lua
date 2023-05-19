@@ -26,6 +26,7 @@ function PlayerUI.new()
 	PlayerStates.LocalStateChanged:Connect(function(newState)
 		if newState == PlayerStates.SURVIVED or newState == PlayerStates.LOBBY then
 			for _, v in pairs(self.cleanup) do
+				print(typeof(v))
 				v:Destroy()
 			end
 			table.clear(self.cleanup)
@@ -59,11 +60,13 @@ end
 	```
 ]=]
 
-function PlayerUI:LoadUI(gui: ScreenGui)
+function PlayerUI:LoadUI(gui: ScreenGui): ()
 	assert(gui:IsA("ScreenGui"), "':LoadUI' must be passed a 'ScreenGUI'")
-	gui:Clone().Parent = Players.LocalPlayer.PlayerGui
 
-	table.insert(self.cleanup, gui)
+	local clonedUI = gui:Clone()
+	clonedUI.Parent = Players.LocalPlayer.PlayerGui
+
+	table.insert(self.cleanup, clonedUI)
 end
 
 return PlayerUI

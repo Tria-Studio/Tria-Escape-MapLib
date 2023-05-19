@@ -6,6 +6,7 @@
 
 --< Main >--
 local Skills = {}
+Skills.__index = Skills
 
 --- @class Skills
 --- This is a MapLib Feature. It can be accessed by `MapLib:GetFeature("Skills")`.
@@ -14,7 +15,7 @@ function Skills.new(MapLib)
 	local self = setmetatable({}, Skills)
 	self.map = MapLib.map
 
-	return Skills
+	return self
 end
 
 --- This function is used to toggle the sliding function on or off.

@@ -22,6 +22,9 @@ local LIQUID_COLORS = {
 }
 
 local Alert, Sound, Signal
+
+local currentMapLib
+
 if IS_SERVER then
 	Signal = require(ReplicatedStorage.Packages.Signal)
 else
@@ -68,6 +71,11 @@ function MapLib.new(map, MapHandler)
 	self.map = map
 	self.Map = map
 	self._MapHandler = MapHandler
+
+	--Prevents errors with features missing values, this has been a flaw since 0.10 just noone has noticed it
+	if map then
+		currentMapLib = self
+	end
 
 	return self
 end
@@ -290,21 +298,22 @@ end
 	@param name string
 	This method is used to get any features listed in the features list.
 ]=]
-function MapLib:GetFeature(name: string): any
-	local m = script.Features:FindFirstChild(name)
-	local feature = m and require(m) :: any
+
+local features = {}
+for _, v in next, script.Features:GetChildren() do
+	features[v.Name] = require(v)
+end
+
+function MapLib:GetFeature(featureName: string)
+	local feature = features[featureName]
 	if feature then
 		if feature.context == "client" and IS_SERVER or feature.context == "server" and not IS_SERVER then
-			error(("Feature '%s' can only be used on the '%s'"):format(name, feature.context), 2)
+			error(("Feature '%s' can only be used on the '%s'"):format(featureName, feature.context), 2)
 		end
-		if feature.new then
-			return feature.new(MapLib)
-		else
-			warn(("Using deprecated feature '%s'"):format(name))
-			return feature
-		end
+		--Ensures the feature is called with the maplib object for said map
+		return feature.new and feature.new(currentMapLib) or feature
 	else
-		error(("Cannot find feature '%s'"):format(name), 2)
+		error(("Cannot find feature '%s'"):format(featureName), 2)
 	end
 end
 

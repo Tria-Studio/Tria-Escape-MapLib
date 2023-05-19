@@ -15,14 +15,13 @@ end
 
 --< Main >--
 local Settings = { context = "client" }
-Settings.__index = Settings
 
 --- @class Settings
 --- This is a MapLib Feature. It can be accessed by `MapLib:GetFeature("Settings")`.
 
 function Settings.new()
-	local self = setmetatable({}, Settings)
-	return self
+	-- We dont need to create a new object for "basic" features
+	return Settings
 end
 
 --- This function is used to get a map setting's value.
