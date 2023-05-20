@@ -64,7 +64,7 @@ function Teleport:Teleport(player: Player, pos: CFrame | Vector3, faceFront: boo
 end
 
 if RunService:IsClient() then
-	remotes.Teleport.OnClientEvent:Connect(function(...)
+	remotes.Teleport.OnClientEvent:Connect(function(...: any)
 		teleport(...)
 	end)
 end
