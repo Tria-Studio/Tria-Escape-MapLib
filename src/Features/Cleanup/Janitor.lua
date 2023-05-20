@@ -162,10 +162,10 @@ end
 
 	Calls for the Janitor to cleanup up all the tasks it was given.
 ]=]
-function Janitor:Cleanup(taskTable: {any}?)
+function Janitor:Cleanup(taskTable: { any }?)
 	local tasks = taskTable or self._tasks
 
-	--Influenced by Quenty's destructer implementation
+	--Influenced by Quenty's destructer implementation.
 
 	for index, task in pairs(tasks) do
 		if typeof(task) == "RBXScriptConnection" then
@@ -186,6 +186,7 @@ function Janitor:Cleanup(taskTable: {any}?)
 		elseif typeof(task) == "RBXScriptConnection" then
 			task:Disconnect()
 		elseif task.Destroy then
+			--Used for Janitor to Destroy other Janitors or a part with Destroy method
 			task:Destroy()
 			--cancel any promises given
 		elseif getmetatable(task).prototype ~= nil then
@@ -203,6 +204,7 @@ end
 
 	Completely destroys Janitor and all references to it. If the Janitor has tasks then those tasks are cleaned up.
 ]=]
+
 function Janitor:Destroy()
 	self:Cleanup()
 

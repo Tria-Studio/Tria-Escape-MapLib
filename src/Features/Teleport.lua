@@ -8,14 +8,9 @@ local camera = workspace.CurrentCamera
 
 --< Main >--
 local Teleport = {}
-Teleport.__index = Teleport
 
 --- @class Teleport
 --- This is a MapLib Feature. It can be accessed by `MapLib:GetFeature("Teleport")`.
-
-function Teleport.new()
-	return setmetatable({}, Teleport)
-end
 
 --[=[
 	@within Teleport

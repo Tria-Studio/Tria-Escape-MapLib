@@ -51,8 +51,8 @@ end
 
 	**Example:**
 	```lua
-	MapLib.RoundEnding:Connect(function()
-		MapLib:Alert("The round has ended", Color3.new(0, 1, 0), 2.5)
+	MapLib.MapEnded:Connect(function()
+		MapLib:Alert("The round has ended", Color3.new(0, 255, 0), 2.5)
 	end)
 	```
 ]=]
@@ -293,18 +293,16 @@ function MapLib:GetPlayers(): { Player }
 	return PlayerStates:GetPlayersWithState(PlayerStates.GAME)
 end
 
+--[=[
+	@since 0.5.6
+	@param name string
+	This method is used to get any features listed in the features list.
+]=]
+
 local features = {}
 for _, v in next, script.Features:GetChildren() do
 	features[v.Name] = require(v)
 end
-
---[=[
-	@since 0.5.6
-	@method LoadUI
-	@within MapLib
-	@param name string
-	This method is used to get any features listed in the features list.
-]=]
 
 function MapLib:GetFeature(featureName: string)
 	local feature = features[featureName]

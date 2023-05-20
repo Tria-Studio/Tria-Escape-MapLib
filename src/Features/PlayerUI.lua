@@ -26,6 +26,7 @@ function PlayerUI.new()
 	PlayerStates.LocalStateChanged:Connect(function(newState)
 		if newState == PlayerStates.SURVIVED or newState == PlayerStates.LOBBY then
 			for _, v in pairs(self.cleanup) do
+				print(typeof(v))
 				v:Destroy()
 			end
 			table.clear(self.cleanup)
@@ -53,7 +54,7 @@ end
 
 	for _,player in pairs(PlayersFeature:GetPlayers()) do
 		if player and player.Character then
-			PlayerUI:LoadUI("ui")
+			PlayerUI:LoadUI(ui)
 		end
 	end
 	```
