@@ -1,5 +1,5 @@
 [package]
-name = "ethan76167/tria-escape-maplib"
+name = "do-not-publish/tria-escape-maplib"
 version = "0.1.5"
 registry = "https://github.com/UpliftGames/wally-index"
 realm = "shared"
