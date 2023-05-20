@@ -295,6 +295,8 @@ end
 
 --[=[
 	@since 0.5.6
+	@within MapLib
+	@method GetFeature
 	@param name string
 	This method is used to get any features listed in the features list.
 ]=]

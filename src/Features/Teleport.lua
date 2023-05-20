@@ -20,7 +20,9 @@ local Teleport = {}
 	@method Teleport
 	@since 0.11
 	@client
-	@param gui ScreenGui
+	@param player { Player? } | Player
+	@param endingPosition CFrame | Vector3
+	@param faceFront boolean
 	Add Docs later
 
 	**Example:**
