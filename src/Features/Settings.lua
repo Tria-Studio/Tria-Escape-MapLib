@@ -19,7 +19,7 @@ local Settings = { context = "client" }
 --- @class Settings
 --- This is a MapLib Feature. It can be accessed by `MapLib:GetFeature("Settings")`.
 
---- This function is used to get a map setting's value.
+--- This function is used to get a player setting's value.
 function Settings:GetSetting(settingName: string): any?
 	local settingsTable = SettingsModule:GetSettings()
 
