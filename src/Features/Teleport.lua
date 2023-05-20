@@ -14,11 +14,11 @@ local Teleport = {}
 
 --[=[
 	@within Teleport
-	@method LoadUI
+	@method Teleport
 	@since 0.11
 	@client
 	@param gui ScreenGui
-	This function is used to load a `ScreenGui` from the map into the players PlayerGUI.
+	This function is used to
 
 	**Example:**
 	```lua
