@@ -11,14 +11,9 @@ local PlayerStates = require(ReplicatedStorage.shared.PlayerStates)
 
 --< Main >--
 local Players = {}
-Players.__index = Players
 
 --- @class Players
 --- This is a MapLib Feature. It can be accessed by `MapLib:GetFeature("Players")`.
-function Players.new()
-	local self = setmetatable({}, Players)
-	return self
-end
 
 --- Used to return all players in the current round.
 function Players:GetPlayers(): { Player }

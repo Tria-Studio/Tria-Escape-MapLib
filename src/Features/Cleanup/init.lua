@@ -1,4 +1,3 @@
-
 --!strict
 
 -- Copyright (C) 2023 Tria
@@ -8,14 +7,8 @@
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local RunService = game:GetService("RunService")
-local ServerScriptService = game:GetService("ServerScriptService")
 
-local Round
 local PlayerStates = require(ReplicatedStorage.shared.PlayerStates)
-
-if RunService:IsServer() then
-	Round = require(ServerScriptService.server.Services.RoundService.Round)
-end
 
 --[=[
 	@class Cleanup
@@ -42,7 +35,7 @@ Cleanup.Janitor = require(script.Janitor) :: any
 	@return Janitor
 	This method returns a Janitor class with the given name
 ]=]
-function Cleanup:GetJanitor(janitorName: string?)
+function Cleanup:GetJanitor(janitorName: string | number)
 	if self.Janitors[janitorName] then
 		return self.Janitors[janitorName]
 	else
@@ -68,15 +61,14 @@ local function cleanup()
 end
 
 if RunService:IsClient() then
-	Players.LocalPlayer.Character.Humanoid.Died:Connect(cleanup)
+	local character = Players.LocalPlayer.Character or Players.LocalPlayer.CharacterAdded:Wait()
+	character:WaitForChild("Humanoid").Died:Connect(cleanup)
 
 	PlayerStates.LocalStateChanged:Connect(function(newState)
 		if newState == PlayerStates.SURVIVED then
 			cleanup()
 		end
 	end)
-else
-	Round.RoundEnding:Connect(cleanup)
 end
 
 return Cleanup

@@ -293,18 +293,18 @@ function MapLib:GetPlayers(): { Player }
 	return PlayerStates:GetPlayersWithState(PlayerStates.GAME)
 end
 
+--[=[
+	@since 0.5.6
+	@within MapLib
+	@method GetFeature
+	@param name string
+	This method is used to get any features listed in the features list.
+]=]
+
 local features = {}
 for _, v in next, script.Features:GetChildren() do
 	features[v.Name] = require(v)
 end
-
---[=[
-	@since 0.5.6
-	@method LoadUI
-	@within MapLib
-	@param name string
-	This method is used to get any features listed in the features list.
-]=]
 
 function MapLib:GetFeature(featureName: string)
 	local feature = features[featureName]
