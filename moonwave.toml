@@ -8,7 +8,7 @@ includeReadme = true
 
 [docusaurus]
 favicon = "https://coderheck.github.io/assets/TRIAosLogoGradient.png"
-scripts = [{src = "Main.js", async = false}]
+scripts = [{src = "Scripting.js", async = false}]
 
 [[classOrder]]
 section = "MapLib"
