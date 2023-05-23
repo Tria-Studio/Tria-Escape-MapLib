@@ -14,6 +14,19 @@ In [conditional statements](https://create.roblox.com/docs/scripting/luau/contro
 
 ## Strings
 
-String is a data type used to store text data, such as letters, numbers and symbols.
-To declare a string, type out anything you want and then wrap that thing in double quotes (`"`) or single quotes (`'`).
-
+String is a data type used to store text data, such as letters, numbers and symbols.<br></br>
+To declare a string, type out anything you want and then wrap that thing in double quotes (`"`) or single quotes (`'`).<br></br>
+Example:<br></br>
+```lua
+message = "Hello world!"
+```
+Combining (or concatenating) strings is quite simple, add two periods (`..`) between those strings. Concatenating strings won't insert a space between them so you'll have to put one yourself at the end of the first string and beginning of the next string or concatenate a space (` `) between the strings<br></br>Example:<br></br>
+```lua
+message1 = "Hello"
+message2 = "world!"
+message2WithSpaceAtTheBeginning = " world!"
+print(message1 .. " " .. message2) -- Hello world!
+print(message1 .. message2WithSpaceAtTheBeginning) -- Hello world!
+print(message1 .. message2) -- Helloworld! (this is not a typo)
+```
+<br></br>
