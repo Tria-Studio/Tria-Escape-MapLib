@@ -16,11 +16,12 @@ In [conditional statements](https://create.roblox.com/docs/scripting/luau/contro
 
 String is a data type used to store text data, such as letters, numbers and symbols.<br></br>
 To declare a string, type out anything you want and then wrap that thing in double quotes (`"`) or single quotes (`'`).<br></br>
-Example:<br></br>
+`Example:`<br></br>
 ```lua
 message = "Hello world!"
 ```
-Combining (or concatenating) strings is quite simple, add two periods (`..`) between those strings. Concatenating strings won't insert a space between them so you'll have to put one yourself at the end of the first string and beginning of the next string or concatenate a space (` `) between the strings<br></br>Example:<br></br>
+Combining (or concatenating) strings is quite simple, add two periods (`..`) between those strings. Concatenating strings won't insert a space between them so you'll have to put one yourself at the end of the first string and beginning of the next string or concatenate a space (`" "`) between the strings.<br></br>
+`Example:`<br></br>
 ```lua
 message1 = "Hello"
 message2 = "world!"
@@ -29,4 +30,14 @@ print(message1 .. " " .. message2) -- Hello world!
 print(message1 .. message2WithSpaceAtTheBeginning) -- Hello world!
 print(message1 .. message2) -- Helloworld! (this is not a typo)
 ```
-<br></br>
+
+## Tables
+
+Tables are used to store multiple types of data that isn't `nil` (which is nothing) such as booleans, numbers, strings, functions,...<br></br>
+You can declare a table by curly braces (`{}`).
+`Example:`<br></br>
+```lua
+table1 = {} -- creates an empty table
+print(table1) -- {}
+```
+Tables can be used as arrays or dictionaries. Arrays use numbered lists for indexing data; dictionaries can have numbers, strings, objects as indices.
