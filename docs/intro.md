@@ -15,4 +15,5 @@ In [conditional statements](https://create.roblox.com/docs/scripting/luau/contro
 ## Strings
 
 String is a data type used to store text data, such as letters, numbers and symbols.
+To declare a string, type out anything you want and then wrap that thing in double quotes (`"`) or single quotes (`'`).
 
