@@ -1,7 +1,6 @@
 {
   "name": "Tria-Escape-MapLib",
   "tree": {
-    "$className": "ModuleScript",
     "$path": "src"
   }
 }

@@ -1,3 +1,5 @@
+--!strict
+
 -- Copyright (C) 2023 Tria
 -- This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
 -- If a copy of the MPL was not distributed with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
@@ -13,13 +15,9 @@ local PlayerUI = { context = "client" }
 PlayerUI.__index = PlayerUI
 
 --- @class PlayerUI
---- Description goes here
+--- This is a MapLib Feature. It can be accessed by `MapLib:GetFeature("PlayerUI")`.
 --- @client
 
---- @prop cleanup {ScreenGUI}
---- @readonly
---- @private
---- @within PlayerUI
 function PlayerUI.new()
 	local self = setmetatable({}, PlayerUI)
 
@@ -28,6 +26,7 @@ function PlayerUI.new()
 	PlayerStates.LocalStateChanged:Connect(function(newState)
 		if newState == PlayerStates.SURVIVED or newState == PlayerStates.LOBBY then
 			for _, v in pairs(self.cleanup) do
+				print(typeof(v))
 				v:Destroy()
 			end
 			table.clear(self.cleanup)
@@ -37,13 +36,37 @@ function PlayerUI.new()
 	return self
 end
 
---- Description
-function PlayerUI:LoadUI(gui: ScreenGui): ScreenGui
+--[=[
+	@within PlayerUI
+	@method LoadUI
+	@since 0.11
+	@client
+	--@param gui ScreenGui
+	This function is used to load a `ScreenGui` from the map into the players PlayerGUI.
+
+	**Example:**
+	```lua
+	-- Loads an UI for everyone in the round
+	local PlayersFeature = Maplib:GetFeature("Players")
+	local PlayerUI = MapLib:GetFeature("PlayerUI")
+
+	local ui = map:WaitForChild("MyGUI")
+
+	for _,player in pairs(PlayersFeature:GetPlayers()) do
+		if player and player.Character then
+			PlayerUI:LoadUI(ui)
+		end
+	end
+	```
+]=]
+
+function PlayerUI:LoadUI(gui: ScreenGui): ()
 	assert(gui:IsA("ScreenGui"), "':LoadUI' must be passed a 'ScreenGUI'")
 
-	gui.Parent = Players.LocalPlayer.PlayerGui
-	table.insert(self.cleanup, gui)
-	return gui
+	local clonedUI = gui:Clone()
+	clonedUI.Parent = Players.LocalPlayer.PlayerGui
+
+	table.insert(self.cleanup, clonedUI)
 end
 
 return PlayerUI
