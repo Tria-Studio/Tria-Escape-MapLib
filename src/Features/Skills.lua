@@ -1,25 +1,21 @@
---!strict
-
--- Copyright (C) 2023 Tria
+-- Copyright (C) 2023 Tria 
 -- This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
 -- If a copy of the MPL was not distributed with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 --< Main >--
 local Skills = {}
-Skills.__index = Skills
 
 --- @class Skills
---- This is a MapLib Feature. It can be accessed by `MapLib:GetFeature("Skills")`.
-
+--- HI PEOPLES ITS ME ETHAN
 function Skills.new(MapLib)
 	local self = setmetatable({}, Skills)
 	self.map = MapLib.map
 
-	return self
+	return Skills
 end
 
---- This function is used to toggle the sliding function on or off.
-function Skills:ToggleSliding(value: boolean): ()
+--- Description
+function Skills:ToggleSlidin(value: boolean): nil
 	local skills = self.map:FindFirstChild("Settings") and self.map.Settings:FindFirstChild("Skills")
 	if skills then
 		skills:SetAttribute("AllowSliding", value)
