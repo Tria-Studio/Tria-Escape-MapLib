@@ -8,7 +8,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local RunService = game:GetService("RunService")
 
 local camera = workspace.CurrentCamera
-local remotes = ReplicatedStorage.Remotes.Misc
+local remotes = ReplicatedStorage.Remotes.Features
 
 local Teleport = {}
 
