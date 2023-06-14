@@ -22,65 +22,49 @@ local remote = ReplicatedStorage.Remotes.Features.ChangeLighting
 function LightingFeature.new(MapLib)
 	local self = setmetatable({}, LightingFeature)
 	self.map = MapLib.map
+	self.cache = {}
+
+	for _, v in pairs(Lighting:GetChildren()) do
+		self.cache[v.Name] = v
+	end
 
 	return self
 end
 
 --- This function is used to toggle the sliding function on or off.
-function LightingFeature:ChangeLighting(values: { [string]: any }): ()
+function LightingFeature:SetLighting(properties: { [string]: any }, postEffects: { [string]: { [string]: any } })
 	if RunService:IsClient() then
-		for property, value in pairs(values) do
+		for property, value in pairs(properties) do
 			Lighting[property] = value
 		end
+
+		if postEffects then
+			--Update for client
+			for name, v in pairs(postEffects) do
+				for prop, value in pairs(v) do
+					local instance = self.cache[name]
+
+					if instance then
+						instance[prop] = value
+					end
+				end
+			end
+		end
+		remote:FireServer({
+			Values = properties,
+			Effects = postEffects,
+		})
 	end
 end
 
 if RunService:IsServer() then
-	remote.OnServerEvent:Connect(function(playercalled: Player, values: { [string]: any }): ()
-		if typeof(values) == "table" and next(values) ~= nil then
-			for _, v in pairs(Players:GetPlayers()) do
-				if not v == playercalled then
-					remote:FireClient(v, playercalled, values)
-				end
+	remote.OnServerEvent:Connect(function(player: Player, values: { [string]: any }): ()
+		for _, v in pairs(Players:GetPlayers()) do
+			if v ~= player then
+				remote:FireClient(v, player, values)
 			end
 		end
 	end)
 end
 
 return LightingFeature
-
---[[
-
-Player1 [playing]
-Player2 [spectator]
-
-On lighting change (in proper practice shouldnt be called too exccuesively)
-update lighting for Player1
-fire a remote to the server which fires all clients except Player1 with 2 data values
-since we are going from client-server-client ensure proper sanity checks
-
----Name of Player spectating
----Tables of new lighting values
-
-when the client receives data, store in a table inside the (LIGHTING SCRIPT)
-
-when we need to request the lighting values
-check if lightingcache has a value
-
-if
-lightingcache[name] then return lightingcache[name]
-else
-assume this map doesnt use changelighting and continue as normal by getting the lighting values
-
-mapending / wipeout the lightingcache table
-
-remoteusage connections from server/client should be here to promote isolation from the main game scripts.
-
-
-Pros:
-Promotes isolation since everything can be done here without needing major edits to core scripts
-1 "Remote call pattern" per lighting change, orginal used InvokeServer requesting lighting changes
-Since this method requires going through the server we can safely enable for the function to be used on the server and it will work the same by changing the clients lighting
-Gives something people have wanted for years now
-
--]]
