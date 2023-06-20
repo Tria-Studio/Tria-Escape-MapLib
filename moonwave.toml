@@ -15,7 +15,7 @@ classes = ["MapLib"]
 
 [[classOrder]]
 section = "Features"
-classes = ["Skills", "PlayerUI", "Settings", "Players", "Cleanup", "Teleport"]
+classes = ["Skills", "PlayerUI", "Settings", "Players", "Cleanup", "Teleport", "Lighting"]
 
 [[classOrder]]
 section = "Miscellaneous"

@@ -40,14 +40,14 @@ end
 	@readonly
 	@within MapLib
 	@prop map Model
-	This is the map reference.
+	This is the map model.
 ]=]
 
 --[=[
 	@since 0.7
 	@within MapLib
 	@prop RoundEnding RBXScriptSignal
-	This `RBXScriptSignal` is fired when a map ends.
+	A `RBXScriptSignal` that is fired when a map ends.
 
 	**Example:**
 	```lua

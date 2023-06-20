@@ -17,7 +17,7 @@ LightingFeature.__index = LightingFeature
 local remote = ReplicatedStorage.Remotes.Features.ChangeLighting
 
 --- @class Lighting
---- This is a MapLib Feature. It can be accessed by `MapLib:GetFeature("LightingFeature")`.
+--- This is a MapLib Feature. It can be accessed by `MapLib:GetFeature("Lighting")`.
 
 function LightingFeature.new(MapLib)
 	local self = setmetatable({}, LightingFeature)
@@ -31,7 +31,74 @@ function LightingFeature.new(MapLib)
 	return self
 end
 
---- This function is used to toggle the sliding function on or off.
+--[=[
+	@within Lighting
+	@method SetLighting
+	@since 0.11
+	@param properties { [string]: any }
+	@param postEffects { [string]: { [string]: any } }
+
+	This function can to be used to change the lighting of a map mid round. We discourage usage of changing lighting
+	with `game.Lighting[Property] = value` cause it doesnt replicate for spectators.
+
+	**Example:**
+	```lua
+	-- Changes the fog to 100 and the fog color to white
+	local LightingFeature = Maplib:GetFeature("Lighting")
+
+	LightingFeature:SetLighting({
+		FogEnd = 100,
+		FogColor = Color3.fromRGB(255, 255, 255)
+	})
+	```
+
+	:::info
+	 This function also supports lighting effects to be updated and they will be replicated to specators.
+	```lua
+	-- Changes the fog to 100 and the fog color to white and makes everything monochrome.
+	local LightingFeature = Maplib:GetFeature("Lighting")
+
+	LightingFeature:SetLighting({
+		FogEnd = 100,
+		FogColor = Color3.fromRGB(255, 255, 255)
+	}, {
+		ColorCorrection = {
+			Saturation = -1,
+		},
+	})
+	```
+
+	:::
+	:::caution
+	For the game to be able to edit post effects they have to be correctly placed inside the lighting folder inside settings.
+	If they are created in a script the game will not see these and refuse to update the lighting properties.
+	:::
+
+	:::tip
+	Since atmosphere instances don't have any enabled or disabled property we can get around that by parenting the instance to ReplicatedStorage
+	and then we can parent it back to lighting when we need it.
+
+	```lua
+	local LightingFeature = Maplib:GetFeature("Lighting")
+
+	--Disables the atmosphere effect
+	LightingFeature:SetLighting({}, {
+		Atmosphere = {
+			Parent = game.ReplicateStorage,
+		},
+	})
+
+	task.wait(5)
+	--Enables the atmosphere effect
+	LightingFeature:SetLighting({}, {
+		Atmosphere = {
+			Parent = game.Lighting,
+		},
+	})
+	```
+	:::
+]=]
+
 function LightingFeature:SetLighting(properties: { [string]: any }, postEffects: { [string]: { [string]: any } })
 	if RunService:IsClient() then
 		for property, value in pairs(properties) do
@@ -66,5 +133,6 @@ if RunService:IsServer() then
 		end
 	end)
 end
+
 
 return LightingFeature

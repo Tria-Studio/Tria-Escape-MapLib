@@ -23,10 +23,17 @@ local Teleport = {}
 	@param player { Player? } | Player
 	@param endingPosition CFrame | Vector3
 	@param faceFront boolean
-	Add Docs later
+	This function can be used to teleport players.
 
 	**Example:**
 	```lua
+	--Teleports all players ingame to map.Destination and makes the camera face the front.
+	local PlayersFeature = Maplib:GetFeature("Players")
+	local TeleportFeature = Maplib:GetFeature("Teleport")
+
+	for _, player in pairs(PlayersFeature:GetPlayers()) do
+		TeleportFeature:Teleport(player, map.Destination.Position, true)
+	end
 	```
 ]=]
 

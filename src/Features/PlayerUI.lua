@@ -40,8 +40,8 @@ end
 	@method LoadUI
 	@since 0.11
 	@client
-	--@param gui ScreenGui
-	This function is used to load a `ScreenGui` from the map into the players PlayerGUI.
+	@param gui ScreenGui
+	This function can be used to load a `ScreenGui` from the map into the players PlayerGUI.
 
 	**Example:**
 	```lua
@@ -51,7 +51,7 @@ end
 
 	local ui = map:WaitForChild("MyGUI")
 
-	for _,player in pairs(PlayersFeature:GetPlayers()) do
+	for _, player in pairs(PlayersFeature:GetPlayers()) do
 		if player and player.Character then
 			PlayerUI:LoadUI(ui)
 		end

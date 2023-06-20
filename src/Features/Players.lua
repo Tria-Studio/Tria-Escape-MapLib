@@ -15,15 +15,49 @@ local Players = {}
 --- @class Players
 --- This is a MapLib Feature. It can be accessed by `MapLib:GetFeature("Players")`.
 
---- Used to return all players in the current round.
+--[=[
+	@within Players
+	@method GetPlayers
+	@return {Player?}
+
+	This function can be used to get all players in the current round.
+
+	**Example:**
+	```lua
+	--Teleports all players ingame to map.Destination.
+	local PlayersFeature = Maplib:GetFeature("Players")
+	local TeleportFeature = Maplib:GetFeature("Teleport")
+
+	for _, player in pairs(PlayersFeature:GetPlayers()) do
+		TeleportFeature:Teleport(player, map.Destination.Position)
+	end
+	```	
+]=]
+
 function Players:GetPlayers(): { Player }
 	return PlayerStates:GetPlayersWithState(PlayerStates.GAME)
 end
 
 --[=[
-	@since 0.11
 	@within Players
-	This method is used to return players in the radius of the given position.
+	@method GetPlayersInRadius
+	@since 0.11
+	@param position Vector3
+	@param radius number
+	@return {Player?}
+
+	This function can be used to get all the players which are in a radius from a position.
+
+	**Example:**
+	```lua
+	--Teleports all players that are within 5 studs from map.Spawn.
+	local PlayersFeature = Maplib:GetFeature("Players")
+	local TeleportFeature = Maplib:GetFeature("Teleport")
+
+	for _, player in pairs(PlayersFeature:GetPlayersInRadius(map.Spawn.Position, 5)) do
+		TeleportFeature:Teleport(player, map.Destination.Position)
+	end
+	```	
 ]=]
 
 function Players:GetPlayersInRadius(position: Vector3, radius: number): { Player }

@@ -18,12 +18,53 @@ function Skills.new(MapLib)
 	return self
 end
 
---- This function is used to toggle the sliding function on or off.
+--[=[
+	@within Skills
+	@method ToggleSliding
+	@since 0.11
+	@param value boolean
+
+	This function can be used for toggling sliding on or off during a map.
+
+	**Example:**
+	```lua
+	local SkillsFeature = Maplib:GetFeature("Skills")
+
+	SkillsFeature:ToggleSliding(false)
+	task.wait(5)
+	SkillsFeature:ToggleSliding(true)
+	```	
+]=]
 function Skills:ToggleSliding(value: boolean): ()
 	local skills = self.map:FindFirstChild("Settings") and self.map.Settings:FindFirstChild("Skills")
 	if skills then
 		skills:SetAttribute("AllowSliding", value)
 	end
 end
+
+--[=[
+	@within Skills
+	@method ToggleAirDive
+	@since 0.11
+	@param value boolean
+
+	This function can be used for toggling airdive on or off during a map.
+
+	**Example:**
+	```lua
+	local SkillsFeature = Maplib:GetFeature("Skills")
+
+	SkillsFeature:ToggleAirDive(false)
+	task.wait(5)
+	SkillsFeature:ToggleAirDive(true)
+	```	
+]=]
+function Skills:ToggleAirDive(value: boolean): ()
+	local skills = self.map:FindFirstChild("Settings") and self.map.Settings:FindFirstChild("Skills")
+	if skills then
+		skills:SetAttribute("AllowAirDive", value)
+	end
+end
+
 
 return Skills

@@ -18,8 +18,30 @@ local Settings = { context = "client" }
 
 --- @class Settings
 --- This is a MapLib Feature. It can be accessed by `MapLib:GetFeature("Settings")`.
+--- @client
 
---- This function is used to get a player setting's value.
+--[=[
+	@within Settings
+	@method GetSetting
+	@client
+	
+	@param gui string
+	@return any?
+	This function can be used to get the value of a setting.
+
+	**Example:**
+	```lua
+	-- Changes the camera FOV to an arbitrary number and then sets it back to the saved settings value.
+	local SettingsFeature = Maplib:GetFeature("Settings")
+
+	local camera = workspace.CurrentCamera
+
+	camera.FieldOFView = 120
+	task.wait(3)
+	camera.FieldOFView = SettingsFeature:GetSetting("Field Of View")
+	```
+]=]
+
 function Settings:GetSetting(settingName: string): any?
 	local settingsTable = SettingsModule:GetSettings()
 
