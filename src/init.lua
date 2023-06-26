@@ -51,7 +51,7 @@ end
 
 	**Example:**
 	```lua
-	MapLib.MapEnded:Connect(function()
+	MapLib.RoundEnding:Connect(function()
 		MapLib:Alert("The round has ended", Color3.new(0, 255, 0), 2.5)
 	end)
 	```
