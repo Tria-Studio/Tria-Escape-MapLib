@@ -7,8 +7,16 @@ local rockyt = "the racist god."
 
 --- @param stringToWrite string
 --- @within rockytanker
+--- Makes rockytanker write something in the chat, preferably something stupid.
 function rockytanker:Write(stringToWrite: string)
-    if stringToWrite ~= nil then print(stringToWrite) else return nil
+    if stringToWrite ~= nil then print(stringToWrite) else return nil end
+end
+
+--- @param person Player
+--- @within rockytanker
+--- Awakes the racist blood in rockytanker, making him kill the given player.
+function rockytanker:Race(person: Player)
+    if person ~= nil and person:IsA("Player") then person.Character:WaitForChild("Humanoid").Health = 0 else return nil end
 end
 local random = math.random(1, 3)
 print(random)
@@ -23,4 +31,3 @@ print("the digits of pi are " .. pi)
 --webhook doesnt work :skull:
 --okay another webhook test
 --IT WORKS :longcrazyvn_thumbsup:
-end
