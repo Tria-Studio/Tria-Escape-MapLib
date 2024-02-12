@@ -25,8 +25,8 @@ local Players = {}
 	**Example:**
 	```lua
 	--Teleports all players ingame to map.Destination.
-	local PlayersFeature = Maplib:GetFeature("Players")
-	local TeleportFeature = Maplib:GetFeature("Teleport")
+	local PlayersFeature = MapLib:GetFeature("Players")
+	local TeleportFeature = MapLib:GetFeature("Teleport")
 
 	for _, player in pairs(PlayersFeature:GetPlayers()) do
 		TeleportFeature:Teleport(player, map.Destination.Position)
@@ -51,8 +51,8 @@ end
 	**Example:**
 	```lua
 	--Teleports all players that are within 5 studs from map.Spawn.
-	local PlayersFeature = Maplib:GetFeature("Players")
-	local TeleportFeature = Maplib:GetFeature("Teleport")
+	local PlayersFeature = MapLib:GetFeature("Players")
+	local TeleportFeature = MapLib:GetFeature("Teleport")
 
 	for _, player in pairs(PlayersFeature:GetPlayersInRadius(map.Spawn.Position, 5)) do
 		TeleportFeature:Teleport(player, map.Destination.Position)

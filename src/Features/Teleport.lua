@@ -28,8 +28,8 @@ local Teleport = {}
 	**Example:**
 	```lua
 	--Teleports all players ingame to map.Destination and makes the camera face the front.
-	local PlayersFeature = Maplib:GetFeature("Players")
-	local TeleportFeature = Maplib:GetFeature("Teleport")
+	local PlayersFeature = MapLib:GetFeature("Players")
+	local TeleportFeature = MapLib:GetFeature("Teleport")
 
 	for _, player in pairs(PlayersFeature:GetPlayers()) do
 		TeleportFeature:Teleport(player, map.Destination.Position, true)

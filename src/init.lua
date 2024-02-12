@@ -312,7 +312,7 @@ function MapLib:GetFeature(featureName: string)
 		if feature.context == "client" and IS_SERVER or feature.context == "server" and not IS_SERVER then
 			error(("Feature '%s' can only be used on the '%s'"):format(featureName, feature.context), 2)
 		end
-		--Ensures the feature is called with the maplib object for said map
+		--Ensures the feature is called with the MapLib object for said map
 		return feature.new and feature.new(currentMapLib) or feature
 	else
 		error(("Cannot find feature '%s'"):format(featureName), 2)
