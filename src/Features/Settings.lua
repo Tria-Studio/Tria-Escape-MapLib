@@ -32,7 +32,7 @@ local Settings = { context = "client" }
 	**Example:**
 	```lua
 	-- Changes the camera FOV to an arbitrary number and then sets it back to the saved settings value.
-	local SettingsFeature = Maplib:GetFeature("Settings")
+	local SettingsFeature = MapLib:GetFeature("Settings")
 
 	local camera = workspace.CurrentCamera
 

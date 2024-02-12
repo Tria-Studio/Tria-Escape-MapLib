@@ -44,7 +44,7 @@ end
 	**Example:**
 	```lua
 	-- Changes the fog to 100 and the fog color to white
-	local LightingFeature = Maplib:GetFeature("Lighting")
+	local LightingFeature = MapLib:GetFeature("Lighting")
 
 	LightingFeature:SetLighting({
 		FogEnd = 100,
@@ -56,7 +56,7 @@ end
 	 This function also supports lighting effects to be updated and they will be replicated to specators.
 	```lua
 	-- Changes the fog to 100 and the fog color to white and makes everything monochrome.
-	local LightingFeature = Maplib:GetFeature("Lighting")
+	local LightingFeature = MapLib:GetFeature("Lighting")
 
 	LightingFeature:SetLighting({
 		FogEnd = 100,
@@ -79,7 +79,7 @@ end
 	and then we can parent it back to lighting when we need it.
 
 	```lua
-	local LightingFeature = Maplib:GetFeature("Lighting")
+	local LightingFeature = MapLib:GetFeature("Lighting")
 
 	--Disables the atmosphere effect
 	LightingFeature:SetLighting({}, {
