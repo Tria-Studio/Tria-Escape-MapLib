@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v2.3.1">
 <title data-rh="true">MapLib | TRIA.os MapLib Documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://Tria-Studio.github.io/Tria-Escape-MapLib/api/MapLib"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docusaurus_tag" content="default"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docsearch:docusaurus_tag" content="default"><meta data-rh="true" property="og:title" content="MapLib | TRIA.os MapLib Documentation"><meta data-rh="true" name="description" content="This page contains all the common and beginner scripting methods with appropriate examples when necessary."><meta data-rh="true" property="og:description" content="This page contains all the common and beginner scripting methods with appropriate examples when necessary."><link data-rh="true" rel="icon" href="https://coderheck.github.io/assets/TRIAosLogoGradient.png"><link data-rh="true" rel="canonical" href="https://Tria-Studio.github.io/Tria-Escape-MapLib/api/MapLib"><link data-rh="true" rel="alternate" href="https://Tria-Studio.github.io/Tria-Escape-MapLib/api/MapLib" hreflang="en"><link data-rh="true" rel="alternate" href="https://Tria-Studio.github.io/Tria-Escape-MapLib/api/MapLib" hreflang="x-default"><link rel="stylesheet" href="/Tria-Escape-MapLib/assets/css/styles.47784790.css">
-<link rel="preload" href="/Tria-Escape-MapLib/assets/js/runtime~main.459110ac.js" as="script">
-<link rel="preload" href="/Tria-Escape-MapLib/assets/js/main.9c27730a.js" as="script">
+<link rel="preload" href="/Tria-Escape-MapLib/assets/js/runtime~main.fc00fbb4.js" as="script">
+<link rel="preload" href="/Tria-Escape-MapLib/assets/js/main.00767aee.js" as="script">
 </head>
 <body class="navigation-with-keyboard">
 <script>!function(){function e(e){document.documentElement.setAttribute("data-theme",e)}var t=function(){var e=null;try{e=localStorage.getItem("theme")}catch(e){}return e}();null!==t?e(t):window.matchMedia("(prefers-color-scheme: dark)").matches?e("dark"):(window.matchMedia("(prefers-color-scheme: light)").matches,e("light"))}()</script><div id="__docusaurus">
@@ -16,7 +16,7 @@
 </div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="RoundEnding"><code style="text-decoration:none">RoundEnding</code><a href="#RoundEnding" class="hash-link" aria-label="Direct link to RoundEnding" title="Direct link to RoundEnding">​</a></h3><div class="repositoryDetailsContainer_BPdw"><span class="releaseVersion_EonW">since <!-- -->0.7</span><a class="sourceButton_sEho" href="https://github.com/Tria-Studio/Tria-Escape-MapLib/blob/master/src/init.lua#L59"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>MapLib<!-- -->.<!-- -->RoundEnding<!-- -->:<!-- --> </code> <code class="blue_P4bS"><a style="text-decoration:underline;color:inherit" href="https://developer.roblox.com/en-us/api-reference/datatype/RBXScriptSignal" target="_blank" rel="noopener noreferrer">RBXScriptSignal<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound" style="color:gray;vertical-align:middle;margin-left:2px"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></code></div><div>
 <p>A <code>RBXScriptSignal</code> that is fired when a map ends.</p>
 <p><strong>Example:</strong></p>
-<pre class="language-lua"><code class="language-lua">MapLib<span class="token punctuation">.</span>MapEnded<span class="token punctuation">:</span><span class="token function">Connect</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<pre class="language-lua"><code class="language-lua">MapLib<span class="token punctuation">.</span>RoundEnding<span class="token punctuation">:</span><span class="token function">Connect</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 	MapLib<span class="token punctuation">:</span><span class="token function">Alert</span><span class="token punctuation">(</span><span class="token string">"The round has ended"</span><span class="token punctuation">,</span> Color3<span class="token punctuation">.</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">255</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">2.5</span><span class="token punctuation">)</span>
 <span class="token keyword">end</span><span class="token punctuation">)</span>
 </code></pre>
@@ -199,7 +199,7 @@ script<span class="token punctuation">.</span>Parent<span class="token punctuati
             &quot;returns&quot;: [
                 {
                     &quot;desc&quot;: &quot;&quot;,
-                    &quot;lua_type&quot;: &quot;any\r\n&quot;
+                    &quot;lua_type&quot;: &quot;any\n&quot;
                 }
             ],
             &quot;function_type&quot;: &quot;method&quot;,
@@ -319,7 +319,7 @@ script<span class="token punctuation">.</span>Parent<span class="token punctuati
             &quot;returns&quot;: [
                 {
                     &quot;desc&quot;: &quot;&quot;,
-                    &quot;lua_type&quot;: &quot;{ Player }\r\n&quot;
+                    &quot;lua_type&quot;: &quot;{ Player }\n&quot;
                 }
             ],
             &quot;function_type&quot;: &quot;method&quot;,
@@ -362,7 +362,7 @@ script<span class="token punctuation">.</span>Parent<span class="token punctuati
         },
         {
             &quot;name&quot;: &quot;RoundEnding&quot;,
-            &quot;desc&quot;: &quot;A `RBXScriptSignal` that is fired when a map ends.\n\n**Example:**\n```lua\nMapLib.MapEnded:Connect(function()\n\tMapLib:Alert(\&quot;The round has ended\&quot;, Color3.new(0, 255, 0), 2.5)\nend)\n```&quot;,
+            &quot;desc&quot;: &quot;A `RBXScriptSignal` that is fired when a map ends.\n\n**Example:**\n```lua\nMapLib.RoundEnding:Connect(function()\n\tMapLib:Alert(\&quot;The round has ended\&quot;, Color3.new(0, 255, 0), 2.5)\nend)\n```&quot;,
             &quot;lua_type&quot;: &quot;RBXScriptSignal&quot;,
             &quot;since&quot;: &quot;0.7&quot;,
             &quot;source&quot;: {
@@ -390,7 +390,7 @@ script<span class="token punctuation">.</span>Parent<span class="token punctuati
         &quot;path&quot;: &quot;src/init.lua&quot;
     }
 }</pre></details></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a><ul><li><a href="#map" class="table-of-contents__link toc-highlight">map</a></li><li><a href="#RoundEnding" class="table-of-contents__link toc-highlight">RoundEnding</a></li></ul></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#Alert" class="table-of-contents__link toc-highlight">:Alert</a></li><li><a href="#ChangeMusic" class="table-of-contents__link toc-highlight">:ChangeMusic</a></li><li><a href="#GetButtonEvent" class="table-of-contents__link toc-highlight">:GetButtonEvent</a></li><li><a href="#GetFeature" class="table-of-contents__link toc-highlight">:GetFeature</a></li><li><a href="#GetPlayers" class="table-of-contents__link toc-highlight">:GetPlayers</a></li><li><a href="#Move" class="table-of-contents__link toc-highlight">:Move</a></li><li><a href="#MoveRelative" class="table-of-contents__link toc-highlight">:MoveRelative</a></li><li><a href="#SetLiquidType" class="table-of-contents__link toc-highlight">:SetLiquidType</a></li><li><a href="#Survive" class="table-of-contents__link toc-highlight">:Survive</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2019 - 2023 TRIA.os. Built with Moonwave and Docusaurus</div></div></div></footer></div>
-<script src="/Tria-Escape-MapLib/assets/js/runtime~main.459110ac.js"></script>
-<script src="/Tria-Escape-MapLib/assets/js/main.9c27730a.js"></script>
+<script src="/Tria-Escape-MapLib/assets/js/runtime~main.fc00fbb4.js"></script>
+<script src="/Tria-Escape-MapLib/assets/js/main.00767aee.js"></script>
 </body>
 </html>
