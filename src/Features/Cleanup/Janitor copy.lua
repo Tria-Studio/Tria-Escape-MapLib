@@ -91,7 +91,6 @@ end
 	This method is used to give Janitor tasks to cleanup, these tasks can be anything, some examples include, functions, threads, coroutines or anything with a .Destroy function.
 	:::tip
 	Janitor allows for tables to be given in as an argument. If Janitor detects a table it will loop through the table and add anything it finds will be added to the tasks table.
-	`https://cdn.discordapp.com/attachments/894795381504872459/1213302243063894016/image.png?ex=65f4fac4&is=65e285c4&hm=eac44b0e04f061f0056c8cd43d9611be5ac6bdd6ba627c06dbd42662e219113e&`
 
 	```lua
 	local janitor = MapLib:GetFeature("Cleanup").Janitor.new() -- Constructs new Janitor
