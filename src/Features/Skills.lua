@@ -28,7 +28,7 @@ end
 
 	**Example:**
 	```lua
-	local SkillsFeature = Maplib:GetFeature("Skills")
+	local SkillsFeature = MapLib:GetFeature("Skills")
 
 	SkillsFeature:ToggleSliding(false)
 	task.wait(5)
@@ -52,7 +52,7 @@ end
 
 	**Example:**
 	```lua
-	local SkillsFeature = Maplib:GetFeature("Skills")
+	local SkillsFeature = MapLib:GetFeature("Skills")
 
 	SkillsFeature:ToggleAirDive(false)
 	task.wait(5)

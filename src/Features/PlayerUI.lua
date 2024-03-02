@@ -46,7 +46,7 @@ end
 	**Example:**
 	```lua
 	-- Loads an UI for everyone in the round
-	local PlayersFeature = Maplib:GetFeature("Players")
+	local PlayersFeature = MapLib:GetFeature("Players")
 	local PlayerUI = MapLib:GetFeature("PlayerUI")
 
 	local ui = map:WaitForChild("MyGUI")
