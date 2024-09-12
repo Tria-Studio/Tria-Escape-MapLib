@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v2.3.1">
 <title data-rh="true">PlayerUI | TRIA.os MapLib Documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://Tria-Studio.github.io/Tria-Escape-MapLib/api/PlayerUI"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docusaurus_tag" content="default"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docsearch:docusaurus_tag" content="default"><meta data-rh="true" property="og:title" content="PlayerUI | TRIA.os MapLib Documentation"><meta data-rh="true" name="description" content="This is a MapLib Feature. It can be accessed by `MapLib:GetFeature(&quot;PlayerUI&quot;)`."><meta data-rh="true" property="og:description" content="This is a MapLib Feature. It can be accessed by `MapLib:GetFeature(&quot;PlayerUI&quot;)`."><link data-rh="true" rel="icon" href="https://coderheck.github.io/assets/TRIAosLogoGradient.png"><link data-rh="true" rel="canonical" href="https://Tria-Studio.github.io/Tria-Escape-MapLib/api/PlayerUI"><link data-rh="true" rel="alternate" href="https://Tria-Studio.github.io/Tria-Escape-MapLib/api/PlayerUI" hreflang="en"><link data-rh="true" rel="alternate" href="https://Tria-Studio.github.io/Tria-Escape-MapLib/api/PlayerUI" hreflang="x-default"><link rel="stylesheet" href="/Tria-Escape-MapLib/assets/css/styles.47784790.css">
-<link rel="preload" href="/Tria-Escape-MapLib/assets/js/runtime~main.fc00fbb4.js" as="script">
-<link rel="preload" href="/Tria-Escape-MapLib/assets/js/main.00767aee.js" as="script">
+<link rel="preload" href="/Tria-Escape-MapLib/assets/js/runtime~main.550951cb.js" as="script">
+<link rel="preload" href="/Tria-Escape-MapLib/assets/js/main.65224c10.js" as="script">
 </head>
 <body class="navigation-with-keyboard">
 <script>!function(){function e(e){document.documentElement.setAttribute("data-theme",e)}var t=function(){var e=null;try{e=localStorage.getItem("theme")}catch(e){}return e}();null!==t?e(t):window.matchMedia("(prefers-color-scheme: dark)").matches?e("dark"):(window.matchMedia("(prefers-color-scheme: light)").matches,e("light"))}()</script><div id="__docusaurus">
@@ -15,7 +15,7 @@
 <p>This function can be used to load a <code>ScreenGui</code> from the map into the players PlayerGUI.</p>
 <p><strong>Example:</strong></p>
 <pre class="language-lua"><code class="language-lua"><span class="token comment">-- Loads an UI for everyone in the round</span>
-<span class="token keyword">local</span> PlayersFeature <span class="token operator">=</span> Maplib<span class="token punctuation">:</span><span class="token function">GetFeature</span><span class="token punctuation">(</span><span class="token string">"Players"</span><span class="token punctuation">)</span>
+<span class="token keyword">local</span> PlayersFeature <span class="token operator">=</span> MapLib<span class="token punctuation">:</span><span class="token function">GetFeature</span><span class="token punctuation">(</span><span class="token string">"Players"</span><span class="token punctuation">)</span>
 <span class="token keyword">local</span> PlayerUI <span class="token operator">=</span> MapLib<span class="token punctuation">:</span><span class="token function">GetFeature</span><span class="token punctuation">(</span><span class="token string">"PlayerUI"</span><span class="token punctuation">)</span>
 
 <span class="token keyword">local</span> ui <span class="token operator">=</span> map<span class="token punctuation">:</span><span class="token function">WaitForChild</span><span class="token punctuation">(</span><span class="token string">"MyGUI"</span><span class="token punctuation">)</span>
@@ -30,7 +30,7 @@
     &quot;functions&quot;: [
         {
             &quot;name&quot;: &quot;LoadUI&quot;,
-            &quot;desc&quot;: &quot;This function can be used to load a `ScreenGui` from the map into the players PlayerGUI.\n\n**Example:**\n```lua\n-- Loads an UI for everyone in the round\nlocal PlayersFeature = Maplib:GetFeature(\&quot;Players\&quot;)\nlocal PlayerUI = MapLib:GetFeature(\&quot;PlayerUI\&quot;)\n\nlocal ui = map:WaitForChild(\&quot;MyGUI\&quot;)\n\nfor _, player in pairs(PlayersFeature:GetPlayers()) do\n\tif player and player.Character then\n\t\tPlayerUI:LoadUI(ui)\n\tend\nend\n```&quot;,
+            &quot;desc&quot;: &quot;This function can be used to load a `ScreenGui` from the map into the players PlayerGUI.\n\n**Example:**\n```lua\n-- Loads an UI for everyone in the round\nlocal PlayersFeature = MapLib:GetFeature(\&quot;Players\&quot;)\nlocal PlayerUI = MapLib:GetFeature(\&quot;PlayerUI\&quot;)\n\nlocal ui = map:WaitForChild(\&quot;MyGUI\&quot;)\n\nfor _, player in pairs(PlayersFeature:GetPlayers()) do\n\tif player and player.Character then\n\t\tPlayerUI:LoadUI(ui)\n\tend\nend\n```&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;gui&quot;,
@@ -62,7 +62,7 @@
         &quot;path&quot;: &quot;src/Features/PlayerUI.lua&quot;
     }
 }</pre></details></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#LoadUI" class="table-of-contents__link toc-highlight">:LoadUI</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2019 - 2023 TRIA.os. Built with Moonwave and Docusaurus</div></div></div></footer></div>
-<script src="/Tria-Escape-MapLib/assets/js/runtime~main.fc00fbb4.js"></script>
-<script src="/Tria-Escape-MapLib/assets/js/main.00767aee.js"></script>
+<script src="/Tria-Escape-MapLib/assets/js/runtime~main.550951cb.js"></script>
+<script src="/Tria-Escape-MapLib/assets/js/main.65224c10.js"></script>
 </body>
 </html>

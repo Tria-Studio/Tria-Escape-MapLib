@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v2.3.1">
 <title data-rh="true">Skills | TRIA.os MapLib Documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://Tria-Studio.github.io/Tria-Escape-MapLib/api/Skills"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docusaurus_tag" content="default"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docsearch:docusaurus_tag" content="default"><meta data-rh="true" property="og:title" content="Skills | TRIA.os MapLib Documentation"><meta data-rh="true" name="description" content="This is a MapLib Feature. It can be accessed by `MapLib:GetFeature(&quot;Skills&quot;)`."><meta data-rh="true" property="og:description" content="This is a MapLib Feature. It can be accessed by `MapLib:GetFeature(&quot;Skills&quot;)`."><link data-rh="true" rel="icon" href="https://coderheck.github.io/assets/TRIAosLogoGradient.png"><link data-rh="true" rel="canonical" href="https://Tria-Studio.github.io/Tria-Escape-MapLib/api/Skills"><link data-rh="true" rel="alternate" href="https://Tria-Studio.github.io/Tria-Escape-MapLib/api/Skills" hreflang="en"><link data-rh="true" rel="alternate" href="https://Tria-Studio.github.io/Tria-Escape-MapLib/api/Skills" hreflang="x-default"><link rel="stylesheet" href="/Tria-Escape-MapLib/assets/css/styles.47784790.css">
-<link rel="preload" href="/Tria-Escape-MapLib/assets/js/runtime~main.fc00fbb4.js" as="script">
-<link rel="preload" href="/Tria-Escape-MapLib/assets/js/main.00767aee.js" as="script">
+<link rel="preload" href="/Tria-Escape-MapLib/assets/js/runtime~main.550951cb.js" as="script">
+<link rel="preload" href="/Tria-Escape-MapLib/assets/js/main.65224c10.js" as="script">
 </head>
 <body class="navigation-with-keyboard">
 <script>!function(){function e(e){document.documentElement.setAttribute("data-theme",e)}var t=function(){var e=null;try{e=localStorage.getItem("theme")}catch(e){}return e}();null!==t?e(t):window.matchMedia("(prefers-color-scheme: dark)").matches?e("dark"):(window.matchMedia("(prefers-color-scheme: light)").matches,e("light"))}()</script><div id="__docusaurus">
@@ -14,7 +14,7 @@
 </div></header><h2 class="anchor anchorWithStickyNavbar_LWe7" id="functions">Functions<a href="#functions" class="hash-link" aria-label="Direct link to Functions" title="Direct link to Functions">​</a></h2><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="ToggleSliding"><code style="text-decoration:none">ToggleSliding</code><a href="#ToggleSliding" class="hash-link" aria-label="Direct link to ToggleSliding" title="Direct link to ToggleSliding">​</a></h3><div class="repositoryDetailsContainer_BPdw"><span class="releaseVersion_EonW">since <!-- -->0.11</span><a class="sourceButton_sEho" href="https://github.com/Tria-Studio/Tria-Escape-MapLib/blob/master/src/Features/Skills.lua#L38"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Skills<!-- -->:</code><code class="green_DgR4">ToggleSliding</code><code>(</code><code>value<!-- -->: </code><code class="blue_P4bS">boolean</code><code>) → </code><code>(</code><code>)</code></div><div>
 <p>This function can be used for toggling sliding on or off during a map.</p>
 <p><strong>Example:</strong></p>
-<pre class="language-lua"><code class="language-lua"><span class="token keyword">local</span> SkillsFeature <span class="token operator">=</span> Maplib<span class="token punctuation">:</span><span class="token function">GetFeature</span><span class="token punctuation">(</span><span class="token string">"Skills"</span><span class="token punctuation">)</span>
+<pre class="language-lua"><code class="language-lua"><span class="token keyword">local</span> SkillsFeature <span class="token operator">=</span> MapLib<span class="token punctuation">:</span><span class="token function">GetFeature</span><span class="token punctuation">(</span><span class="token string">"Skills"</span><span class="token punctuation">)</span>
 
 SkillsFeature<span class="token punctuation">:</span><span class="token function">ToggleSliding</span><span class="token punctuation">(</span><span class="token keyword">false</span><span class="token punctuation">)</span>
 task<span class="token punctuation">.</span><span class="token function">wait</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
@@ -23,7 +23,7 @@ SkillsFeature<span class="token punctuation">:</span><span class="token function
 </div><div class="divider_rE5g"></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="ToggleAirDive"><code style="text-decoration:none">ToggleAirDive</code><a href="#ToggleAirDive" class="hash-link" aria-label="Direct link to ToggleAirDive" title="Direct link to ToggleAirDive">​</a></h3><div class="repositoryDetailsContainer_BPdw"><span class="releaseVersion_EonW">since <!-- -->0.11</span><a class="sourceButton_sEho" href="https://github.com/Tria-Studio/Tria-Escape-MapLib/blob/master/src/Features/Skills.lua#L62"><div class="sourceButtonText_Vh0m">&lt;/&gt;</div></a></div><div class="memberString_GwaU"><code>Skills<!-- -->:</code><code class="green_DgR4">ToggleAirDive</code><code>(</code><code>value<!-- -->: </code><code class="blue_P4bS">boolean</code><code>) → </code><code>(</code><code>)</code></div><div>
 <p>This function can be used for toggling airdive on or off during a map.</p>
 <p><strong>Example:</strong></p>
-<pre class="language-lua"><code class="language-lua"><span class="token keyword">local</span> SkillsFeature <span class="token operator">=</span> Maplib<span class="token punctuation">:</span><span class="token function">GetFeature</span><span class="token punctuation">(</span><span class="token string">"Skills"</span><span class="token punctuation">)</span>
+<pre class="language-lua"><code class="language-lua"><span class="token keyword">local</span> SkillsFeature <span class="token operator">=</span> MapLib<span class="token punctuation">:</span><span class="token function">GetFeature</span><span class="token punctuation">(</span><span class="token string">"Skills"</span><span class="token punctuation">)</span>
 
 SkillsFeature<span class="token punctuation">:</span><span class="token function">ToggleAirDive</span><span class="token punctuation">(</span><span class="token keyword">false</span><span class="token punctuation">)</span>
 task<span class="token punctuation">.</span><span class="token function">wait</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
@@ -33,7 +33,7 @@ SkillsFeature<span class="token punctuation">:</span><span class="token function
     &quot;functions&quot;: [
         {
             &quot;name&quot;: &quot;ToggleSliding&quot;,
-            &quot;desc&quot;: &quot;This function can be used for toggling sliding on or off during a map.\n\n**Example:**\n```lua\nlocal SkillsFeature = Maplib:GetFeature(\&quot;Skills\&quot;)\n\nSkillsFeature:ToggleSliding(false)\ntask.wait(5)\nSkillsFeature:ToggleSliding(true)\n```\t&quot;,
+            &quot;desc&quot;: &quot;This function can be used for toggling sliding on or off during a map.\n\n**Example:**\n```lua\nlocal SkillsFeature = MapLib:GetFeature(\&quot;Skills\&quot;)\n\nSkillsFeature:ToggleSliding(false)\ntask.wait(5)\nSkillsFeature:ToggleSliding(true)\n```\t&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;value&quot;,
@@ -51,7 +51,7 @@ SkillsFeature<span class="token punctuation">:</span><span class="token function
         },
         {
             &quot;name&quot;: &quot;ToggleAirDive&quot;,
-            &quot;desc&quot;: &quot;This function can be used for toggling airdive on or off during a map.\n\n**Example:**\n```lua\nlocal SkillsFeature = Maplib:GetFeature(\&quot;Skills\&quot;)\n\nSkillsFeature:ToggleAirDive(false)\ntask.wait(5)\nSkillsFeature:ToggleAirDive(true)\n```\t&quot;,
+            &quot;desc&quot;: &quot;This function can be used for toggling airdive on or off during a map.\n\n**Example:**\n```lua\nlocal SkillsFeature = MapLib:GetFeature(\&quot;Skills\&quot;)\n\nSkillsFeature:ToggleAirDive(false)\ntask.wait(5)\nSkillsFeature:ToggleAirDive(true)\n```\t&quot;,
             &quot;params&quot;: [
                 {
                     &quot;name&quot;: &quot;value&quot;,
@@ -77,7 +77,7 @@ SkillsFeature<span class="token punctuation">:</span><span class="token function
         &quot;path&quot;: &quot;src/Features/Skills.lua&quot;
     }
 }</pre></details></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a></li><li><a href="#properties" class="table-of-contents__link toc-highlight">Properties</a></li><li><a href="#functions" class="table-of-contents__link toc-highlight">Functions</a><ul><li><a href="#ToggleAirDive" class="table-of-contents__link toc-highlight">:ToggleAirDive</a></li><li><a href="#ToggleSliding" class="table-of-contents__link toc-highlight">:ToggleSliding</a></li></ul></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2019 - 2023 TRIA.os. Built with Moonwave and Docusaurus</div></div></div></footer></div>
-<script src="/Tria-Escape-MapLib/assets/js/runtime~main.fc00fbb4.js"></script>
-<script src="/Tria-Escape-MapLib/assets/js/main.00767aee.js"></script>
+<script src="/Tria-Escape-MapLib/assets/js/runtime~main.550951cb.js"></script>
+<script src="/Tria-Escape-MapLib/assets/js/main.65224c10.js"></script>
 </body>
 </html>
