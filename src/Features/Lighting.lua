@@ -1,6 +1,6 @@
 --!strict
 
--- Copyright (C) 2023 Tria
+-- Copyright (C) 2025 Tria
 -- This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
 -- If a copy of the MPL was not distributed with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
@@ -97,6 +97,34 @@ end
 	})
 	```
 	:::
+	@within Lighting
+	@method EaseLighting
+	@since 1.3
+	@param tweenInfo { Time: number?, EasingStyle: Enum.EasingStyle?, EasingDirection: Enum.EasingDirection?, RepeatCount: number?, Reverses: boolean?, DelayTime: number? }
+	@param properties { [string]: any }
+	@param postEffects { [string]: { [string]: any } }
+
+	This function can to be used to change the lighting of a map mid round. We discourage usage of changing lighting
+	with `game.Lighting[Property] = value` cause it doesnt replicate for spectators.
+
+	**Example:**
+	local LightingFeature = MapLib:GetFeature("Lighting")
+	-- Tweens Fog to White and to Black 10 times
+        for i = 1,10 do
+            LightingFeature:SetLighting({
+                FogEnd = 1,
+                FogColor = Color3.fromRGB(255, 255, 255)
+            })
+
+            LightingFeature:EaseLighting(TweenInfo.new(1, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut), {
+                FogEnd = 200,
+                FogStart = 0,
+                FogColor = Color3.fromRGB(255, 0, 0)
+            })
+            
+            task.wait(1)
+        end
+	```
 ]=]
 
 function LightingFeature:SetLighting(properties: { [string]: any }, postEffects: { [string]: { [string]: any } })

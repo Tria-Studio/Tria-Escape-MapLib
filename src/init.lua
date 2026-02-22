@@ -1,6 +1,6 @@
 --!strict
 
--- Copyright (C) 2023 Tria
+-- Copyright (C) 2025 Tria
 -- This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
 -- If a copy of the MPL was not distributed with this file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
@@ -211,7 +211,7 @@ end
 	```
 	:::
 ]=]
-function MapLib:SetLiquidType(liquid: BasePart, liquidType: string): ()
+function MapLib:SetLiquidType(liquid: BasePart, liquidType: string, tweenDuration: number?, stateDelay: number?): ()
 	task.spawn(function()
 		local color = LIQUID_COLORS[liquidType]
 		if self.map and not color then
@@ -219,8 +219,8 @@ function MapLib:SetLiquidType(liquid: BasePart, liquidType: string): ()
 			color = custom and SettingsHandler:GetValue(custom, "Color") or Color3.new()
 		end
 
-		TweenService:Create(liquid, TweenInfo.new(1), { Color = color }):Play()
-		task.wait(1)
+		TweenService:Create(liquid, TweenInfo.new(tweenDuration or 1), { Color = color }):Play()
+		task.wait(stateDelay or 1)
 		SettingsHandler:SetValue(liquid, "Type", liquidType)
 	end)
 end
