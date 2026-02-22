@@ -97,6 +97,8 @@ end
 	})
 	```
 	:::
+]=]
+--[=[
 	@within Lighting
 	@method EaseLighting
 	@since 1.3
@@ -104,26 +106,27 @@ end
 	@param properties { [string]: any }
 	@param postEffects { [string]: { [string]: any } }
 
+	:::tip
 	This function can to be used to change the lighting of a map mid round. We discourage usage of changing lighting
 	with `game.Lighting[Property] = value` cause it doesnt replicate for spectators.
 
 	**Example:**
 	local LightingFeature = MapLib:GetFeature("Lighting")
 	-- Tweens Fog to White and to Black 10 times
-        for i = 1,10 do
-            LightingFeature:SetLighting({
-                FogEnd = 1,
-                FogColor = Color3.fromRGB(255, 255, 255)
-            })
+		for i = 1,10 do
+			LightingFeature:SetLighting({
+				FogEnd = 1,
+				FogColor = Color3.fromRGB(255, 255, 255)
+			})
 
-            LightingFeature:EaseLighting(TweenInfo.new(1, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut), {
-                FogEnd = 200,
-                FogStart = 0,
-                FogColor = Color3.fromRGB(255, 0, 0)
-            })
-            
-            task.wait(1)
-        end
+			LightingFeature:EaseLighting(TweenInfo.new(1, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut), {
+				FogEnd = 200,
+				FogStart = 0,
+				FogColor = Color3.fromRGB(255, 0, 0)
+			})
+			
+			task.wait(1)
+		end
 	```
 ]=]
 
